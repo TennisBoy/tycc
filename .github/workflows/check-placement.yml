@@ -1,0 +1,114 @@
+name: Check team-lead Placement
+
+on:
+  pull_request:
+    paths:
+      - 'team-lead/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'team-lead/**'
+
+jobs:
+  placement:
+    name: Validate team-lead artifact placement
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check file placement
+        run: |
+          set -euo pipefail
+
+          # Sanctioned subdirectories under team-lead/
+          ALLOWED_SUBDIRS=(
+            "team-lead/memory/"
+            "team-lead/knowledge/"
+            "team-lead/.gstack/"
+            "team-lead/docs/sessions/"
+            "team-lead/docs/specs/"
+            "team-lead/docs/plans/"
+            "team-lead/docs/"
+            "team-lead/playbooks/"
+            "team-lead/templates/"
+            "team-lead/scripts/"
+            "team-lead/skills/"
+          )
+
+          # Top-level files allowed directly under team-lead/
+          ALLOWED_TOPLEVEL=(
+            "team-lead/README.md"
+            "team-lead/TODOS.md"
+            "team-lead/WORKING-AGREEMENTS.md"
+            "team-lead/ARCHITECTURE.md"
+            "team-lead/MEMORY.md"
+            "team-lead/ROADMAP.md"
+            "team-lead/WORKFLOW.md"
+            "team-lead/SKILLS-MANAGEMENT.md"
+            "team-lead/SKILLS-CUSTOM.md"
+            "team-lead/SKILLS-GUIDE.md"
+            "team-lead/PROMPT-GUIDE.md"
+            "team-lead/FIRST-STEPS.md"
+            "team-lead/PROJECT.md"
+            "team-lead/PROVENANCE.md"
+            "team-lead/HARNESS-MANIFEST.md"
+          )
+
+          BASE="${{ github.event.pull_request.base.sha || github.event.before }}"
+          HEAD="${{ github.sha }}"
+
+          # Guard: if BASE is empty or unresolvable, skip rather than silently pass.
+          if [[ -z "$BASE" ]] || [[ "$BASE" == "0000000000000000000000000000000000000000" ]] || ! git cat-file -e "$BASE" 2>/dev/null; then
+            echo "::warning::Cannot resolve base SHA; skipping placement check (initial push or unresolvable ref)."
+            exit 0
+          fi
+
+          violations=()
+
+          # For push events, check all commits in the push (not just tip-to-tip diff).
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            file_list=$(git log --name-only --diff-filter=d --format="" "$BASE".."$HEAD" | sort -u)
+          else
+            file_list=$(git diff --name-only --diff-filter=d "$BASE" "$HEAD")
+          fi
+
+          while IFS= read -r file; do
+            [[ -z "$file" ]] && continue
+            [[ "$file" != team-lead/* ]] && continue
+
+            allowed=0
+            for toplevel in "${ALLOWED_TOPLEVEL[@]}"; do
+              if [[ "$file" == "$toplevel" ]]; then
+                allowed=1
+                break
+              fi
+            done
+            [[ "$allowed" -eq 1 ]] && continue
+
+            for subdir in "${ALLOWED_SUBDIRS[@]}"; do
+              if [[ "$file" == ${subdir}* ]]; then
+                allowed=1
+                break
+              fi
+            done
+            [[ "$allowed" -eq 1 ]] && continue
+
+            violations+=("$file")
+          done <<< "$file_list"
+
+          if [[ ${#violations[@]} -gt 0 ]]; then
+            echo "::error::The following files are not in a sanctioned team-lead/ location:"
+            for v in "${violations[@]}"; do
+              echo "  $v"
+            done
+            echo ""
+            echo "See team-lead/WORKING-AGREEMENTS.md for the approved layout."
+            exit 1
+          fi
+
+          echo "All team-lead/ files are in sanctioned locations."
