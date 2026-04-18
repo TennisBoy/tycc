@@ -1,6 +1,21 @@
 import type { RideEvent } from "./types";
 
-export const rideEvents: RideEvent[] = [];
+export const rideEvents: RideEvent[] = [
+  {
+    id: "ride-2026-05-10",
+    title: "Don Valley Morning Loop",
+    date: "2026-05-10",
+    time: "9:00 AM",
+    rideType: "Group ride",
+    difficulty: "All levels",
+    area: "Don Valley / East Toronto",
+    meetup: "Serena Gundy Park – parking lot off Eglinton Ave E",
+    distance: "28 km",
+    preview:
+      "Kick off the season with a lap through Don Valley trails and along the Lower Don River path. Flat to rolling terrain — a great first ride for new members and a nice warm-up for returning riders.",
+    gear: "Helmet required. Water bottle, snack, and a light layer recommended.",
+  },
+];
 
 export const quickActions = [
   {

@@ -4,15 +4,14 @@ Updated: 2026-04-18
 
 ## Active Work
 
-- Homepage foundation shipped and verified in `webui/`.
+- Public site content is live with homepage and first calendar event.
 
 ## Recent Completions
 
-- Replaced the blank route registry with a branded TYCC homepage.
-- Updated design tokens and design docs away from scaffold defaults.
-- Made public routes resilient to missing OIDC setup during early project setup.
+- Added first sample ride (Don Valley Morning Loop, May 10 2026) to ride calendar.
+- Homepage foundation shipped with branded layout and design tokens.
 
 ## Up Next
 
-- Decide the real conversion path for families and riders.
-- Choose whether the next milestone is public content expansion or backend setup.
+- Add more ride dates to calendar as schedule is confirmed.
+- Decide the real conversion/contact path for families and riders.
