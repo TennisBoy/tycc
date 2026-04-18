@@ -4,11 +4,18 @@
 
 ## Overview
 
-_Describe what this project does._
+Toronto Youth Cycling Club is a fullstack website project for presenting the club, introducing its riding philosophy, and growing into a public-facing home for families, riders, and organizers.
 
 ## Quick Start
 
-_Add setup and run instructions here._
+1. `bash team-lead/scripts/install-hooks.sh`
+2. `cd webui && npm install`
+3. `npm run start`
+
+Current first slice:
+- A branded public homepage in `webui/`
+- The `team-lead/` operating harness for plans, memory, and workflow
+- Placeholder room for future backend, registration, and program content
 
 ## First Run (new device or fresh clone)
 

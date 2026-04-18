@@ -1,6 +1,6 @@
 # Active Blockers
 
-Updated: (not yet run)
+Updated: 2026-04-18
 
 Known blockers, work in progress, and unresolved items. Clear entries when resolved.
 
@@ -10,4 +10,5 @@ Known blockers, work in progress, and unresolved items. Clear entries when resol
 
 ## Watch List
 
-_Add items to watch here._
+- Real contact or registration flow still needs to be chosen for the homepage CTA.
+- Backend and auth setup remain unstarted even though the public frontend now renders.

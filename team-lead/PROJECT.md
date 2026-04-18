@@ -14,12 +14,13 @@
 
 | Resource | Path |
 |----------|------|
-| Harness Manifest | team-lead/HARNESS-MANIFEST.md _(generate with /new-project skill)_ |
+| Harness Manifest | HARNESS-MANIFEST.md |
 | TODOS | team-lead/TODOS.md |
-| Design source | _add Figma URL or DESIGN.md_ |
+| Design source | DESIGN.md |
 | Capability status | team-lead/status/CAPABILITY-STATUS.md |
 | Session summaries | team-lead/docs/sessions/ |
 
 ## Open Decisions
 
-_Add key open decisions here as the project gets underway._
+- Decide the real join/contact conversion path for the public site.
+- Decide whether the next milestone is backend setup or richer public content pages.

@@ -1,0 +1,24 @@
+# Root-level ignores for the TYCC workspace
+
+# Frontend build and dependencies
+webui/node_modules/
+webui/dist/
+webui/coverage/
+
+# Frontend local environment files
+webui/.env
+webui/.env.local
+
+# General logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Local notes artifacts
+.obsidian.md
+.obsidian/

@@ -4,36 +4,38 @@ This document serves as the design system manifest for the workspace, providing 
 
 ## Core Principles
 
-- **Modern & Clean**: Minimalist aesthetic with a strong focus on typography and whitespace.
-- **Accessible**: High contrast ratios and clear focus states.
-- **Responsive**: Fluid layouts using Flexbox and Grid.
+- **Energetic & outdoors-first**: The site should feel like motion, fresh air, and progression.
+- **Confident but welcoming**: Parents need clarity and trust; riders should feel invited, not talked down to.
+- **Responsive**: Fluid layouts using Flexbox and Grid with strong mobile readability.
 
 ## Colors
 
 ### Brand Palette
 
-- **Primary**: `#030213` (Deep Black) — Used for primary actions, text, and main branding.
-- **Secondary**: `oklch(0.95 0.0058 264.53)` (Soft Grayish-Blue) — Used for secondary actions and background elements.
-- **Accent**: `#e9ebef` (Light Gray) — Used for highlighting and subtle accents.
-- **Destructive**: `#d4183d` (Vibrant Red) — Used for errors and destructive actions.
+- **Primary**: `#123c63` (Club Navy) — Main brand color, strong sections, primary actions.
+- **Secondary**: `#f2c642` (High-Vis Gold) — Warm contrast used for buttons, highlights, and motion cues.
+- **Accent**: `#e65330` (Ride Red) — Energetic emphasis color for callouts and badges.
+- **Destructive**: `#b42318` (Signal Red) — Errors and destructive actions.
 
 ### Semantic Tokens
 
-- **Background**: `#ffffff` (White)
-- **Foreground**: `oklch(0.145 0 0)` (Near Black)
-- **Muted**: `#ececf0`
-- **Muted Foreground**: `#717182`
-- **Border**: `rgba(0, 0, 0, 0.1)`
-- **Input Background**: `#f3f3f5`
+- **Background**: `#f7fbff` (Cool daylight white)
+- **Foreground**: `#15263d` (Ink navy)
+- **Muted**: `#dfe8eb`
+- **Muted Foreground**: `#556578`
+- **Border**: `rgba(18, 60, 99, 0.14)`
+- **Input Background**: `rgba(255, 255, 255, 0.88)`
 
 ## Typography
 
 ### Font Settings
 
 - **Base Font Size**: `16px`
-- **Primary Font Family**: Standard system fonts (Inter/Geist preferred if available).
+- **Primary Font Family**: `"Avenir Next", "Segoe UI", "Trebuchet MS", sans-serif`
+- **Display Font Family**: `"Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif`
 - **Normal Weight**: `400`
 - **Medium Weight**: `500`
+- **Display Weight**: `600`
 
 ### Scale
 
@@ -45,7 +47,7 @@ This document serves as the design system manifest for the workspace, providing 
 
 ## Spacing & Layout
 
-- **Base Radius**: `0.625rem` (10px)
+- **Base Radius**: `1rem` (16px)
 - **Radius Variations**:
   - `sm`: `calc(var(--radius) - 4px)` (6px)
   - `md`: `calc(var(--radius) - 2px)` (8px)
@@ -60,20 +62,20 @@ These tokens are defined in `webui/src/styles/globals.css` and are the primary s
 
 ```css
 :root {
-  --primary: #030213;
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.95 0.0058 264.53);
-  --secondary-foreground: #030213;
-  --background: #ffffff;
-  --foreground: oklch(0.145 0 0);
-  --muted: #ececf0;
-  --muted-foreground: #717182;
-  --accent: #e9ebef;
-  --accent-foreground: #030213;
-  --destructive: #d4183d;
+  --primary: #123c63;
+  --primary-foreground: #f8fbff;
+  --secondary: #f2c642;
+  --secondary-foreground: #14253d;
+  --background: #f7fbff;
+  --foreground: #15263d;
+  --muted: #dfe8eb;
+  --muted-foreground: #556578;
+  --accent: #e65330;
+  --accent-foreground: #fff7f2;
+  --destructive: #b42318;
   --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
-  --radius: 0.625rem;
+  --border: rgba(18, 60, 99, 0.14);
+  --radius: 1rem;
 }
 ```
 
@@ -82,16 +84,16 @@ These tokens are defined in `webui/src/styles/globals.css` and are the primary s
 ### Buttons
 
 - **Variants**:
-  - `default`: Primary background, white text.
-  - `outline`: Bordered, transparent background, accent hover.
-  - `secondary`: Secondary background, primary text.
+  - `default`: Club navy background, white text.
+  - `outline`: Glassy border treatment for overlays and light CTA use.
+  - `secondary`: High-vis gold background with dark navy text.
   - `destructive`: Red background, white text.
-  - `ghost`: Transparent background, accent hover.
+  - `ghost`: Transparent background, subtle wash hover.
 - **Sizes**: `default` (h-9, px-4), `sm` (h-8), `lg` (h-10).
 
 ### Cards
 
-- **Style**: `rounded-xl` (12px radius), `border`, `bg-card`.
+- **Style**: Soft glass cards with generous radius and low-contrast shadows.
 - **Structure**: Header, Title, Description, Content, Footer with consistent `px-6` padding.
 
 ### Forms
