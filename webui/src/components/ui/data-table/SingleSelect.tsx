@@ -82,10 +82,6 @@ function SingleSelect({
     [filteredOptions, displayCount],
   );
 
-  React.useEffect(() => {
-    setDisplayCount(20);
-  }, [searchQuery]);
-
   const handleScroll = React.useCallback(() => {
     if (!scrollRef.current) return;
     const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
@@ -102,6 +98,14 @@ function SingleSelect({
     [onValueChange],
   );
 
+  const handleOpenChange = React.useCallback((isOpen: boolean) => {
+    if (isOpen) {
+      setSearchQuery("");
+      setDisplayCount(20);
+    }
+    setOpen(isOpen);
+  }, []);
+
   const displayValue = disabled
     ? undefined
     : selectedValue
@@ -109,7 +113,7 @@ function SingleSelect({
       : undefined;
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
         <Button
           disabled={disabled}
@@ -131,7 +135,10 @@ function SingleSelect({
             <Input
               placeholder={`Search ${title}...`}
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setDisplayCount(20);
+              }}
               className="h-9 pl-8 text-sm"
               autoFocus
             />

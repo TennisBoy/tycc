@@ -60,10 +60,6 @@ function MultiSelect({
   const allLabel = React.useMemo(() => `All ${title}`, [title]);
 
   React.useEffect(() => {
-    setLocalSelected(selectedValues);
-  }, [selectedValues]);
-
-  React.useEffect(() => {
     if (disabled && selectedValues.length > 0) {
       onFilterChange([]);
     }
@@ -89,14 +85,22 @@ function MultiSelect({
 
   const handleOpenChange = React.useCallback(
     (isOpen: boolean) => {
+      if (isOpen) {
+        setLocalSelected(selectedValues);
+        setSearchQuery("");
+        setDisplayCount(20);
+        setOpen(true);
+        return;
+      }
+
       if (!isOpen) {
         onFilterChange(localSelected);
-        //setSearchQuery("");
-        setDisplayCount(20); // Reset on close
+        setSearchQuery("");
+        setDisplayCount(20);
       }
       setOpen(isOpen);
     },
-    [localSelected, onFilterChange],
+    [localSelected, onFilterChange, selectedValues],
   );
 
   const handleScroll = React.useCallback(() => {
@@ -107,10 +111,6 @@ function MultiSelect({
       setDisplayCount((prev) => Math.min(prev + 20, filteredOptions.length));
     }
   }, [filteredOptions.length]);
-
-  React.useEffect(() => {
-    setDisplayCount(20);
-  }, [searchQuery]);
 
   const handleToggle = React.useCallback(
     (optionValue: string) => {
@@ -138,18 +138,20 @@ function MultiSelect({
     [allLabel, localSelected],
   );
 
-  const getDisplayValue = () => {
-    if (localSelected.length === 0) {
+  const visibleSelection = open ? localSelected : selectedValues;
+
+  const getDisplayValue = (values: string[]) => {
+    if (values.length === 0) {
       return allLabel;
-    } else if (localSelected.length === 1) {
-      const selectedOption = options.find((opt) => opt.value === localSelected[0]);
-      return selectedOption?.label || localSelected[0];
+    } else if (values.length === 1) {
+      const selectedOption = options.find((opt) => opt.value === values[0]);
+      return selectedOption?.label || values[0];
     } else {
-      return `${localSelected.length} selected`;
+      return `${values.length} selected`;
     }
   };
 
-  const displayValue = disabled ? allLabel : getDisplayValue();
+  const displayValue = disabled ? allLabel : getDisplayValue(visibleSelection);
 
   return (
     <Popover open={open} onOpenChange={handleOpenChange}>
@@ -161,7 +163,7 @@ function MultiSelect({
           aria-expanded={open}
           className="h-10 w-full justify-between font-normal"
         >
-          <span className={cn(localSelected.length === 0 && "text-muted-foreground")}>
+          <span className={cn(visibleSelection.length === 0 && "text-muted-foreground")}>
             {displayValue}
           </span>
           <Icons.ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -174,7 +176,10 @@ function MultiSelect({
             <Input
               placeholder={`Search ${title}...`}
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setDisplayCount(20);
+              }}
               className="h-9 pl-8 text-sm"
               autoFocus
             />

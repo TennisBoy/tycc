@@ -69,6 +69,7 @@ export function DataTableToolbar({
             <div className="relative w-64 rounded-md border">
               <Icons.Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 transform text-gray-400" />
               <SearchInput
+                key={String(searchBy)}
                 placeholder="Search in results..."
                 value={searchBy}
                 onChange={(value) => onSearchByChange(String(value))}
@@ -235,10 +236,6 @@ function SearchInput({
   });
 
   useEffect(() => {
-    setValue(initialValue);
-  }, [initialValue]);
-
-  useEffect(() => {
     if (value === lastNotifiedValueRef.current) return;
     if (debounceTimeout.current) {
       clearTimeout(debounceTimeout.current);
@@ -259,6 +256,7 @@ function SearchInput({
       if (debounceTimeout.current) {
         clearTimeout(debounceTimeout.current);
       }
+      lastNotifiedValueRef.current = value;
       onChangeRef.current(value);
     }
   };
@@ -267,6 +265,7 @@ function SearchInput({
     if (debounceTimeout.current) {
       clearTimeout(debounceTimeout.current);
     }
+    lastNotifiedValueRef.current = value;
     onChangeRef.current(value);
   };
 

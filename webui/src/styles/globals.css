@@ -2,28 +2,29 @@
 @import "tw-animate-css";
 
 :root {
-  --font-sans: "Avenir Next", "Segoe UI", "Trebuchet MS", sans-serif;
-  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif;
-  --primary: #123c63;
-  --primary-foreground: #f8fbff;
-  --secondary: #f2c642;
-  --secondary-foreground: #14253d;
-  --background: #f7fbff;
-  --foreground: #15263d;
-  --muted: #dfe8eb;
-  --muted-foreground: #556578;
-  --accent: #e65330;
-  --accent-foreground: #fff7f2;
-  --destructive: #b42318;
+  --font-sans: "Public Sans", "Segoe UI", sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --primary: #1e6b52;
+  --primary-foreground: #f7f6f1;
+  --secondary: #dde7dd;
+  --secondary-foreground: #142126;
+  --background: #f7f6f1;
+  --foreground: #142126;
+  --muted: #eef1ea;
+  --muted-foreground: #586568;
+  --accent: #f2a93b;
+  --accent-foreground: #142126;
+  --destructive: #b7442a;
   --destructive-foreground: #ffffff;
-  --border: rgba(18, 60, 99, 0.14);
-  --input: rgba(255, 255, 255, 0.88);
-  --ring: #123c63;
-  --radius: 1rem;
+  --border: #c8d2ca;
+  --input: rgba(255, 255, 255, 0.96);
+  --ring: #1e6b52;
+  --radius: 0.875rem;
   --card: rgba(255, 255, 255, 0.92);
-  --card-foreground: #15263d;
+  --card-foreground: #142126;
   --popover: #ffffff;
-  --popover-foreground: #15263d;
+  --popover-foreground: #142126;
+  --success: #2d7a58;
 }
 
 @theme inline {
@@ -64,9 +65,9 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(242, 198, 66, 0.2), transparent 24%),
-    radial-gradient(circle at top right, rgba(230, 83, 48, 0.14), transparent 22%),
-    linear-gradient(180deg, #f9fcff 0%, #edf3ee 100%);
+    radial-gradient(circle at top left, rgba(242, 169, 59, 0.18), transparent 24%),
+    radial-gradient(circle at top right, rgba(30, 107, 82, 0.12), transparent 24%),
+    linear-gradient(180deg, #fbfaf5 0%, #f1f4ed 100%);
   color: var(--foreground);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
@@ -88,9 +89,16 @@ h4,
 h5,
 h6 {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+  text-wrap: balance;
 }
 
 ::selection {
-  background: rgba(242, 198, 66, 0.35);
+  background: rgba(242, 169, 59, 0.35);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(30, 107, 82, 0.34);
+  outline-offset: 3px;
 }

@@ -1,289 +1,198 @@
-import {
-  ArrowRight,
-  Bike,
-  Flag,
-  HeartHandshake,
-  MapPinned,
-  ShieldCheck,
-  Sparkles,
-  Trees,
-  Users,
-} from "lucide-react";
+import { useState } from "react";
+import { Link } from "react-router";
+import { ArrowRight, Award, CalendarDays, Compass, ExternalLink, Instagram, Mail, MessageCircle, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import MonthCalendar from "@/shared/tycc/components/MonthCalendar";
+import {
+  achievements,
+  connectLinks,
+  quickActions,
+  rideEvents,
+  routeHighlights,
+} from "@/shared/tycc/content";
 
-const programHighlights = [
-  {
-    icon: Bike,
-    title: "Skill-first coaching",
-    description:
-      "Build control, confidence, and group-ride instincts with sessions that make bike handling feel natural.",
-  },
-  {
-    icon: Trees,
-    title: "City-to-trail variety",
-    description:
-      "Mix park loops, neighbourhood connections, and destination rides so the season always feels active.",
-  },
-  {
-    icon: Users,
-    title: "Belonging on every ride",
-    description:
-      "Create a supportive youth team culture where riders learn from coaches and from each other.",
-  },
-] as const;
-
-const rideRhythm = [
-  {
-    label: "Warm up",
-    title: "Arrival, tune-up, and confidence check",
-    description:
-      "Start with bike checks, route notes, and small-group warmups so every rider feels ready before wheels turn.",
-  },
-  {
-    label: "On-bike",
-    title: "Focused skill blocks with real-world practice",
-    description:
-      "Blend drills, group communication, cornering, and pacing into sessions that translate directly to outdoor riding.",
-  },
-  {
-    label: "Cool down",
-    title: "Debrief, celebrate progress, and set the next target",
-    description:
-      "Finish with coaching notes, team encouragement, and a clear idea of what each rider is growing toward next.",
-  },
-] as const;
-
-const clubValues = [
-  {
-    icon: ShieldCheck,
-    title: "Safety is visible",
-    description:
-      "Good habits, route awareness, and predictable communication are part of every session, not a side topic.",
-  },
-  {
-    icon: Flag,
-    title: "Progress has structure",
-    description:
-      "Riders move from fundamentals to bigger goals through repeatable coaching, not guesswork.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "Community matters",
-    description:
-      "TYCC is designed to help young cyclists make friends, trust teammates, and feel proud showing up.",
-  },
-  {
-    icon: Sparkles,
-    title: "Fun stays in the plan",
-    description:
-      "The atmosphere should feel energetic and ambitious without losing the joy that keeps riders coming back.",
-  },
-] as const;
+const actionIcons = [CalendarDays, Compass, Compass, MessageCircle] as const;
+const connectIcons = [Instagram, MessageCircle, Mail, ExternalLink] as const;
 
 const HomePage = () => {
+  const [reviewName, setReviewName] = useState("");
+  const [reviewText, setReviewText] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
   return (
-    <main className="relative overflow-hidden pb-20" id="top">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[42rem] bg-[radial-gradient(circle_at_top_left,rgba(242,198,66,0.35),transparent_30%),radial-gradient(circle_at_82%_18%,rgba(230,83,48,0.22),transparent_22%),linear-gradient(180deg,rgba(255,255,255,0.2),transparent_85%)]"
-      />
-
-      <section className="pt-6 sm:pt-10">
+    <main className="overflow-x-hidden pb-20" id="top">
+      <section className="relative pt-8 sm:pt-12">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[40rem] bg-[radial-gradient(circle_at_top_left,rgba(242,169,59,0.18),transparent_22%),radial-gradient(circle_at_80%_18%,rgba(30,107,82,0.16),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.72),transparent_90%)]"
+        />
         <Container size="xl">
-          <div className="rounded-[2rem] border border-white/60 bg-white/70 shadow-[0_30px_90px_-55px_rgba(18,60,99,0.65)] backdrop-blur-md">
-            <div className="border-border/60 flex flex-wrap items-center justify-between gap-4 border-b px-5 py-4 sm:px-8">
-              <div>
-                <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em]">
-                  Toronto Youth Cycling Club
-                </p>
-                <p className="text-muted-foreground mt-1 text-sm">
-                  A first web presence for young riders, families, and future coaches.
-                </p>
+          <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+            <div className="max-w-3xl">
+              <Badge className="rounded-full border-0 bg-accent px-4 py-1.5 text-[0.72rem] uppercase tracking-[0.28em]">
+                Youth cycling in the GTA
+              </Badge>
+              <h1 className="mt-6 text-6xl font-bold sm:text-7xl lg:text-8xl">
+                Ride Toronto Together.
+              </h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
+                TYCC is building an open and inclusive youth cycling community for the GTA through
+                accessible rides, practical coaching, and partnerships that help more riders show
+                up with confidence.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild className="h-12 rounded-full px-6 text-sm sm:text-base">
+                  <Link to="/calendar">
+                    Check Calendar
+                    <ArrowRight />
+                  </Link>
+                </Button>
+                <Button asChild className="h-12 rounded-full px-6 text-sm sm:text-base" variant="outline">
+                  <Link to="/about">About TYCC</Link>
+                </Button>
               </div>
-              <nav className="text-muted-foreground flex flex-wrap items-center gap-4 text-sm font-medium">
-                <a className="transition-colors hover:text-foreground" href="#programs">
-                  Programs
-                </a>
-                <a className="transition-colors hover:text-foreground" href="#rhythm">
-                  Weekly rhythm
-                </a>
-                <a className="transition-colors hover:text-foreground" href="#join">
-                  Join TYCC
-                </a>
-              </nav>
             </div>
 
-            <div className="grid gap-10 px-5 py-10 sm:px-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-12 lg:px-10 lg:py-14">
-              <div>
-                <Badge className="bg-accent text-accent-foreground border-0 px-3 py-1 text-[0.7rem] uppercase tracking-[0.24em]">
-                  Youth cycling. Toronto energy. Real progression.
-                </Badge>
-                <h1 className="mt-6 max-w-3xl text-5xl leading-[0.94] font-semibold text-balance sm:text-6xl lg:text-7xl">
-                  Build confidence on every ride.
-                </h1>
-                <p className="text-muted-foreground mt-6 max-w-2xl text-lg leading-8">
-                  TYCC is a club concept built around coached skills sessions, memorable rides, and
-                  a welcoming team culture for young cyclists who want to grow together.
+            <div className="relative overflow-hidden rounded-[2rem] border border-border/80 bg-card shadow-[0_30px_80px_-55px_rgba(20,33,38,0.4)]">
+              <img
+                alt="Young cyclists riding together through Toronto."
+                className="h-full min-h-[24rem] w-full object-cover"
+                src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#13231f]/88 via-[#13231f]/55 to-transparent p-6 text-white sm:p-8">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/70">
+                  First impression
                 </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Button asChild className="h-11 rounded-full px-6 text-sm">
-                    <a href="#join">
-                      Start the club story
-                      <ArrowRight />
-                    </a>
-                  </Button>
-                  <Button asChild className="h-11 rounded-full px-6 text-sm" variant="secondary">
-                    <a href="#programs">Explore the riding experience</a>
-                  </Button>
-                </div>
+                <p className="mt-3 max-w-md text-2xl font-bold">
+                  Practical enough for parents. Energized enough for young riders.
+                </p>
               </div>
-
-              <Card className="border-primary/10 overflow-hidden rounded-[1.75rem] bg-primary px-0 py-0 text-primary-foreground shadow-[0_26px_70px_-45px_rgba(18,60,99,0.85)]">
-                <CardContent className="p-7 sm:p-8">
-                  <div className="flex items-center gap-3 text-sm font-medium text-white/75">
-                    <MapPinned className="size-4" />
-                    Toronto-based rides and team-building sessions
-                  </div>
-                  <div className="mt-10 grid gap-5">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.28em] text-white/55">The feel</p>
-                      <p className="mt-2 text-2xl font-semibold">
-                        A bright, outdoors-first club identity built for momentum.
-                      </p>
-                    </div>
-                    <div className="grid gap-3 sm:grid-cols-2">
-                      <div className="rounded-2xl border border-white/15 bg-white/10 p-4">
-                        <p className="text-xs uppercase tracking-[0.24em] text-white/60">
-                          For families
-                        </p>
-                        <p className="mt-2 text-sm leading-6 text-white/84">
-                          Clear structure, visible safety habits, and a community that feels
-                          encouraging from day one.
-                        </p>
-                      </div>
-                      <div className="rounded-2xl border border-white/15 bg-white/10 p-4">
-                        <p className="text-xs uppercase tracking-[0.24em] text-white/60">
-                          For riders
-                        </p>
-                        <p className="mt-2 text-sm leading-6 text-white/84">
-                          Stronger bike skills, better teammates, and rides that feel like an
-                          adventure instead of a drill.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {quickActions.map((action, index) => {
+              const Icon = actionIcons[index];
+              const content = (
+                <>
+                  <div className="flex size-12 items-center justify-center rounded-2xl bg-secondary text-primary">
+                    <Icon className="size-5" />
+                  </div>
+                  <h2 className="mt-5 text-3xl font-bold">{action.title}</h2>
+                  <p className="mt-3 text-base leading-7 text-muted-foreground">
+                    {action.description}
+                  </p>
+                </>
+              );
+
+              return action.href.startsWith("/") ? (
+                <Link
+                  className="group rounded-[1.5rem] border border-border/80 bg-white/85 p-5 shadow-[0_18px_48px_-38px_rgba(20,33,38,0.26)] transition-transform duration-200 hover:-translate-y-1"
+                  key={action.title}
+                  to={action.href}
+                >
+                  {content}
+                </Link>
+              ) : (
+                <a
+                  className="group rounded-[1.5rem] border border-border/80 bg-white/85 p-5 shadow-[0_18px_48px_-38px_rgba(20,33,38,0.26)] transition-transform duration-200 hover:-translate-y-1"
+                  href={action.href}
+                  key={action.title}
+                >
+                  {content}
+                </a>
+              );
+            })}
           </div>
         </Container>
       </section>
 
-      <section className="pt-14 sm:pt-20" id="programs">
+      <section className="pt-14 sm:pt-20" id="about">
         <Container size="xl">
-          <div className="flex max-w-3xl flex-col gap-4">
-            <p className="text-primary text-sm font-semibold uppercase tracking-[0.28em]">
-              What TYCC should deliver
-            </p>
-            <h2 className="text-4xl leading-tight font-semibold text-balance sm:text-5xl">
-              A club experience that feels capable, social, and worth showing up for.
-            </h2>
-            <p className="text-muted-foreground max-w-2xl text-lg leading-8">
-              The first version of the site should help visitors understand the club at a glance:
-              coached riding, clear progression, and a youth community that keeps cycling fun.
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {programHighlights.map(({ icon: Icon, title, description }) => (
-              <Card
-                key={title}
-                className="rounded-[1.5rem] border-border/70 bg-white/80 shadow-[0_25px_60px_-50px_rgba(18,60,99,0.7)] backdrop-blur-sm"
-              >
-                <CardContent className="p-6">
-                  <div className="bg-secondary text-secondary-foreground flex size-12 items-center justify-center rounded-2xl">
-                    <Icon className="size-6" />
-                  </div>
-                  <h3 className="mt-5 text-2xl font-semibold">{title}</h3>
-                  <p className="text-muted-foreground mt-3 text-base leading-7">{description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="pt-14 sm:pt-20" id="rhythm">
-        <Container size="xl">
-          <div className="grid gap-8 rounded-[2rem] border border-border/70 bg-white/75 px-5 py-8 shadow-[0_24px_70px_-50px_rgba(18,60,99,0.65)] backdrop-blur-md sm:px-8 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12 lg:px-10 lg:py-10">
+          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div className="max-w-xl">
               <p className="text-primary text-sm font-semibold uppercase tracking-[0.28em]">
-                Weekly rhythm
+                About TYCC
               </p>
-              <h2 className="mt-4 text-4xl leading-tight font-semibold text-balance sm:text-5xl">
-                Make each ride feel intentional from check-in to cooldown.
+              <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
+                A youth cycling community for the GTA.
               </h2>
-              <p className="text-muted-foreground mt-5 text-lg leading-8">
-                Parents and riders should be able to picture the flow of a TYCC session without
-                reading a wall of instructions. The structure needs to feel safe, active, and
-                energetic.
+              <p className="mt-5 text-lg leading-8 text-muted-foreground">
+                TYCC is here to make youth cycling in Toronto feel more open, welcoming, and easy
+                to join for riders across the GTA.
               </p>
             </div>
 
-            <div className="grid gap-4">
-              {rideRhythm.map(({ label, title, description }) => (
-                <div
-                  key={label}
-                  className="grid gap-4 rounded-[1.5rem] border border-border/70 bg-background/88 p-5 sm:grid-cols-[8rem_1fr]"
-                >
-                  <div>
-                    <p className="text-primary text-xs font-semibold uppercase tracking-[0.28em]">
-                      {label}
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold">{title}</h3>
-                    <p className="text-muted-foreground mt-2 text-base leading-7">{description}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="grid gap-4 md:grid-cols-2">
+              <AboutCard
+                description="Creating an open and inclusive community for youth cyclists in the GTA."
+                title="Mission"
+              />
+              <AboutCard
+                description="Accessible rides, meaningful partnerships, and impactful fundraising events that help the youth biking community grow."
+                title="Vision"
+              />
             </div>
+          </div>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Badge className="rounded-full px-4 py-2 text-sm" variant="secondary">
+              Inclusive
+            </Badge>
+            <Badge className="rounded-full px-4 py-2 text-sm" variant="secondary">
+              Youth-led
+            </Badge>
+            <Badge className="rounded-full px-4 py-2 text-sm" variant="secondary">
+              GTA rides
+            </Badge>
+            <Badge className="rounded-full px-4 py-2 text-sm" variant="secondary">
+              Community-first
+            </Badge>
           </div>
         </Container>
       </section>
 
-      <section className="pt-14 sm:pt-20">
+      <Container size="xl">
+        <MonthCalendar events={rideEvents} />
+      </Container>
+
+      <section className="pt-14 sm:pt-20" id="routes">
         <Container size="xl">
-          <div className="flex max-w-3xl flex-col gap-4">
-            <p className="text-primary text-sm font-semibold uppercase tracking-[0.28em]">
-              Club values
-            </p>
-            <h2 className="text-4xl leading-tight font-semibold text-balance sm:text-5xl">
-              The site should communicate how TYCC rides, not just what TYCC does.
-            </h2>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-primary text-sm font-semibold uppercase tracking-[0.28em]">
+                Past routes
+              </p>
+              <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Routes are still being finalized.</h2>
+              <p className="mt-4 text-lg leading-8 text-muted-foreground">
+                TYCC already has routes planned, but public route names and meeting points will be
+                published later. This section stays intentionally light until that information is ready.
+              </p>
+            </div>
+            <Button asChild className="rounded-full px-5" variant="outline">
+              <Link to="/routes">Open routes page</Link>
+            </Button>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
-            {clubValues.map(({ icon: Icon, title, description }) => (
-              <Card
-                key={title}
-                className="rounded-[1.5rem] border-border/70 bg-card/85 shadow-[0_25px_60px_-52px_rgba(18,60,99,0.72)] backdrop-blur-sm"
-              >
+          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            {routeHighlights.map((route) => (
+              <Card className="rounded-[1.5rem] border-border/80 bg-card/90" key={route.title}>
                 <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 text-primary flex size-12 shrink-0 items-center justify-center rounded-2xl">
-                      <Icon className="size-6" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold">{title}</h3>
-                      <p className="text-muted-foreground mt-3 text-base leading-7">
-                        {description}
-                      </p>
-                    </div>
+                  <div className="flex size-12 items-center justify-center rounded-2xl bg-secondary text-primary">
+                    <Compass className="size-5" />
                   </div>
+                  <h3 className="mt-4 text-3xl font-bold">{route.title}</h3>
+                  <p className="mt-3 text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                    {route.area} · {route.distance}
+                  </p>
+                  <p className="mt-3 text-base leading-7 text-muted-foreground">{route.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -291,40 +200,172 @@ const HomePage = () => {
         </Container>
       </section>
 
-      <section className="pt-14 sm:pt-20" id="join">
+      <section className="pt-14 sm:pt-20" id="reviews">
         <Container size="xl">
-          <div className="relative overflow-hidden rounded-[2rem] bg-[linear-gradient(135deg,#123c63_0%,#1f5e90_55%,#2f78aa_100%)] px-6 py-10 text-primary-foreground shadow-[0_35px_80px_-55px_rgba(18,60,99,0.95)] sm:px-8 lg:px-10 lg:py-12">
-            <div
-              aria-hidden="true"
-              className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_top_right,rgba(242,198,66,0.4),transparent_28%),radial-gradient(circle_at_70%_65%,rgba(255,255,255,0.18),transparent_35%)]"
-            />
-            <div className="relative z-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-              <div className="max-w-2xl">
-                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-white/70">
-                  Next step
-                </p>
-                <h2 className="mt-4 text-4xl leading-tight font-semibold text-balance sm:text-5xl">
-                  Turn this first presence into a real launch path for families and riders.
-                </h2>
-                <p className="mt-5 text-lg leading-8 text-white/82">
-                  The next product step after this homepage is to connect a real contact or
-                  registration flow, then expand into schedules, program details, and season
-                  updates.
-                </p>
-              </div>
+          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="max-w-xl">
+              <p className="text-primary text-sm font-semibold uppercase tracking-[0.28em]">
+                Reviews
+              </p>
+              <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
+                Let families leave a quick review.
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-muted-foreground">
+                TYCC does not need login for this. The review flow should stay lightweight:
+                optional name, required review, and a simple submission path.
+              </p>
+            </div>
 
-              <div className="flex flex-wrap gap-3 lg:justify-end">
-                <Button asChild className="h-11 rounded-full px-6 text-sm" variant="secondary">
-                  <a href="#programs">Review the program story</a>
-                </Button>
-                <Button
-                  asChild
-                  className="h-11 rounded-full border-white/30 bg-white/12 px-6 text-sm text-white hover:bg-white/18"
-                  variant="outline"
+            <Card className="rounded-[1.75rem] border-border/80 bg-card/90">
+              <CardContent className="p-6">
+                <div className="mb-5 flex items-center gap-3 text-primary">
+                  <div className="flex size-12 items-center justify-center rounded-2xl bg-secondary">
+                    <Star className="size-5" />
+                  </div>
+                  <p className="text-base font-semibold">First public review form</p>
+                </div>
+
+                <form
+                  className="grid gap-4"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    if (!reviewText.trim()) return;
+                    setSubmitted(true);
+                    setReviewName("");
+                    setReviewText("");
+                  }}
                 >
-                  <a href="#top">Back to top</a>
-                </Button>
+                  <div className="grid gap-2">
+                    <Label htmlFor="review-name">Your name</Label>
+                    <Input
+                      id="review-name"
+                      onChange={(event) => setReviewName(event.target.value)}
+                      placeholder="Optional"
+                      value={reviewName}
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="review-text">Your review</Label>
+                    <Textarea
+                      id="review-text"
+                      onChange={(event) => setReviewText(event.target.value)}
+                      placeholder="Share what the TYCC experience felt like."
+                      rows={5}
+                      value={reviewText}
+                    />
+                  </div>
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <p className="text-sm text-muted-foreground">
+                      Reviews are not stored yet, but the frontend flow is ready.
+                    </p>
+                    <Button disabled={!reviewText.trim()} type="submit">
+                      Submit review
+                    </Button>
+                  </div>
+                  {submitted ? (
+                    <p className="text-sm font-medium text-primary">
+                      Review captured locally. Connect storage when TYCC is ready to publish them.
+                    </p>
+                  ) : null}
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </Container>
+      </section>
+
+      <section className="pt-14 sm:pt-20" id="achievements">
+        <Container size="xl">
+          <div className="grid gap-6 rounded-[2rem] border border-border/80 bg-primary p-6 text-primary-foreground shadow-[0_28px_80px_-55px_rgba(20,33,38,0.75)] sm:p-8 lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="max-w-xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-white/70">
+                Achievements and proof
+              </p>
+              <h2 className="mt-4 text-4xl font-bold sm:text-5xl">Achievements can land later.</h2>
+              <p className="mt-4 text-lg leading-8 text-white/80">
+                This block is kept intentionally simple until TYCC has a real list of partnerships,
+                magazine mentions, or fundraising milestones to publish.
+              </p>
+            </div>
+
+            <Card className="rounded-[1.5rem] border-white/12 bg-white/8 text-white shadow-none">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3">
+                  <Award className="size-6 text-accent" />
+                  <p className="text-xl font-bold">Achievements list coming soon</p>
+                </div>
+                <p className="mt-4 text-base leading-7 text-white/78">
+                  Replace this placeholder once TYCC is ready to publish recognized partnerships,
+                  media mentions, or fundraising impact.
+                </p>
+                {achievements.length > 0 ? (
+                  <div className="mt-4 grid gap-3">
+                    {achievements.map((achievement) => (
+                      <div
+                        className="rounded-[1.25rem] border border-white/10 px-4 py-3"
+                        key={achievement}
+                      >
+                        {achievement}
+                      </div>
+                    ))}
+                  </div>
+                ) : null}
+              </CardContent>
+            </Card>
+          </div>
+        </Container>
+      </section>
+
+      <section className="pt-14 sm:pt-20" id="connect">
+        <Container size="xl">
+          <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+            <div className="max-w-xl">
+              <p className="text-primary text-sm font-semibold uppercase tracking-[0.28em]">
+                Connect
+              </p>
+              <h2 className="mt-4 text-4xl font-bold sm:text-5xl">
+                Keep contact friction low.
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-muted-foreground">
+                Social links and direct email should be visible from the homepage without making
+                riders and families search for them.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {connectLinks.map((link, index) => {
+                const Icon = connectIcons[index];
+
+                return (
+                  <a
+                    className="rounded-[1.5rem] border border-border/80 bg-card/90 p-5 shadow-[0_18px_48px_-38px_rgba(20,33,38,0.26)] transition-transform duration-200 hover:-translate-y-1"
+                    href={link.href}
+                    key={link.title}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    <div className="flex size-12 items-center justify-center rounded-2xl bg-secondary text-primary">
+                      <Icon className="size-5" />
+                    </div>
+                    <h3 className="mt-5 text-3xl font-bold">{link.title}</h3>
+                    <p className="mt-3 text-base leading-7 text-muted-foreground">{link.description}</p>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-8 rounded-[1.75rem] border border-border/80 bg-white/82 p-6 shadow-[0_20px_50px_-40px_rgba(20,33,38,0.24)]">
+            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+              <div>
+                <p className="text-primary text-sm font-semibold uppercase tracking-[0.28em]">
+                  Direct contact
+                </p>
+                <p className="mt-2 text-2xl font-bold">torontoyouthcyclingclub@gmail.com</p>
               </div>
+              <Button asChild className="rounded-full px-5">
+                <a href="mailto:torontoyouthcyclingclub@gmail.com">Email TYCC</a>
+              </Button>
             </div>
           </div>
         </Container>
@@ -332,5 +373,17 @@ const HomePage = () => {
     </main>
   );
 };
+
+const AboutCard = ({ title, description }: { title: string; description: string }) => (
+  <Card className="rounded-[1.5rem] border-border/80 bg-card/90">
+    <CardContent className="p-6">
+      <div className="flex size-12 items-center justify-center rounded-2xl bg-secondary text-primary">
+        <Compass className="size-5" />
+      </div>
+      <h3 className="mt-5 text-3xl font-bold">{title}</h3>
+      <p className="mt-3 text-base leading-7 text-muted-foreground">{description}</p>
+    </CardContent>
+  </Card>
+);
 
 export default HomePage;
