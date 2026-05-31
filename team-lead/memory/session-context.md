@@ -4,6 +4,16 @@ Updated: 2026-05-31
 
 Last session state. Auto-updated by `team-lead/playbooks/complete-the-work.md`.
 
+## Latest Session (2026-05-31, copy polish)
+
+Removed an AI-sounding placeholder line from the MonthCalendar side card
+("Designed for fast scanning on mobile, with the day details always available."),
+along with its now-empty wrapper `<div>` and the then-unused `MapPinned` import in
+`webui/src/shared/tycc/components/MonthCalendar.tsx`. type-check + lint green.
+This followed a run of same-day commits (2026 season rides, green→black wordmark,
+favicon dark-mode + sizing fixes, Tommy Thompson route GPS + Longo's meetup) already
+on `origin/main`.
+
 ## Last Session Summary
 
 **Date**: 2026-05-30 → 2026-05-31

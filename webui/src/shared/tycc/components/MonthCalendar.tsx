@@ -1,5 +1,5 @@
 import { startTransition, useState } from "react";
-import { CalendarDays, ChevronLeft, ChevronRight, Filter, MapPinned } from "lucide-react";
+import { CalendarDays, ChevronLeft, ChevronRight, Filter } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -457,11 +457,6 @@ const SelectedRideCard = ({ event }: { event: RideEvent | null }) => {
           <DetailRow label="Area" value={event.area} />
           <DetailRow label="Distance" value={event.distance} />
           <DetailRow label="Gear" value={event.gear} />
-        </div>
-
-        <div className="flex items-center gap-2 text-sm text-white/78">
-          <MapPinned className="size-4" />
-          Designed for fast scanning on mobile, with the day details always available.
         </div>
       </CardContent>
     </Card>
