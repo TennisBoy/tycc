@@ -68,31 +68,64 @@ const AboutPage = () => {
             Tap anyone to read their story.
           </p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
-            {execs.map((exec) => (
-              <button
-                className="group flex items-center gap-5 rounded-[1.5rem] border border-border bg-card p-4 text-left transition-transform hover:-translate-y-1"
-                key={exec.id}
-                onClick={() => setActive(exec)}
-                type="button"
-              >
-                <img
-                  alt={exec.name}
-                  className="size-28 shrink-0 rounded-[1.25rem] object-cover object-top sm:size-32"
-                  src={exec.photo}
-                />
-                <div>
-                  <p className="text-2xl font-bold">{exec.name}</p>
-                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-primary">
-                    {exec.role}
-                  </p>
-                  <p className="mt-1 text-sm text-muted-foreground">{exec.school}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent-foreground/80 group-hover:text-foreground">
-                    Read bio
-                    <ArrowRight className="size-4" />
-                  </span>
+            {execs.map((exec) => {
+              const expandable = Boolean(exec.bio);
+              const inner = (
+                <>
+                  {exec.photo ? (
+                    <img
+                      alt={exec.name}
+                      className="size-28 shrink-0 rounded-[1.25rem] object-cover object-top sm:size-32"
+                      src={exec.photo}
+                    />
+                  ) : (
+                    <div
+                      aria-hidden="true"
+                      className="grid size-28 shrink-0 place-items-center rounded-[1.25rem] bg-secondary text-4xl font-bold text-secondary-foreground sm:size-32"
+                    >
+                      {exec.name.charAt(0)}
+                    </div>
+                  )}
+                  <div>
+                    <p className="text-2xl font-bold">{exec.name}</p>
+                    <p className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-primary">
+                      {exec.role}
+                    </p>
+                    {exec.school ? (
+                      <p className="mt-1 text-sm text-muted-foreground">{exec.school}</p>
+                    ) : null}
+                    {expandable ? (
+                      <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent-foreground/80 group-hover:text-foreground">
+                        Read bio
+                        <ArrowRight className="size-4" />
+                      </span>
+                    ) : (
+                      <span className="mt-3 inline-block text-sm text-muted-foreground">
+                        Bio coming soon
+                      </span>
+                    )}
+                  </div>
+                </>
+              );
+
+              return expandable ? (
+                <button
+                  className="group flex items-center gap-5 rounded-[1.5rem] border border-border bg-card p-4 text-left transition-transform hover:-translate-y-1"
+                  key={exec.id}
+                  onClick={() => setActive(exec)}
+                  type="button"
+                >
+                  {inner}
+                </button>
+              ) : (
+                <div
+                  className="flex items-center gap-5 rounded-[1.5rem] border border-border bg-card p-4"
+                  key={exec.id}
+                >
+                  {inner}
                 </div>
-              </button>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -121,15 +154,25 @@ const AboutPage = () => {
           {active ? (
             <>
               <div className="flex items-center gap-4">
-                <img
-                  alt={active.name}
-                  className="size-20 rounded-2xl object-cover object-top"
-                  src={active.photo}
-                />
+                {active.photo ? (
+                  <img
+                    alt={active.name}
+                    className="size-20 rounded-2xl object-cover object-top"
+                    src={active.photo}
+                  />
+                ) : (
+                  <div
+                    aria-hidden="true"
+                    className="grid size-20 place-items-center rounded-2xl bg-secondary text-2xl font-bold text-secondary-foreground"
+                  >
+                    {active.name.charAt(0)}
+                  </div>
+                )}
                 <DialogHeader className="space-y-1 text-left">
                   <DialogTitle className="text-2xl">{active.name}</DialogTitle>
                   <DialogDescription className="font-semibold uppercase tracking-[0.16em] text-primary">
-                    {active.role} · {active.school}
+                    {active.role}
+                    {active.school ? ` · ${active.school}` : ""}
                   </DialogDescription>
                 </DialogHeader>
               </div>

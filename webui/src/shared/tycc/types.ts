@@ -15,10 +15,10 @@ export type RideEvent = {
 export type Exec = {
   id: string;
   name: string;
-  role: "Co-founder" | "Exec";
-  school: string;
-  photo: string;
-  bio: string;
+  role: string;
+  school?: string;
+  photo?: string;
+  bio?: string;
 };
 
 export type Stat = {

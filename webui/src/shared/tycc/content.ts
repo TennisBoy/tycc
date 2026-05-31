@@ -64,6 +64,12 @@ export const execs: Exec[] = [
     photo: "/images/exec-cooper.jpg",
     bio: "Hi, my name is Cooper, I am also one of the co-presidents of the Toronto Youth Cycling Club. I am 16 years old and I attend Northern Secondary School. I have a passion for soccer and play competitively for Power FC U17. Some hobbies of mine include playing sports, engaging in calisthenics, and biking long distances.",
   },
+  {
+    id: "william",
+    name: "William",
+    role: "Developer & Exec",
+    // Photo and bio to be added later.
+  },
 ];
 
 // No rides scheduled yet — add entries here as dates get confirmed.

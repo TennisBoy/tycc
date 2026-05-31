@@ -41,9 +41,8 @@ const PublicLayout = () => {
               <Button
                 aria-label="TYCC on Instagram"
                 asChild
-                className="hidden rounded-full sm:inline-flex"
+                className="hidden rounded-full bg-accent text-accent-foreground hover:bg-accent/90 sm:inline-flex"
                 size="icon"
-                variant="outline"
               >
                 <a href={site.instagram} rel="noreferrer" target="_blank" title="Follow us on Instagram">
                   <Instagram />

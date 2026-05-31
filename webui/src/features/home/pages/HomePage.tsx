@@ -207,7 +207,9 @@ const HomePage = () => {
             </Button>
           </div>
           <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {execs.map((exec) => (
+            {execs
+              .filter((exec) => exec.photo)
+              .map((exec) => (
               <Link
                 className="group overflow-hidden rounded-[1.5rem] border border-border bg-card transition-transform hover:-translate-y-1"
                 key={exec.id}
