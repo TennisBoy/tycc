@@ -206,20 +206,27 @@ const HomePage = () => {
               </Link>
             </Button>
           </div>
-          <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {execs
-              .filter((exec) => exec.photo)
-              .map((exec) => (
+          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            {execs.map((exec) => (
               <Link
                 className="group overflow-hidden rounded-[1.5rem] border border-border bg-card transition-transform hover:-translate-y-1"
                 key={exec.id}
                 to="/about"
               >
-                <img
-                  alt={exec.name}
-                  className="h-56 w-full object-cover object-top"
-                  src={exec.photo}
-                />
+                {exec.photo ? (
+                  <img
+                    alt={exec.name}
+                    className="h-56 w-full object-cover object-top"
+                    src={exec.photo}
+                  />
+                ) : (
+                  <div
+                    aria-hidden="true"
+                    className="grid h-56 w-full place-items-center bg-secondary text-6xl font-bold text-secondary-foreground"
+                  >
+                    {exec.name.charAt(0)}
+                  </div>
+                )}
                 <div className="p-4">
                   <p className="text-lg font-bold">{exec.name}</p>
                   <p className="text-sm text-muted-foreground">{exec.role}</p>
