@@ -247,6 +247,7 @@ const HomePage = () => {
           <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {connectLinks.map((link, index) => {
               const Icon = connectIcons[index] ?? Compass;
+              const isDiscord = link.title === "Discord";
               return (
                 <a
                   className="rounded-[1.5rem] border border-border bg-card p-6 transition-transform hover:-translate-y-1"
@@ -256,7 +257,11 @@ const HomePage = () => {
                   target="_blank"
                 >
                   <div className="flex size-12 items-center justify-center rounded-2xl bg-secondary text-primary">
-                    <Icon className="size-5" />
+                    {isDiscord ? (
+                      <img alt="" className="size-6" src="/discord.png" />
+                    ) : (
+                      <Icon className="size-5" />
+                    )}
                   </div>
                   <h3 className="mt-5 text-2xl font-bold">{link.title}</h3>
                   <p className="mt-3 text-base leading-7 text-muted-foreground">{link.description}</p>

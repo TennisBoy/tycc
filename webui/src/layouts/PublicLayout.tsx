@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router";
-import { Instagram, Menu, MessageCircle, X } from "lucide-react";
+import { Instagram, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { site } from "@/shared/tycc/content";
@@ -95,7 +95,7 @@ const PublicLayout = () => {
                 rel="noreferrer"
                 target="_blank"
               >
-                <MessageCircle className="size-5" />
+                <img alt="" className="size-5" src="/discord.png" />
                 Connect on Discord
               </a>
               <a
@@ -135,13 +135,13 @@ const PublicLayout = () => {
               </a>
               <a
                 aria-label="Discord"
-                className="hover:text-foreground"
+                className="opacity-90 transition-opacity hover:opacity-100"
                 href={site.discord}
                 rel="noreferrer"
                 target="_blank"
                 title="Discord"
               >
-                <MessageCircle className="size-4" />
+                <img alt="" className="size-4" src="/discord.png" />
               </a>
             </div>
           </div>
