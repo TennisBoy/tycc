@@ -110,7 +110,7 @@ export const rideEvents: RideEvent[] = [
     rideType: "Group ride",
     difficulty: "All levels",
     area: "Waterfront",
-    meetup: "808 York Mills Road",
+    meetup: "808 York Mills Road (outside Longo's)",
     distance: "~40 km",
     preview:
       "A road ride from York Mills down to the waterfront, finishing out on the Leslie Street Spit at Tommy Thompson Park.",
@@ -124,7 +124,7 @@ export const rideEvents: RideEvent[] = [
     rideType: "Group ride",
     difficulty: "All levels",
     area: "Waterfront",
-    meetup: "808 York Mills Road",
+    meetup: "808 York Mills Road (outside Longo's)",
     distance: "~40 km",
     preview:
       "A Victoria Day long-weekend ride from York Mills out to Tommy Thompson Park on the Leslie Street Spit.",
@@ -155,9 +155,9 @@ export const routeList: RouteInfo[] = [
     summary:
       "A road ride from York Mills down toward the waterfront, finishing out on the Leslie Street Spit at Tommy Thompson Park.",
     mapsUrl:
-      "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/Tommy+Thompson+Park,+1+Leslie+St,+Toronto,+ON+M4M+3M2/data=!4m2!4m1!3e1",
+      "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/43.6131642,-79.3433578/data=!4m2!4m1!3e1",
     embedUrl:
-      "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=Tommy+Thompson+Park,+1+Leslie+St,+Toronto,+ON+M4M+3M2&dirflg=b&output=embed",
+      "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=43.6131642,-79.3433578&dirflg=b&output=embed",
   },
   {
     id: "north-york-lamoreaux",
