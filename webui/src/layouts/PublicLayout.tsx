@@ -1,60 +1,111 @@
+import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router";
-import { Instagram, MessageCircle } from "lucide-react";
+import { Instagram, Menu, MessageCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { site } from "@/shared/tycc/content";
+import { cn } from "@/lib/utils";
+
+const NAV = [
+  { to: "/about", label: "About" },
+  { to: "/calendar", label: "Calendar" },
+  { to: "/routes", label: "Routes" },
+  { to: "/gallery", label: "Gallery" },
+] as const;
 
 const PublicLayout = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-border/80 bg-background/88 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-md">
         <Container size="xl">
           <div className="flex min-h-18 items-center justify-between gap-4 py-3">
-            <Link className="block" to="/">
-              <p className="text-primary text-xs font-semibold uppercase tracking-[0.3em]">TYCC</p>
-              <p className="text-sm text-muted-foreground">Toronto Youth Cycling Club</p>
+            <Link aria-label="TYCC home" className="flex items-center gap-3" to="/" onClick={() => setOpen(false)}>
+              <img alt="" className="h-9 w-auto" src="/logo.png" />
+              <span className="leading-tight">
+                <span className="block text-primary text-xs font-bold uppercase tracking-[0.22em]">TYCC</span>
+                <span className="block text-[0.7rem] text-muted-foreground">Toronto Youth Cycling Club</span>
+              </span>
             </Link>
 
-            <nav aria-label="Primary" className="hidden items-center gap-5 text-sm font-medium lg:flex">
-              <NavItem to="/about">About</NavItem>
-              <NavItem to="/calendar">Calendar</NavItem>
-              <NavItem to="/routes">Routes</NavItem>
-              <a
-                aria-label="Instagram"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                href="https://www.instagram.com/tycc.to/"
-                rel="noreferrer"
-                target="_blank"
-                title="Instagram"
-              >
-                <Instagram className="size-4" />
-              </a>
-              <a
-                aria-label="Discord"
-                className="text-muted-foreground transition-colors hover:text-foreground"
-                href="https://discord.gg/7ZRRF4VdvS"
-                rel="noreferrer"
-                target="_blank"
-                title="Discord"
-              >
-                <MessageCircle className="size-4" />
-              </a>
+            <nav aria-label="Primary" className="hidden items-center gap-6 text-sm font-medium lg:flex">
+              {NAV.map((item) => (
+                <NavItem key={item.to} to={item.to}>
+                  {item.label}
+                </NavItem>
+              ))}
             </nav>
 
-            <Button asChild className="rounded-full px-5">
-              <Link to="/calendar">Check Calendar</Link>
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button
+                asChild
+                className="hidden rounded-full bg-accent px-5 text-accent-foreground hover:bg-accent/90 sm:inline-flex"
+              >
+                <a href={site.discord} rel="noreferrer" target="_blank">
+                  Connect
+                </a>
+              </Button>
+              <Button
+                aria-expanded={open}
+                aria-label="Toggle menu"
+                className="rounded-full lg:hidden"
+                onClick={() => setOpen((value) => !value)}
+                size="icon"
+                variant="outline"
+              >
+                {open ? <X /> : <Menu />}
+              </Button>
+            </div>
           </div>
+
+          {open ? (
+            <nav aria-label="Mobile" className="flex flex-col gap-1 pb-4 lg:hidden">
+              {NAV.map((item) => (
+                <NavLink
+                  className={({ isActive }) =>
+                    cn(
+                      "rounded-xl px-3 py-2.5 text-base font-medium transition-colors",
+                      isActive ? "bg-secondary text-foreground" : "text-muted-foreground hover:bg-muted",
+                    )
+                  }
+                  key={item.to}
+                  onClick={() => setOpen(false)}
+                  to={item.to}
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+              <a
+                className="mt-1 rounded-xl bg-accent px-3 py-2.5 text-base font-semibold text-accent-foreground"
+                href={site.discord}
+                onClick={() => setOpen(false)}
+                rel="noreferrer"
+                target="_blank"
+              >
+                Connect on Discord
+              </a>
+            </nav>
+          ) : null}
         </Container>
       </header>
+
       <Outlet />
-      <footer className="border-t border-border/80 bg-background/94 py-8">
-        <Container className="flex flex-col gap-3 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between" size="xl">
-          <p>Toronto Youth Cycling Club</p>
-          <div className="flex flex-wrap gap-4">
-            <a href="mailto:torontoyouthcyclingclub@gmail.com">torontoyouthcyclingclub@gmail.com</a>
+
+      <footer className="border-t border-border/70 bg-background py-8">
+        <Container
+          className="flex flex-col gap-3 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between"
+          size="xl"
+        >
+          <p className="text-primary/90">Toronto Youth Cycling Club</p>
+          <div className="flex flex-wrap items-center gap-4">
+            <a className="hover:text-foreground" href={`mailto:${site.email}`}>
+              {site.email}
+            </a>
             <a
               aria-label="Instagram"
-              href="https://www.instagram.com/tycc.to/"
+              className="hover:text-foreground"
+              href={site.instagram}
               rel="noreferrer"
               target="_blank"
               title="Instagram"
@@ -63,7 +114,8 @@ const PublicLayout = () => {
             </a>
             <a
               aria-label="Discord"
-              href="https://discord.gg/7ZRRF4VdvS"
+              className="hover:text-foreground"
+              href={site.discord}
               rel="noreferrer"
               target="_blank"
               title="Discord"
