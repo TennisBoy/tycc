@@ -51,11 +51,11 @@ const PublicLayout = () => {
               <Button
                 aria-label="Join our Discord"
                 asChild
-                className="hidden rounded-full bg-accent text-accent-foreground hover:bg-accent/90 sm:inline-flex"
+                className="hidden rounded-full bg-accent hover:bg-accent/90 sm:inline-flex"
                 size="icon"
               >
                 <a href={site.discord} rel="noreferrer" target="_blank" title="Join our Discord">
-                  <MessageCircle />
+                  <img alt="" className="size-5" src="/discord.png" />
                 </a>
               </Button>
               <Button
