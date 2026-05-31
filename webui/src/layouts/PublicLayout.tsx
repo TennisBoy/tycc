@@ -39,11 +39,23 @@ const PublicLayout = () => {
 
             <div className="flex items-center gap-2">
               <Button
+                aria-label="TYCC on Instagram"
+                asChild
+                className="hidden rounded-full sm:inline-flex"
+                size="icon"
+                variant="outline"
+              >
+                <a href={site.instagram} rel="noreferrer" target="_blank" title="Follow us on Instagram">
+                  <Instagram />
+                </a>
+              </Button>
+              <Button
                 asChild
                 className="hidden rounded-full bg-accent px-5 text-accent-foreground hover:bg-accent/90 sm:inline-flex"
               >
-                <a href={site.discord} rel="noreferrer" target="_blank">
-                  Connect
+                <a href={site.discord} rel="noreferrer" target="_blank" title="Join our Discord">
+                  <MessageCircle />
+                  Connect on Discord
                 </a>
               </Button>
               <Button
@@ -77,13 +89,24 @@ const PublicLayout = () => {
                 </NavLink>
               ))}
               <a
-                className="mt-1 rounded-xl bg-accent px-3 py-2.5 text-base font-semibold text-accent-foreground"
+                className="mt-1 flex items-center gap-2 rounded-xl bg-accent px-3 py-2.5 text-base font-semibold text-accent-foreground"
                 href={site.discord}
                 onClick={() => setOpen(false)}
                 rel="noreferrer"
                 target="_blank"
               >
+                <MessageCircle className="size-5" />
                 Connect on Discord
+              </a>
+              <a
+                className="flex items-center gap-2 rounded-xl border border-border px-3 py-2.5 text-base font-medium text-foreground"
+                href={site.instagram}
+                onClick={() => setOpen(false)}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <Instagram className="size-5" />
+                Follow on Instagram
               </a>
             </nav>
           ) : null}
