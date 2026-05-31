@@ -1,8 +1,11 @@
 import { useAuth } from "react-oidc-context";
 import { Routes } from "./routes";
+import { usePageTracking } from "@/shared/analytics/usePageTracking";
 
 const App = () => {
   const auth = useAuth();
+
+  usePageTracking();
 
   if (auth.isLoading) {
     return (
