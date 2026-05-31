@@ -1,101 +1,145 @@
+import { useState } from "react";
 import { Link } from "react-router";
-import { ArrowRight, HeartHandshake, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { execs, mission, story, vision } from "@/shared/tycc/content";
+import type { Exec } from "@/shared/tycc/types";
 
 const AboutPage = () => {
+  const [active, setActive] = useState<Exec | null>(null);
+
   return (
     <main className="pb-20 pt-10 sm:pt-14">
       <Container size="xl">
         <div className="max-w-3xl">
-          <Badge className="rounded-full border-0 bg-accent px-4 py-1.5 text-[0.72rem] uppercase tracking-[0.28em]">
+          <Badge className="rounded-full border-0 bg-accent px-4 py-1.5 text-[0.72rem] uppercase tracking-[0.24em] text-accent-foreground">
             About TYCC
           </Badge>
-          <h1 className="mt-6 text-6xl font-bold sm:text-7xl">Built for young riders in the GTA.</h1>
+          <h1 className="mt-6 text-5xl font-bold sm:text-7xl">Built by young riders in the GTA.</h1>
           <p className="mt-5 text-lg leading-8 text-muted-foreground sm:text-xl">
-            Toronto Youth Cycling Club exists to create an open and inclusive cycling community for
-            youth riders across Toronto and the GTA.
+            Toronto Youth Cycling Club is a youth-run club creating an open and inclusive cycling
+            community for riders across Toronto and the GTA.
           </p>
         </div>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          <ValueCard
-            description="Creating an open and inclusive community for youth cyclists in the GTA."
-            icon={Users}
-            title="Mission"
-          />
-          <ValueCard
-            description="Grow a recognizable youth cycling organization through accessible rides, meaningful partnerships, and fundraising events."
-            icon={HeartHandshake}
-            title="Vision"
-          />
-          <ValueCard
-            description="TYCC should feel welcoming for riders and trustworthy for families from the first click."
-            icon={ShieldCheck}
-            title="Club approach"
-          />
-        </div>
+        {/* STORY */}
+        <section className="mt-12">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Our story</p>
+          <div className="mt-4 grid gap-5 md:grid-cols-2">
+            {story.map((paragraph, index) => (
+              <p className="text-lg leading-8 text-muted-foreground" key={index}>
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </section>
 
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Badge className="rounded-full px-4 py-2 text-sm">Inclusive</Badge>
-          <Badge className="rounded-full px-4 py-2 text-sm" variant="secondary">
-            Youth-first
-          </Badge>
-          <Badge className="rounded-full px-4 py-2 text-sm" variant="secondary">
-            GTA community
-          </Badge>
-          <Badge className="rounded-full px-4 py-2 text-sm" variant="secondary">
-            Practical and welcoming
-          </Badge>
-        </div>
+        {/* MISSION & VISION */}
+        <section className="mt-12 grid gap-5 md:grid-cols-2">
+          <Card className="rounded-[1.5rem] border-border bg-card">
+            <CardContent className="p-7">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Mission</p>
+              <p className="mt-4 text-2xl font-bold leading-snug">{mission}</p>
+            </CardContent>
+          </Card>
+          <Card className="rounded-[1.5rem] border-border bg-secondary/40">
+            <CardContent className="p-7">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Vision</p>
+              <p className="mt-4 text-lg leading-8 text-muted-foreground">{vision}</p>
+            </CardContent>
+          </Card>
+        </section>
 
-        <div className="mt-12 rounded-[1.75rem] border border-border/80 bg-card/90 p-6 shadow-[0_20px_50px_-40px_rgba(20,33,38,0.24)]">
-          <p className="text-primary text-sm font-semibold uppercase tracking-[0.28em]">
-            What this site needs to do
+        {/* TEAM — 2 per row, click to expand */}
+        <section className="mt-14">
+          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Meet the team</p>
+          <h2 className="mt-3 text-4xl font-bold sm:text-5xl">The riders behind TYCC.</h2>
+          <p className="mt-3 max-w-2xl text-base text-muted-foreground">
+            Tap anyone to read their story.
           </p>
-          <ul className="mt-4 space-y-3 text-base leading-7 text-muted-foreground">
-            <li>Explain who TYCC is in less than 30 seconds.</li>
-            <li>Make the calendar easy to find and easy to scan.</li>
-            <li>Give riders and parents one obvious way to connect with the club.</li>
-          </ul>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {execs.map((exec) => (
+              <button
+                className="group flex items-center gap-5 rounded-[1.5rem] border border-border bg-card p-4 text-left transition-transform hover:-translate-y-1"
+                key={exec.id}
+                onClick={() => setActive(exec)}
+                type="button"
+              >
+                <img
+                  alt={exec.name}
+                  className="size-28 shrink-0 rounded-[1.25rem] object-cover object-top sm:size-32"
+                  src={exec.photo}
+                />
+                <div>
+                  <p className="text-2xl font-bold">{exec.name}</p>
+                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-primary">
+                    {exec.role}
+                  </p>
+                  <p className="mt-1 text-sm text-muted-foreground">{exec.school}</p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent-foreground/80 group-hover:text-foreground">
+                    Read bio
+                    <ArrowRight className="size-4" />
+                  </span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </section>
 
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild className="rounded-full px-5">
+        {/* CTA */}
+        <section className="mt-14 flex flex-col items-start gap-4 rounded-[1.75rem] border border-border bg-secondary/30 p-7 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Come ride</p>
+            <p className="mt-2 text-2xl font-bold">See what&apos;s next on the calendar.</p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Button asChild className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90">
               <Link to="/calendar">
                 Go to Calendar
                 <ArrowRight />
               </Link>
             </Button>
-            <Button asChild className="rounded-full px-5" variant="outline">
-              <Link to="/">Back Home</Link>
+            <Button asChild className="rounded-full" variant="outline">
+              <Link to="/routes">See our routes</Link>
             </Button>
           </div>
-        </div>
+        </section>
       </Container>
+
+      <Dialog onOpenChange={(open) => !open && setActive(null)} open={active !== null}>
+        <DialogContent className="max-w-lg">
+          {active ? (
+            <>
+              <div className="flex items-center gap-4">
+                <img
+                  alt={active.name}
+                  className="size-20 rounded-2xl object-cover object-top"
+                  src={active.photo}
+                />
+                <DialogHeader className="space-y-1 text-left">
+                  <DialogTitle className="text-2xl">{active.name}</DialogTitle>
+                  <DialogDescription className="font-semibold uppercase tracking-[0.16em] text-primary">
+                    {active.role} · {active.school}
+                  </DialogDescription>
+                </DialogHeader>
+              </div>
+              <p className="mt-2 text-base leading-7 text-muted-foreground">{active.bio}</p>
+            </>
+          ) : null}
+        </DialogContent>
+      </Dialog>
     </main>
   );
 };
-
-const ValueCard = ({
-  title,
-  description,
-  icon: Icon,
-}: {
-  title: string;
-  description: string;
-  icon: React.ComponentType<{ className?: string }>;
-}) => (
-  <Card className="rounded-[1.5rem] border-border/80 bg-card/90">
-    <CardContent className="p-6">
-      <div className="flex size-12 items-center justify-center rounded-2xl bg-secondary text-primary">
-        <Icon className="size-5" />
-      </div>
-      <h2 className="mt-5 text-3xl font-bold">{title}</h2>
-      <p className="mt-3 text-base leading-7 text-muted-foreground">{description}</p>
-    </CardContent>
-  </Card>
-);
 
 export default AboutPage;
