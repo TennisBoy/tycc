@@ -1,0 +1,33 @@
+import type { RideEvent } from "./types";
+
+/**
+ * Parse a ride's date + time (e.g. "2026-05-10" + "9:00 AM") into a Date.
+ * Falls back to end-of-day if the time can't be parsed, so a ride still counts
+ * as upcoming for the whole of its date.
+ */
+export const getRideStart = (event: RideEvent): Date => {
+  const [year, month, day] = event.date.split("-").map(Number);
+  const match = event.time.trim().match(/^(\d{1,2}):(\d{2})\s*(am|pm)?$/i);
+
+  let hours = 23;
+  let minutes = 59;
+  if (match) {
+    hours = Number(match[1]);
+    minutes = Number(match[2]);
+    const meridiem = match[3]?.toLowerCase();
+    if (meridiem === "pm" && hours < 12) hours += 12;
+    if (meridiem === "am" && hours === 12) hours = 0;
+  }
+
+  return new Date(year, (month ?? 1) - 1, day ?? 1, hours, minutes, 0, 0);
+};
+
+/** Rides whose start time is now or later, soonest first. */
+export const getUpcomingRides = (events: RideEvent[], now: Date = new Date()): RideEvent[] =>
+  events
+    .filter((event) => getRideStart(event).getTime() >= now.getTime())
+    .sort((a, b) => getRideStart(a).getTime() - getRideStart(b).getTime());
+
+/** The soonest upcoming ride, or null once every ride's start time has passed. */
+export const getNextRide = (events: RideEvent[], now: Date = new Date()): RideEvent | null =>
+  getUpcomingRides(events, now)[0] ?? null;

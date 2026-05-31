@@ -13,11 +13,14 @@ import {
   stats,
   story,
 } from "@/shared/tycc/content";
+import { getNextRide } from "@/shared/tycc/rides";
 
 const connectIcons = [Instagram, MessageCircle, Compass, Mail] as const;
 
 const HomePage = () => {
-  const nextRide = rideEvents[0];
+  // Only surface the soonest upcoming ride; past rides drop off the homepage
+  // but stay in the calendar below.
+  const nextRide = getNextRide(rideEvents);
 
   return (
     <main className="overflow-x-hidden pb-20">
