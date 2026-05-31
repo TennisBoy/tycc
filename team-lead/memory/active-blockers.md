@@ -16,7 +16,7 @@ Known blockers, work in progress, and unresolved items. Clear entries when resol
 
 - Routes map shows Google's greyed **alternative-route lines**; fix needs a Google My Maps
   "Embed on my site" link from the club (`routesMyMapsEmbedUrl` hook is scoped, not wired).
-- `main` is ahead of `origin` and unpushed; pushing auto-deploys to Azure — hold until review.
+- Local `main` is ahead 1 (branded-email TODO commit); origin is live and auto-deploys on push.
 - Some exec bios still say "co-president" in their own words while role badges read
   Co-founder/Exec; execs may want to reconcile.
 - Backend/auth (OIDC) still unstarted; site remains frontend-only (intentional for now).

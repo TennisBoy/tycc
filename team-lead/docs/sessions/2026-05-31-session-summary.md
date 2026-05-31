@@ -30,6 +30,10 @@ club's real material and two reference sites, keeping the calendar and the green
 - Committed in logical units; merged `redesign-first-draft` → `main` (ff). Iterated on user
   feedback (icon-only Discord → blue logo, bigger team cards, stat band, William added, etc.).
 - Drafted an exec-facing explainer for a future Discord→calendar bot.
+- Follow-up polish: refined the "by the numbers" stat band; bigger team cards; added William to the
+  team + homepage; used the real blue Discord logo everywhere (header/footer/mobile/connect).
+- Logged reminders: waiver, review form, and a branded `@tycctoronto.com` email.
+- A Google Analytics 4 PR (added on origin) was reconciled into local main.
 
 ## Key decisions
 
@@ -53,4 +57,5 @@ club's real material and two reference sites, keeping the calendar and the green
 - Swap in execs' real stat numbers and real photos/video; add William's photo/bio.
 - Decide + build the Discord→calendar bot (`/ride` command recommended).
 - Wire a Google My Maps embed for Routes to drop the alternative-route lines.
-- Push `main` to deploy to Azure once execs approve.
+- Raise the waiver + review form with execs; set up a branded `@tycctoronto.com` email.
+- Push the remaining local commit; origin already auto-deploys on push.

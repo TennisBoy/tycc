@@ -20,8 +20,10 @@ Decisions made in recent sessions. Remove entries older than ~2 sprints.
 - Homepage shows only the next **upcoming** ride; past rides stay only in the calendar.
 - Discord→calendar bot: prefer a `/ride` slash command over AI-reading free-form posts;
   Google Calendar option rejected. (Not yet built — pending exec decision.)
-- Branch `redesign-first-draft` was fast-forward merged to `main`; **not pushed** (push =
-  auto-deploy to Azure, hold until execs review).
+- Branch `redesign-first-draft` was fast-forward merged to `main`. The redesign was later pushed
+  to origin and a Google Analytics 4 PR merged in (reconciled via merge into local main).
+- Use the real blue Discord brand logo (`/discord.png`) everywhere Discord appears (header,
+  footer, mobile menu, connect card), not the generic chat icon.
 
 ## 2026-04-18 (session 2)
 

@@ -11,7 +11,8 @@ Last session state. Auto-updated by `team-lead/playbooks/complete-the-work.md`.
 (meeting minutes + exec write-up in `/raw`) and two reference sites (Ontario Cycling, NICA).
 **Outcome**: Four pages rebuilt — Home, About, Routes, and a new Gallery — on a white-dominant,
 amber-forward palette, with the real logo, real exec photos/bios, and real social-proof stats.
-All committed to `main` and merged; **not pushed** (nothing deployed yet).
+Most of it has since been pushed to `origin/main` and a Google Analytics 4 PR was merged in
+(reconciled into local main via merge commit). Local is now ahead 1 (the branded-email TODO).
 **Key changes**:
 - Brand: real cyclist logo (white bg made transparent), amber-forward theme, "Ride with us." hero.
 - Header: logo + nav (About/Calendar/Routes/Gallery) + mobile hamburger + amber Instagram &
@@ -24,6 +25,9 @@ All committed to `main` and merged; **not pushed** (nothing deployed yet).
 - Calendar: kept component; fixed stale default selection; only-upcoming logic on homepage.
 - Reviews section removed; achievements folded into the numbers.
 - Fixed: staticwebapp.config.json moved to public/ so builds don't wipe it.
+- Real blue Discord brand logo (`/discord.png`) used consistently: header, footer, mobile menu,
+  homepage Connect card. Amber Instagram + blue-on-amber Discord icon buttons in the header.
+- Google Analytics 4 (added via PR on origin) reconciled into local main.
 **Verified**: `npm run type-check`, `npm run lint`, `npm test` (21 pass), `npm run build` all green.
 
 ## Open Items From Last Session
@@ -38,3 +42,5 @@ All committed to `main` and merged; **not pushed** (nothing deployed yet).
 - Decide when to **push `main`** (auto-deploys to Azure) so execs can review live.
 - **Talk to the execs about the waiver** (ride sign-up + waiver flow, from Session 2 minutes) and
   the **review form** (removed from the redesign; re-add when ready). Tracked in `team-lead/TODOS.md`.
+- **Set up a branded `@tycctoronto.com` mailbox** and switch `site.email` off the Gmail address.
+- Push the remaining local commit (branded-email TODO) when convenient; origin already auto-deploys.
