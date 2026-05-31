@@ -77,7 +77,7 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
   const [selectedDifficulty, setSelectedDifficulty] = useState("All difficulties");
   const [selectedArea, setSelectedArea] = useState("All areas");
   const [selectedDay, setSelectedDay] = useState("Any day");
-  const [selectedEventId, setSelectedEventId] = useState("toronto-islands-sunset-loop");
+  const [selectedEventId, setSelectedEventId] = useState("");
 
   const selectedMonth = MONTHS[selectedMonthIndex];
   const monthEvents = events.filter((event) => event.date.startsWith(selectedMonth.value));
