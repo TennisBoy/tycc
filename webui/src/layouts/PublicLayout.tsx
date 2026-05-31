@@ -115,36 +115,38 @@ const PublicLayout = () => {
       <Outlet />
 
       <footer className="border-t border-border/70 bg-background py-8">
-        <Container
-          className="flex flex-col gap-3 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between"
-          size="xl"
-        >
-          <p className="text-primary/90">Toronto Youth Cycling Club</p>
-          <div className="flex flex-wrap items-center gap-4">
-            <a className="hover:text-foreground" href={`mailto:${site.email}`}>
-              {site.email}
-            </a>
-            <a
-              aria-label="Instagram"
-              className="hover:text-foreground"
-              href={site.instagram}
-              rel="noreferrer"
-              target="_blank"
-              title="Instagram"
-            >
-              <Instagram className="size-4" />
-            </a>
-            <a
-              aria-label="Discord"
-              className="hover:text-foreground"
-              href={site.discord}
-              rel="noreferrer"
-              target="_blank"
-              title="Discord"
-            >
-              <MessageCircle className="size-4" />
-            </a>
+        <Container size="xl">
+          <div className="flex flex-col gap-3 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
+            <p className="text-primary/90">Toronto Youth Cycling Club</p>
+            <div className="flex flex-wrap items-center gap-4">
+              <a className="hover:text-foreground" href={`mailto:${site.email}`}>
+                {site.email}
+              </a>
+              <a
+                aria-label="Instagram"
+                className="hover:text-foreground"
+                href={site.instagram}
+                rel="noreferrer"
+                target="_blank"
+                title="Instagram"
+              >
+                <Instagram className="size-4" />
+              </a>
+              <a
+                aria-label="Discord"
+                className="hover:text-foreground"
+                href={site.discord}
+                rel="noreferrer"
+                target="_blank"
+                title="Discord"
+              >
+                <MessageCircle className="size-4" />
+              </a>
+            </div>
           </div>
+          <p className="mt-6 border-t border-border/60 pt-4 text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Toronto Youth Cycling Club. All rights reserved.
+          </p>
         </Container>
       </footer>
     </>
