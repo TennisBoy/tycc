@@ -24,6 +24,9 @@ Decisions made in recent sessions. Remove entries older than ~2 sprints.
   to origin and a Google Analytics 4 PR merged in (reconciled via merge into local main).
 - Use the real blue Discord brand logo (`/discord.png`) everywhere Discord appears (header,
   footer, mobile menu, connect card), not the generic chat icon.
+- **Working mode (from 2026-05-31): work directly on production.** Commit AND push to `main` by
+  default (auto-deploys to the official domain tycctoronto.com via Azure). No more draft-only /
+  hold-for-review. The official Discord server is the live target for bot work too.
 
 ## 2026-04-18 (session 2)
 
