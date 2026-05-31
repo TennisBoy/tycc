@@ -325,7 +325,6 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
                         onClick={() => {
                           if (!firstEvent) return;
                           setSelectedEventId(firstEvent.id);
-                          setView("day");
                         }}
                         type="button"
                       >
