@@ -13,6 +13,9 @@ Deferred work from code and plan reviews. Remove items when they ship.
 
 ## Site follow-ups (from redesign)
 
+- **Branded email** — set up a mailbox on the domain (e.g. `contact@tycctoronto.com` /
+  `somename@tycctoronto.com`) and switch the site from `torontoyouthcyclingclub@gmail.com`
+  to it (update `site.email` in `webui/src/shared/tycc/content.ts`).
 - Swap placeholder stats numbers for the execs' real figures.
 - Replace stock hero/gallery photos + add gallery video; add William's photo/bio.
 - Discord → calendar bot: pick `/ride` command vs read-posts, then build.
