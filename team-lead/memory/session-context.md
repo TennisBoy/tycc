@@ -4,7 +4,18 @@ Updated: 2026-05-31
 
 Last session state. Auto-updated by `team-lead/playbooks/complete-the-work.md`.
 
-## Latest Session (2026-05-31, copy polish)
+## Latest Session (2026-05-31, add Wonderland route)
+
+Added a fourth club route to `routeList` in `webui/src/shared/tycc/content.ts`:
+"York Mills → Canada's Wonderland" (id `york-mills-canadas-wonderland`, type Road),
+built from a user-pasted Google Maps bicycling URL (808 York Mills Rd → 4 GPS
+waypoints → Canada's Wonderland). Converted to the project's two URL formats
+(`mapsUrl` directions link + `dirflg=b` `embedUrl` iframe), apostrophe encoded as
+`%27`, placed right after the G Ross Lord route (which already cites Wonderland as
+an extension). type-check + lint green. Committed `08c4741`, pushed to `origin/main`
+(auto-deploy). See `docs/sessions/2026-05-31-session-summary-3.md`.
+
+## Earlier Session (2026-05-31, copy polish)
 
 Removed an AI-sounding placeholder line from the MonthCalendar side card
 ("Designed for fast scanning on mobile, with the day details always available."),
