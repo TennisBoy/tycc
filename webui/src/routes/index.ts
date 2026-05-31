@@ -5,6 +5,7 @@ import HomePage from "@/features/home/pages/HomePage";
 import AboutPage from "@/features/public/pages/AboutPage";
 import CalendarPage from "@/features/public/pages/CalendarPage";
 import RoutesPage from "@/features/public/pages/RoutesPage";
+import GalleryPage from "@/features/public/pages/GalleryPage";
 
 export const routes: AppLayoutRoute[] = [
   {
@@ -38,6 +39,13 @@ export const routes: AppLayoutRoute[] = [
         title: "Routes",
         path: "/routes",
         component: RoutesPage,
+      },
+      {
+        id: "gallery",
+        name: "gallery",
+        title: "Gallery",
+        path: "/gallery",
+        component: GalleryPage,
       },
     ],
   },
