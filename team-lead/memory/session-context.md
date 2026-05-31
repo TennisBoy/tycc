@@ -1,18 +1,38 @@
 # Session Context
 
-Updated: 2026-04-18
+Updated: 2026-05-31
 
 Last session state. Auto-updated by `team-lead/playbooks/complete-the-work.md`.
 
 ## Last Session Summary
 
-**Date**: 2026-04-18
-**Work**: Added first sample ride event to the TYCC ride calendar.
-**Outcome**: The calendar now shows a real ride (Don Valley Morning Loop, May 10 2026) instead of an empty placeholder.
-**Changes**: Populated `rideEvents` in `content.ts` with one `RideEvent` entry; updated `CalendarPage.tsx` heading/subtext.
+**Date**: 2026-05-30 → 2026-05-31
+**Work**: Full UI/UX redesign of the TYCC public site, driven by the club's real content
+(meeting minutes + exec write-up in `/raw`) and two reference sites (Ontario Cycling, NICA).
+**Outcome**: Four pages rebuilt — Home, About, Routes, and a new Gallery — on a white-dominant,
+amber-forward palette, with the real logo, real exec photos/bios, and real social-proof stats.
+All committed to `main` and merged; **not pushed** (nothing deployed yet).
+**Key changes**:
+- Brand: real cyclist logo (white bg made transparent), amber-forward theme, "Ride with us." hero.
+- Header: logo + nav (About/Calendar/Routes/Gallery) + mobile hamburger + amber Instagram &
+  blue-on-amber Discord icon buttons. Footer: kept minimal + added copyright line.
+- Home: photo hero, next-ride block (auto-hides when none), real founding story, "by the
+  numbers" stat band, road-forward "how we ride", kept calendar, team teaser (incl. William).
+- About: story, mission/vision, execs 2-per-row, click-to-expand bios; placeholder avatar +
+  "Bio coming soon" for members without photo/bio (William = Developer & Exec, no photo yet).
+- Routes: card-driven Google Maps embeds of 3 real club routes (no tab switcher).
+- Calendar: kept component; fixed stale default selection; only-upcoming logic on homepage.
+- Reviews section removed; achievements folded into the numbers.
+- Fixed: staticwebapp.config.json moved to public/ so builds don't wipe it.
+**Verified**: `npm run type-check`, `npm run lint`, `npm test` (21 pass), `npm run build` all green.
 
 ## Open Items From Last Session
 
-- Add more ride dates for May/June 2026 as schedule is confirmed.
-- Expand `MONTHS` in `MonthCalendar.tsx` if future months need to be shown.
-- Decide what should power the join/contact CTA on the homepage.
+- Execs want to **change the stats numbers** (current 1.2M / ~1,000 / ~90 / 13–25 are placeholders).
+- Swap stock hero/gallery photos (and add gallery video) for the club's real media when provided.
+- William's photo + bio to be added later.
+- Decide Discord→calendar bot approach: `/ride` slash command (recommended) vs AI-reads-posts.
+  Google Calendar option was rejected. Exec writeup was drafted and shared.
+- Routes: hide Google's alternative-route lines via a Google My Maps embed (waiting on the club
+  to build the My Maps; `routesMyMapsEmbedUrl` hook scoped).
+- Decide when to **push `main`** (auto-deploys to Azure) so execs can review live.

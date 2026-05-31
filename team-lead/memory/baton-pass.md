@@ -2,8 +2,8 @@
 
 | Field | Value |
 |-------|-------|
-| Next Goal | Add more ride dates to the calendar as the May/June 2026 schedule is confirmed; one sample ride (Don Valley Morning Loop, May 10) is already live. |
-| Pending Files | webui/src/shared/tycc/content.ts, webui/src/features/public/pages/CalendarPage.tsx, team-lead/memory/*.md, team-lead/knowledge/ride-calendar-content-pattern.md, team-lead/docs/sessions/2026-04-18-session-summary-2.md |
+| Next Goal | Collect execs' real stat numbers + real photos/video; pick the Discord→calendar bot approach (`/ride` command recommended); then push `main` to deploy to Azure for live exec review. |
+| Pending Files | team-lead/knowledge/tycc-site-patterns.md, team-lead/knowledge/visual-verification-windows.md, team-lead/memory/*.md, team-lead/status/CAPABILITY-STATUS.md, team-lead/MEMORY.md, team-lead/docs/sessions/2026-05-31-session-summary.md (the webui redesign is already committed on main) |
 | Active Plan | None |
-| Last Verified | `cd webui && npx tsc --noEmit` |
-| Last Updated | 2026-04-18 |
+| Last Verified | `cd webui && npm run type-check && npm run lint && npm test && npm run build` (all green; 21 tests) |
+| Last Updated | 2026-05-31 |
