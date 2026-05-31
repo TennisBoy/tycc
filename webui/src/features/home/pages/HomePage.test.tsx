@@ -12,14 +12,13 @@ describe("HomePage", () => {
     expect(screen.getAllByRole("link", { name: /Discord/ }).length).toBeGreaterThan(0);
   });
 
-  it("surfaces the next ride and keeps the month calendar", () => {
+  it("keeps the month calendar and hides the next-ride block when nothing is scheduled", () => {
     render(<HomePage />, { wrapper: TestProviders });
 
-    expect(
-      screen.getByRole("heading", { name: "Our next ride is on the calendar." }),
-    ).toBeInTheDocument();
-    expect(screen.getAllByText("Don Valley Morning Loop").length).toBeGreaterThan(0);
     expect(screen.getByRole("heading", { name: "Calendar of rides" })).toBeInTheDocument();
+    expect(
+      screen.queryByRole("heading", { name: "Our next ride is on the calendar." }),
+    ).not.toBeInTheDocument();
   });
 
   it("shows real social-proof stats instead of invented copy", () => {
