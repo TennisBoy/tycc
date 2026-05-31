@@ -24,7 +24,7 @@ const PublicLayout = () => {
             <Link aria-label="TYCC home" className="flex items-center gap-3" to="/" onClick={() => setOpen(false)}>
               <img alt="" className="h-9 w-auto" src="/logo.png" />
               <span className="leading-tight">
-                <span className="block text-primary text-xs font-bold uppercase tracking-[0.22em]">TYCC</span>
+                <span className="block text-foreground text-xs font-bold uppercase tracking-[0.22em]">TYCC</span>
                 <span className="block text-[0.7rem] text-muted-foreground">Toronto Youth Cycling Club</span>
               </span>
             </Link>
