@@ -75,32 +75,32 @@ const AboutPage = () => {
                   {exec.photo ? (
                     <img
                       alt={exec.name}
-                      className="size-28 shrink-0 rounded-[1.25rem] object-cover object-top sm:size-32"
+                      className="size-32 shrink-0 rounded-[1.5rem] object-cover object-top sm:size-40"
                       src={exec.photo}
                     />
                   ) : (
                     <div
                       aria-hidden="true"
-                      className="grid size-28 shrink-0 place-items-center rounded-[1.25rem] bg-secondary text-4xl font-bold text-secondary-foreground sm:size-32"
+                      className="grid size-32 shrink-0 place-items-center rounded-[1.5rem] bg-secondary text-5xl font-bold text-secondary-foreground sm:size-40"
                     >
                       {exec.name.charAt(0)}
                     </div>
                   )}
                   <div>
-                    <p className="text-2xl font-bold">{exec.name}</p>
-                    <p className="mt-1 text-sm font-semibold uppercase tracking-[0.16em] text-primary">
+                    <p className="text-3xl font-bold">{exec.name}</p>
+                    <p className="mt-1.5 text-base font-semibold uppercase tracking-[0.16em] text-primary">
                       {exec.role}
                     </p>
                     {exec.school ? (
-                      <p className="mt-1 text-sm text-muted-foreground">{exec.school}</p>
+                      <p className="mt-1.5 text-base text-muted-foreground">{exec.school}</p>
                     ) : null}
                     {expandable ? (
-                      <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-accent-foreground/80 group-hover:text-foreground">
+                      <span className="mt-4 inline-flex items-center gap-1 text-base font-medium text-accent-foreground/80 group-hover:text-foreground">
                         Read bio
                         <ArrowRight className="size-4" />
                       </span>
                     ) : (
-                      <span className="mt-3 inline-block text-sm text-muted-foreground">
+                      <span className="mt-4 inline-block text-base text-muted-foreground">
                         Bio coming soon
                       </span>
                     )}
@@ -110,7 +110,7 @@ const AboutPage = () => {
 
               return expandable ? (
                 <button
-                  className="group flex items-center gap-5 rounded-[1.5rem] border border-border bg-card p-4 text-left transition-transform hover:-translate-y-1"
+                  className="group flex items-center gap-6 rounded-[1.75rem] border border-border bg-card p-6 text-left transition-transform hover:-translate-y-1"
                   key={exec.id}
                   onClick={() => setActive(exec)}
                   type="button"
@@ -119,7 +119,7 @@ const AboutPage = () => {
                 </button>
               ) : (
                 <div
-                  className="flex items-center gap-5 rounded-[1.5rem] border border-border bg-card p-4"
+                  className="flex items-center gap-6 rounded-[1.75rem] border border-border bg-card p-6"
                   key={exec.id}
                 >
                   {inner}
