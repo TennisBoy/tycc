@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ExternalLink, MapPinned } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,6 +9,14 @@ import { cn } from "@/lib/utils";
 const RoutesPage = () => {
   const [activeId, setActiveId] = useState(routeList[0]?.id ?? "");
   const active = routeList.find((route) => route.id === activeId) ?? routeList[0];
+  const mapRef = useRef<HTMLDivElement>(null);
+
+  const selectRoute = (id: string) => {
+    setActiveId(id);
+    // Bring the map into view when a card is tapped (matters on mobile, where
+    // the map sits above the cards).
+    mapRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  };
 
   return (
     <main className="pb-20 pt-10 sm:pt-14">
@@ -17,47 +25,22 @@ const RoutesPage = () => {
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Routes</p>
           <h1 className="mt-3 text-5xl font-bold sm:text-7xl">Where we ride.</h1>
           <p className="mt-4 text-lg leading-8 text-muted-foreground">
-            Explore the routes TYCC rides across Toronto and the GTA. Pick a route to see it on the
-            map, then open it in Google Maps to follow the turn-by-turn and ride it yourself.
+            Explore the routes TYCC rides across Toronto and the GTA. Tap a route below to load it on
+            the map, then open it in Google Maps to follow the turn-by-turn and ride it yourself.
           </p>
         </div>
 
-        {/* Interactive Google Maps embed — follows the selected route */}
+        {/* Map — driven by the selected route card */}
         {active ? (
-          <div className="mt-10 overflow-hidden rounded-[1.75rem] border border-border bg-card">
-            <div className="flex flex-col gap-3 border-b border-border px-5 py-3 sm:flex-row sm:items-center sm:justify-between">
+          <div
+            className="mt-10 overflow-hidden rounded-[1.75rem] border border-border bg-card"
+            ref={mapRef}
+          >
+            <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-3">
               <p className="flex items-center gap-2 text-sm font-semibold text-primary">
                 <MapPinned className="size-4" />
                 {active.title}
               </p>
-              <div className="flex flex-wrap items-center gap-2">
-                {routeList.map((route) => (
-                  <button
-                    className={cn(
-                      "rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors",
-                      route.id === active.id
-                        ? "border-accent bg-accent text-accent-foreground"
-                        : "border-border bg-background text-muted-foreground hover:bg-muted",
-                    )}
-                    key={route.id}
-                    onClick={() => setActiveId(route.id)}
-                    type="button"
-                  >
-                    {route.title}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <iframe
-              allowFullScreen
-              className="h-[24rem] w-full sm:h-[30rem]"
-              key={active.id}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              src={active.embedUrl}
-              title={`Map of ${active.title}`}
-            />
-            <div className="flex justify-end border-t border-border px-5 py-3">
               <a
                 className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground"
                 href={active.mapsUrl}
@@ -68,40 +51,75 @@ const RoutesPage = () => {
                 <ExternalLink className="size-4" />
               </a>
             </div>
+            <iframe
+              allowFullScreen
+              className="h-[24rem] w-full sm:h-[30rem]"
+              key={active.id}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              src={active.embedUrl}
+              title={`Map of ${active.title}`}
+            />
           </div>
         ) : null}
 
-        {/* Route detail cards */}
+        {/* Route cards — click to change the map above */}
         <section className="mt-12">
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Route details</p>
-          <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Every route, with the details that matter.</h2>
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">Route details</p>
+              <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Pick a route to see it on the map.</h2>
+            </div>
+          </div>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {routeList.map((route) => (
-              <Card
-                className={cn(
-                  "cursor-pointer rounded-[1.5rem] border-border bg-card transition-colors",
-                  route.id === active?.id && "border-accent ring-1 ring-accent",
-                )}
-                key={route.id}
-                onClick={() => setActiveId(route.id)}
-              >
-                <CardContent className="flex h-full flex-col p-6">
-                  <Badge variant="secondary">{route.type}</Badge>
-                  <h3 className="mt-4 text-2xl font-bold">{route.title}</h3>
-                  <p className="mt-3 flex-1 text-base leading-7 text-muted-foreground">{route.summary}</p>
-                  <a
-                    className="mt-5 inline-flex w-fit items-center gap-1 text-sm font-semibold text-primary hover:underline"
-                    href={route.mapsUrl}
-                    onClick={(event) => event.stopPropagation()}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    Open in Google Maps
-                    <ExternalLink className="size-4" />
-                  </a>
-                </CardContent>
-              </Card>
-            ))}
+            {routeList.map((route) => {
+              const isActive = route.id === active?.id;
+              return (
+                <Card
+                  aria-pressed={isActive}
+                  className={cn(
+                    "cursor-pointer rounded-[1.5rem] border-border bg-card transition-colors hover:border-accent/60",
+                    isActive && "border-accent ring-1 ring-accent",
+                  )}
+                  key={route.id}
+                  onClick={() => selectRoute(route.id)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      selectRoute(route.id);
+                    }
+                  }}
+                >
+                  <CardContent className="flex h-full flex-col p-6">
+                    <div className="flex items-center justify-between gap-2">
+                      <Badge variant="secondary">{route.type}</Badge>
+                      <span
+                        className={cn(
+                          "text-xs font-semibold uppercase tracking-[0.14em]",
+                          isActive ? "text-accent-foreground" : "text-muted-foreground",
+                        )}
+                      >
+                        {isActive ? "Showing on map" : "View on map"}
+                      </span>
+                    </div>
+                    <h3 className="mt-4 text-2xl font-bold">{route.title}</h3>
+                    <p className="mt-3 flex-1 text-base leading-7 text-muted-foreground">{route.summary}</p>
+                    <a
+                      className="mt-5 inline-flex w-fit items-center gap-1 text-sm font-semibold text-primary hover:underline"
+                      href={route.mapsUrl}
+                      onClick={(event) => event.stopPropagation()}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Open in Google Maps
+                      <ExternalLink className="size-4" />
+                    </a>
+                  </CardContent>
+                </Card>
+              );
+            })}
 
             <Card className="rounded-[1.5rem] border-dashed border-border bg-card/60">
               <CardContent className="flex h-full min-h-40 flex-col items-center justify-center p-6 text-center">
