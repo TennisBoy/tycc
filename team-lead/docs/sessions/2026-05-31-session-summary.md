@@ -34,6 +34,9 @@ club's real material and two reference sites, keeping the calendar and the green
   team + homepage; used the real blue Discord logo everywhere (header/footer/mobile/connect).
 - Logged reminders: waiver, review form, and a branded `@tycctoronto.com` email.
 - A Google Analytics 4 PR (added on origin) was reconciled into local main.
+- Switched to working **direct-to-production**: pushed `main`, confirmed the Azure deploy succeeded
+  and the site is live on tycctoronto.com (all pages + assets HTTP 200).
+- Real exec media (photos/videos + content docs) received into `/raw` for future integration.
 
 ## Key decisions
 

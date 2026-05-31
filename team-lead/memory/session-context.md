@@ -44,3 +44,7 @@ Most of it has since been pushed to `origin/main` and a Google Analytics 4 PR wa
   the **review form** (removed from the redesign; re-add when ready). Tracked in `team-lead/TODOS.md`.
 - **Set up a branded `@tycctoronto.com` mailbox** and switch `site.email` off the Gmail address.
 - Push the remaining local commit (branded-email TODO) when convenient; origin already auto-deploys.
+- **Site is LIVE and verified** on tycctoronto.com (all pages + assets HTTP 200; Azure deploy success).
+- Working mode is now **direct-to-production** (commit + push to main = deploy).
+- **Real exec media received** in `/raw/everything I am given from the execs/` (drive dump of
+  clips + `Photos-3-001.zip` + content docs) — to be extracted/optimized and wired in later.

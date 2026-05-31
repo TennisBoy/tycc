@@ -7,8 +7,9 @@ Known blockers, work in progress, and unresolved items. Clear entries when resol
 ## Current
 
 - Waiting on execs for **real stat numbers** (current figures are placeholders).
-- Waiting on the club's **real photos/video** to replace stock hero + gallery images, and
-  William's photo/bio.
+- **Real photos/video received** (in `/raw/everything I am given from the execs/`) — needs
+  extracting/optimizing before replacing the stock hero + gallery images. William's photo/bio
+  still pending.
 - Discord→calendar **bot approach undecided** (`/ride` command vs AI-reads-posts); exec
   writeup shared, awaiting their pick.
 
