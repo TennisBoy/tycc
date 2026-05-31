@@ -83,7 +83,7 @@ export const rideEvents: RideEvent[] = [
   },
 ];
 
-// Real route shared by the club (Google Maps cycling directions).
+// Real routes shared by the club (Google Maps cycling directions).
 export const routeList: RouteInfo[] = [
   {
     id: "york-mills-tommy-thompson",
@@ -95,6 +95,17 @@ export const routeList: RouteInfo[] = [
       "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/Tommy+Thompson+Park,+1+Leslie+St,+Toronto,+ON+M4M+3M2/data=!4m2!4m1!3e1",
     embedUrl:
       "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=Tommy+Thompson+Park,+1+Leslie+St,+Toronto,+ON+M4M+3M2&dirflg=b&output=embed",
+  },
+  {
+    id: "north-york-lamoreaux",
+    title: "North York → L'Amoreaux North Park",
+    type: "Road",
+    summary:
+      "An east-bound road ride from the Bessarion area of North York across to L'Amoreaux North Park in Scarborough.",
+    mapsUrl:
+      "https://www.google.com/maps/dir/90+Ethennonnhawahstihnen%27+Ln,+North+York,+ON+M2K+1H8/L%27Amoreaux+North+Park,+1900+McNicoll+Ave,+Scarborough,+ON+M1V+5N4/data=!4m2!4m1!3e1",
+    embedUrl:
+      "https://maps.google.com/maps?saddr=90+Ethennonnhawahstihnen%27+Ln,+North+York,+ON+M2K+1H8&daddr=L%27Amoreaux+North+Park,+1900+McNicoll+Ave,+Scarborough,+ON+M1V+5N4&dirflg=b&output=embed",
   },
 ];
 
