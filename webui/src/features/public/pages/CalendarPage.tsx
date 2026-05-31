@@ -13,10 +13,10 @@ const CalendarPage = () => {
             <p className="text-primary text-sm font-semibold uppercase tracking-[0.28em]">
               TYCC Calendar
             </p>
-            <h1 className="mt-3 text-6xl font-bold sm:text-7xl">Rides are coming.</h1>
+            <h1 className="mt-3 text-6xl font-bold sm:text-7xl">A season of rides.</h1>
             <p className="mt-4 text-lg leading-8 text-muted-foreground">
-              The first TYCC ride of the season is on the calendar. More dates will be added as the
-              schedule is confirmed.
+              Every TYCC group ride from the season, mapped out month by month. Scan the rides
+              we&apos;ve done and watch for new dates as they&apos;re confirmed.
             </p>
           </div>
           <Button asChild className="rounded-full px-5" variant="outline">

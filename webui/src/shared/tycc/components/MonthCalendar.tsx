@@ -19,9 +19,13 @@ type MonthOption = {
 };
 
 const MONTHS: MonthOption[] = [
+  { label: "April 2026", value: "2026-04" },
   { label: "May 2026", value: "2026-05" },
   { label: "June 2026", value: "2026-06" },
 ];
+
+// Default the calendar to May 2026 (the current month of the season).
+const DEFAULT_MONTH_INDEX = MONTHS.findIndex((month) => month.value === "2026-05");
 
 const WEEKDAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] as const;
 
@@ -72,7 +76,7 @@ const buildCalendarCells = (monthValue: string, events: RideEvent[]) => {
 
 const MonthCalendar = ({ events }: MonthCalendarProps) => {
   const [view, setView] = useState<CalendarView>("month");
-  const [selectedMonthIndex, setSelectedMonthIndex] = useState(0);
+  const [selectedMonthIndex, setSelectedMonthIndex] = useState(DEFAULT_MONTH_INDEX);
   const [selectedRideType, setSelectedRideType] = useState("All rides");
   const [selectedDifficulty, setSelectedDifficulty] = useState("All difficulties");
   const [selectedArea, setSelectedArea] = useState("All areas");
@@ -179,7 +183,7 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
               </Button>
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
-                  This month
+                  Viewing
                 </p>
                 <p className="text-3xl font-bold">{formatMonthLabel(selectedMonth.value)}</p>
               </div>

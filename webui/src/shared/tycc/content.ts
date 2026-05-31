@@ -72,8 +72,79 @@ export const execs: Exec[] = [
   },
 ];
 
-// No rides scheduled yet — add entries here as dates get confirmed.
-export const rideEvents: RideEvent[] = [];
+// Real rides from the 2026 season (chronological). Add new entries here as dates get confirmed.
+export const rideEvents: RideEvent[] = [
+  {
+    id: "2026-04-26-g-ross-lord",
+    title: "Group Ride — G Ross Lord Park",
+    date: "2026-04-26",
+    time: "2:45 PM – 4:00 PM",
+    rideType: "Group ride",
+    difficulty: "All levels",
+    area: "North York",
+    meetup: "Ethennonnhawahstihnen Community Centre",
+    distance: "20–25 km",
+    preview:
+      "An early-season spin from the Ethennonnhawahstihnen Community Centre out to G Ross Lord Park, along Sheppard Avenue East, the Don River Trail, and the Finch Hydro Corridor.",
+    gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
+  },
+  {
+    id: "2026-05-02-lamoreaux",
+    title: "Group Ride — L'Amoreaux North Park",
+    date: "2026-05-02",
+    time: "1:30 PM – 4:00 PM",
+    rideType: "Group ride",
+    difficulty: "All levels",
+    area: "Scarborough",
+    meetup: "Ethennonnhawahstihnen Community Centre",
+    distance: "25–30 km",
+    preview:
+      "An east-bound ride from North York across to L'Amoreaux North Park, taking in the Upper Don Recreational Trail and the McNicoll–Finch Hydro Corridor.",
+    gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
+  },
+  {
+    id: "2026-05-09-tommy-thompson",
+    title: "Group Ride — Tommy Thompson Park",
+    date: "2026-05-09",
+    time: "2:00 PM – 4:00 PM",
+    rideType: "Group ride",
+    difficulty: "All levels",
+    area: "Waterfront",
+    meetup: "808 York Mills Road",
+    distance: "~40 km",
+    preview:
+      "A road ride from York Mills down to the waterfront, finishing out on the Leslie Street Spit at Tommy Thompson Park.",
+    gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
+  },
+  {
+    id: "2026-05-18-victoria-day",
+    title: "Victoria Day Group Ride — Tommy Thompson Park",
+    date: "2026-05-18",
+    time: "2:00 PM – 4:00 PM",
+    rideType: "Group ride",
+    difficulty: "All levels",
+    area: "Waterfront",
+    meetup: "808 York Mills Road",
+    distance: "~40 km",
+    preview:
+      "A Victoria Day long-weekend ride from York Mills out to Tommy Thompson Park on the Leslie Street Spit.",
+    gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
+  },
+  {
+    id: "2026-05-30-bike-depot",
+    title: "Bike Depot Group Ride",
+    date: "2026-05-30",
+    time: "7:00 AM roll out",
+    rideType: "Group ride",
+    difficulty: "Intermediate",
+    area: "Bayview",
+    meetup: "Bike Depot Bayview",
+    distance: "~70 km",
+    preview:
+      "An early-morning partner ride with Bike Depot Bayview — a faster 70 km at 25–30 kph for intermediate and advanced road riders. RSVP via Bike Depot's Instagram bio.",
+    gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
+  },
+];
 
 // Real routes shared by the club (Google Maps cycling directions).
 export const routeList: RouteInfo[] = [
