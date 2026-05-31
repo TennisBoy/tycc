@@ -181,6 +181,17 @@ export const routeList: RouteInfo[] = [
     embedUrl:
       "https://maps.google.com/maps?saddr=43.7684018,-79.3754208&daddr=43.7722195,-79.3644217+to:43.7745713,-79.4540724&dirflg=b&output=embed",
   },
+  {
+    id: "york-mills-canadas-wonderland",
+    title: "York Mills → Canada's Wonderland",
+    type: "Road",
+    summary:
+      "A longer road ride heading northwest out of York Mills and up through Vaughan, finishing all the way out at Canada's Wonderland.",
+    mapsUrl:
+      "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/43.7722195,-79.3644217/43.7745713,-79.4540724/43.7775853,-79.4651839/43.7671909,-79.4895874/Canada%27s+Wonderland,+Vaughan,+ON+L6A+1S6/data=!4m2!4m1!3e1",
+    embedUrl:
+      "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=43.7722195,-79.3644217+to:43.7745713,-79.4540724+to:43.7775853,-79.4651839+to:43.7671909,-79.4895874+to:Canada%27s+Wonderland,+Vaughan,+ON+L6A+1S6&dirflg=b&output=embed",
+  },
 ];
 
 export const gallery: GalleryItem[] = [
