@@ -36,3 +36,5 @@ All committed to `main` and merged; **not pushed** (nothing deployed yet).
 - Routes: hide Google's alternative-route lines via a Google My Maps embed (waiting on the club
   to build the My Maps; `routesMyMapsEmbedUrl` hook scoped).
 - Decide when to **push `main`** (auto-deploys to Azure) so execs can review live.
+- **Talk to the execs about the waiver** (ride sign-up + waiver flow, from Session 2 minutes) and
+  the **review form** (removed from the redesign; re-add when ready). Tracked in `team-lead/TODOS.md`.
