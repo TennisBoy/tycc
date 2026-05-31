@@ -11,3 +11,34 @@ export type RideEvent = {
   preview: string;
   gear: string;
 };
+
+export type Exec = {
+  id: string;
+  name: string;
+  role: "Co-founder" | "Exec";
+  school: string;
+  photo: string;
+  bio: string;
+};
+
+export type Stat = {
+  value: string;
+  label: string;
+};
+
+export type RouteInfo = {
+  id: string;
+  title: string;
+  type: "Road" | "Gravel" | "Trail";
+  summary: string;
+  /** Google Maps directions link (opens full route). */
+  mapsUrl: string;
+  /** Embeddable Google Maps directions src (iframe). */
+  embedUrl: string;
+};
+
+export type GalleryItem = {
+  id: string;
+  src: string;
+  alt: string;
+};
