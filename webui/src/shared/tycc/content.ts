@@ -107,6 +107,17 @@ export const routeList: RouteInfo[] = [
     embedUrl:
       "https://maps.google.com/maps?saddr=90+Ethennonnhawahstihnen%27+Ln,+North+York,+ON+M2K+1H8&daddr=L%27Amoreaux+North+Park,+1900+McNicoll+Ave,+Scarborough,+ON+M1V+5N4&dirflg=b&output=embed",
   },
+  {
+    id: "north-york-g-ross-lord",
+    title: "North York → G Ross Lord Park",
+    type: "Road",
+    summary:
+      "A westbound ride across north Toronto to G Ross Lord Park. From the park it can keep going north — all the way up to Canada's Wonderland.",
+    mapsUrl:
+      "https://www.google.com/maps/dir/43.7684018,-79.3754208/43.7722195,-79.3644217/43.7745713,-79.4540724/data=!4m2!4m1!3e1",
+    embedUrl:
+      "https://maps.google.com/maps?saddr=43.7684018,-79.3754208&daddr=43.7722195,-79.3644217+to:43.7745713,-79.4540724&dirflg=b&output=embed",
+  },
 ];
 
 export const gallery: GalleryItem[] = [
