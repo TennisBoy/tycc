@@ -154,13 +154,15 @@ const HomePage = () => {
         <Container size="xl">
           <SectionLabel>By the numbers</SectionLabel>
           <h2 className="mt-3 text-4xl font-bold sm:text-5xl">A community that&apos;s already moving.</h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {stats.map((stat) => (
-              <div className="rounded-[1.5rem] border border-border bg-card p-6" key={stat.label}>
-                <p className="text-5xl font-bold text-accent">{stat.value}</p>
-                <p className="mt-2 text-base text-muted-foreground">{stat.label}</p>
-              </div>
-            ))}
+          <div className="mt-8 rounded-[2rem] border border-border bg-secondary/40 p-6 sm:p-10">
+            <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2 xl:grid-cols-4">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <p className="text-6xl font-bold tracking-tight text-accent sm:text-7xl">{stat.value}</p>
+                  <p className="mt-3 text-base font-medium text-muted-foreground">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </Container>
       </section>
