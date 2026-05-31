@@ -4,49 +4,35 @@ import { TestProviders } from "@/test/utils/providers";
 import HomePage from "./HomePage";
 
 describe("HomePage", () => {
-  it("renders the scan-first TYCC hero and quick actions", () => {
+  it("renders the hero with primary calls to action", () => {
+    render(<HomePage />, { wrapper: TestProviders });
+
+    expect(screen.getByRole("heading", { level: 1, name: /Ride with us\./ })).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: /Check the calendar/ }).length).toBeGreaterThan(0);
+    expect(screen.getAllByRole("link", { name: /Discord/ }).length).toBeGreaterThan(0);
+  });
+
+  it("surfaces the next ride and keeps the month calendar", () => {
     render(<HomePage />, { wrapper: TestProviders });
 
     expect(
-      screen.getByRole("heading", { name: "Ride Toronto Together." }),
+      screen.getByRole("heading", { name: "Our next ride is on the calendar." }),
     ).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: "Check Calendar" }).length).toBeGreaterThan(0);
-    expect(screen.getByRole("link", { name: "About TYCC" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Past Routes/ })).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: /Connect/ }).length).toBeGreaterThan(0);
-    expect(screen.queryByText("Audience")).not.toBeInTheDocument();
-    expect(screen.queryByText("Focus")).not.toBeInTheDocument();
-    expect(screen.queryByText("Scan speed")).not.toBeInTheDocument();
-  });
-
-  it("renders an Ontario-style empty month calendar by default", () => {
-    render(<HomePage />, { wrapper: TestProviders });
-
+    expect(screen.getAllByText("Don Valley Morning Loop").length).toBeGreaterThan(0);
     expect(screen.getByRole("heading", { name: "Calendar of rides" })).toBeInTheDocument();
-    expect(screen.getByRole("tab", { name: "Month" })).toHaveAttribute("data-state", "active");
-    expect(screen.getByText("May 2026")).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: "Previous month" }),
-    ).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Next month" })).toBeInTheDocument();
-    expect(screen.getByText("No rides match these filters")).toBeInTheDocument();
   });
 
-  it("renders a no-login review form", () => {
+  it("shows real social-proof stats instead of invented copy", () => {
     render(<HomePage />, { wrapper: TestProviders });
 
-    expect(screen.getByLabelText("Your name")).toBeInTheDocument();
-    expect(screen.getByLabelText("Your review")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Submit review" })).toBeInTheDocument();
+    expect(screen.getByText("1.2M")).toBeInTheDocument();
+    expect(screen.getByText("~90")).toBeInTheDocument();
   });
 
-  it("keeps the about section user-facing instead of internal planning copy", () => {
+  it("drops the old placeholder review form", () => {
     render(<HomePage />, { wrapper: TestProviders });
 
-    expect(screen.getByText("Mission")).toBeInTheDocument();
-    expect(screen.getByText("Vision")).toBeInTheDocument();
-    expect(screen.queryByText("How the site should work")).not.toBeInTheDocument();
-    expect(screen.queryByText("Tone")).not.toBeInTheDocument();
-    expect(screen.getByText("Inclusive")).toBeInTheDocument();
+    expect(screen.queryByLabelText("Your review")).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Submit review" })).not.toBeInTheDocument();
   });
 });
