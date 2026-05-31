@@ -22,3 +22,9 @@ Thumbs.db
 # Local notes artifacts
 .obsidian.md
 .obsidian/
+
+# Raw source-material drop folder (meeting minutes, photos, references) — inbox, never shipped
+raw/
+
+# Brainstorming visual-companion mockups
+.superpowers/
