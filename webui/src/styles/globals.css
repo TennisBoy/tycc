@@ -4,26 +4,27 @@
 :root {
   --font-sans: "Public Sans", "Segoe UI", sans-serif;
   --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
-  --primary: #1e6b52;
-  --primary-foreground: #f7f6f1;
-  --secondary: #dde7dd;
-  --secondary-foreground: #142126;
-  --background: #f7f6f1;
-  --foreground: #142126;
-  --muted: #eef1ea;
-  --muted-foreground: #586568;
-  --accent: #f2a93b;
-  --accent-foreground: #142126;
+  /* Palette: white-dominant, amber-forward, green as the lighter touch. */
+  --primary: #1e6b52; /* green — used sparingly for small labels & links */
+  --primary-foreground: #ffffff;
+  --secondary: #f7ecd6; /* soft amber tint for chips */
+  --secondary-foreground: #6b4a12;
+  --background: #ffffff;
+  --foreground: #16242a;
+  --muted: #f3f3f1;
+  --muted-foreground: #5a6568;
+  --accent: #f2a93b; /* amber — the lead accent */
+  --accent-foreground: #1a1206;
   --destructive: #b7442a;
   --destructive-foreground: #ffffff;
-  --border: #c8d2ca;
-  --input: rgba(255, 255, 255, 0.96);
-  --ring: #1e6b52;
+  --border: #e7e7e2;
+  --input: #ffffff;
+  --ring: #f2a93b;
   --radius: 0.875rem;
-  --card: rgba(255, 255, 255, 0.92);
-  --card-foreground: #142126;
+  --card: #ffffff;
+  --card-foreground: #16242a;
   --popover: #ffffff;
-  --popover-foreground: #142126;
+  --popover-foreground: #16242a;
   --success: #2d7a58;
 }
 
@@ -65,9 +66,9 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, rgba(242, 169, 59, 0.18), transparent 24%),
-    radial-gradient(circle at top right, rgba(30, 107, 82, 0.12), transparent 24%),
-    linear-gradient(180deg, #fbfaf5 0%, #f1f4ed 100%);
+    radial-gradient(circle at 85% -5%, rgba(242, 169, 59, 0.14), transparent 32%),
+    radial-gradient(circle at 5% 0%, rgba(30, 107, 82, 0.05), transparent 26%),
+    #ffffff;
   color: var(--foreground);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
@@ -99,6 +100,6 @@ h6 {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(30, 107, 82, 0.34);
+  outline: 3px solid rgba(242, 169, 59, 0.5);
   outline-offset: 3px;
 }
