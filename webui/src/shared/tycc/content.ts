@@ -232,7 +232,6 @@ export const gallery: GalleryItem[] = [
   { id: "g10", src: "/images/gallery-10.webp", alt: "Holding up a Windfields newsletter featuring the team" },
   { id: "g11", src: "/images/gallery-11.webp", alt: "A bike resting along the Lake Ontario boardwalk" },
   { id: "g12", src: "/images/gallery-12.webp", alt: "A rider with their bike at a venue entrance" },
-  { id: "g13", src: "/images/gallery-13.webp", alt: "A helmeted TYCC rider out on a trail bridge" },
 ];
 
 export const connectLinks = [
