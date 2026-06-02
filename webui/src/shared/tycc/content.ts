@@ -153,9 +153,9 @@ export const rideEvents: RideEvent[] = [
     difficulty: "All levels",
     area: "Scarborough",
     meetup: "808 York Mills Road (outside Longo's)",
-    distance: "~40 km one way",
+    distance: "~19 km one way",
     preview:
-      "An afternoon road ride from York Mills southeast down to the Scarborough Bluffs, finishing at Bluffer's Park on the lake — about 40 km one way at a steady 20–25 kph.",
+      "An afternoon road ride from York Mills southeast down to the Scarborough Bluffs, finishing at Bluffer's Park on the lake — about 19 km one way at a steady 20–25 kph.",
     gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
   },
 ];
