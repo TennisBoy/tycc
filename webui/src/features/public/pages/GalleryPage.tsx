@@ -35,11 +35,15 @@ const GalleryPage = () => {
       </Container>
 
       <Dialog onOpenChange={(open) => !open && setActive(null)} open={active !== null}>
-        <DialogContent className="max-w-3xl overflow-hidden p-0">
+        <DialogContent className="overflow-hidden p-0 sm:max-w-[60rem]">
           {active ? (
             <>
               <DialogTitle className="sr-only">{active.alt}</DialogTitle>
-              <img alt={active.alt} className="w-full object-contain" src={active.src} />
+              <img
+                alt={active.alt}
+                className="max-h-[85vh] w-full object-contain"
+                src={active.src}
+              />
             </>
           ) : null}
         </DialogContent>
