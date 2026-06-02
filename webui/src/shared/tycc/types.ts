@@ -29,7 +29,7 @@ export type Stat = {
 export type RouteInfo = {
   id: string;
   title: string;
-  type: "Road" | "Gravel" | "Trail";
+  type: "Road cycling" | "Gravel" | "Trail";
   summary: string;
   /** Google Maps directions link (opens full route). */
   mapsUrl: string;

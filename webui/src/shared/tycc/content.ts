@@ -151,7 +151,7 @@ export const routeList: RouteInfo[] = [
   {
     id: "york-mills-tommy-thompson",
     title: "York Mills → Tommy Thompson Park",
-    type: "Road",
+    type: "Road cycling",
     summary:
       "A road ride from York Mills down toward the waterfront, finishing out on the Leslie Street Spit at Tommy Thompson Park.",
     mapsUrl:
@@ -162,7 +162,7 @@ export const routeList: RouteInfo[] = [
   {
     id: "north-york-lamoreaux",
     title: "North York → L'Amoreaux North Park",
-    type: "Road",
+    type: "Road cycling",
     summary:
       "An east-bound road ride from the Bessarion area of North York across to L'Amoreaux North Park in Scarborough.",
     mapsUrl:
@@ -173,7 +173,7 @@ export const routeList: RouteInfo[] = [
   {
     id: "north-york-g-ross-lord",
     title: "North York → G Ross Lord Park",
-    type: "Road",
+    type: "Road cycling",
     summary:
       "A westbound ride across north Toronto to G Ross Lord Park. From the park it can keep going north — all the way up to Canada's Wonderland.",
     mapsUrl:
@@ -184,7 +184,7 @@ export const routeList: RouteInfo[] = [
   {
     id: "york-mills-canadas-wonderland",
     title: "York Mills → Canada's Wonderland",
-    type: "Road",
+    type: "Road cycling",
     summary:
       "A longer road ride heading northwest out of York Mills and up through Vaughan, finishing all the way out at Canada's Wonderland.",
     mapsUrl:
@@ -195,7 +195,7 @@ export const routeList: RouteInfo[] = [
   {
     id: "york-mills-scarborough-bluffs",
     title: "York Mills → Scarborough Bluffs",
-    type: "Road",
+    type: "Road cycling",
     summary:
       "A southeast road ride from York Mills down to the lakeshore, finishing out on the Scarborough Bluffs at Bluffer's Park.",
     mapsUrl:
