@@ -192,6 +192,17 @@ export const routeList: RouteInfo[] = [
     embedUrl:
       "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=43.7722195,-79.3644217+to:43.7745713,-79.4540724+to:43.7775853,-79.4651839+to:43.7671909,-79.4895874+to:Canada%27s+Wonderland,+Vaughan,+ON+L6A+1S6&dirflg=b&output=embed",
   },
+  {
+    id: "york-mills-scarborough-bluffs",
+    title: "York Mills → Scarborough Bluffs",
+    type: "Road",
+    summary:
+      "A southeast road ride from York Mills down to the lakeshore, finishing out on the Scarborough Bluffs at Bluffer's Park.",
+    mapsUrl:
+      "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/43.714336,-79.3434444/43.7082672,-79.2417257/Scarborough+Bluffs,+1+Brimley+Rd+S,+Scarborough,+ON/data=!4m2!4m1!3e1",
+    embedUrl:
+      "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=43.714336,-79.3434444+to:43.7082672,-79.2417257+to:Scarborough+Bluffs,+1+Brimley+Rd+S,+Scarborough,+ON&dirflg=b&output=embed",
+  },
 ];
 
 export const gallery: GalleryItem[] = [
