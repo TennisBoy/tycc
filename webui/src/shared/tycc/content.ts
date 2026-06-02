@@ -222,6 +222,18 @@ export const routeList: RouteInfo[] = [
     embedUrl:
       "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=43.714336,-79.3434444+to:43.7082672,-79.2417257+to:Scarborough+Bluffs,+1+Brimley+Rd+S,+Scarborough,+ON&dirflg=b&output=embed",
   },
+  {
+    id: "york-mills-niagara-falls",
+    title: "York Mills → Niagara Falls",
+    type: "Road cycling",
+    summary:
+      "The club's biggest adventure — a long road ride from York Mills around the western end of Lake Ontario all the way to Queen Victoria Park at Niagara Falls.",
+    distance: "~163 km one way",
+    mapsUrl:
+      "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/43.6930395,-79.3592464/43.6522518,-79.3542008/43.5270409,-79.6020207/43.5166139,-79.609376/43.4865888,-79.6239652/Queen+Victoria+Park,+6345+Niagara+River+Pkwy,+Niagara+Falls,+ON+L2E+6X8/data=!4m2!4m1!3e1",
+    embedUrl:
+      "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=43.6930395,-79.3592464+to:43.6522518,-79.3542008+to:43.5270409,-79.6020207+to:43.5166139,-79.609376+to:43.4865888,-79.6239652+to:Queen+Victoria+Park,+6345+Niagara+River+Pkwy,+Niagara+Falls,+ON+L2E+6X8&dirflg=b&output=embed",
+  },
 ];
 
 // Real ride photos from the club's Drive "website media" folder.
