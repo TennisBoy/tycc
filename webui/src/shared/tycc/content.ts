@@ -205,17 +205,8 @@ export const routeList: RouteInfo[] = [
   },
 ];
 
-export const gallery: GalleryItem[] = [
-  { id: "g1", src: "/images/gallery-1.jpg", alt: "TYCC riders in a road group ride" },
-  { id: "g2", src: "/images/gallery-2.jpg", alt: "A cyclist on a sunlit Toronto road" },
-  { id: "g6", src: "/images/gallery-6.jpg", alt: "Riding through the city" },
-  { id: "g8", src: "/images/gallery-8.jpg", alt: "A road bike against an open route" },
-  { id: "g4", src: "/images/gallery-4.jpg", alt: "The group rolling out together" },
-  { id: "g12", src: "/images/gallery-12.jpg", alt: "Exploring a route beyond the city" },
-  { id: "g3", src: "/images/gallery-3.jpg", alt: "A TYCC road bike up close" },
-  { id: "g11", src: "/images/gallery-11.jpg", alt: "Out on a long ride" },
-  { id: "g7", src: "/images/gallery-7.jpg", alt: "Bikes ready for the next ride" },
-];
+// Real ride photos land here from the club's Drive "website media" folder.
+export const gallery: GalleryItem[] = [];
 
 export const connectLinks = [
   {
