@@ -168,6 +168,7 @@ export const routeList: RouteInfo[] = [
     type: "Road cycling",
     summary:
       "A road ride from York Mills down toward the waterfront, finishing out on the Leslie Street Spit at Tommy Thompson Park.",
+    distance: "~20 km one way",
     mapsUrl:
       "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/43.6930395,-79.3592464/Tommy+Thompson+Park,+1+Leslie+St,+Toronto,+ON+M4M+3M2/data=!4m2!4m1!3e1",
     embedUrl:
@@ -179,6 +180,7 @@ export const routeList: RouteInfo[] = [
     type: "Road cycling",
     summary:
       "An east-bound road ride from the Bessarion area of North York across to L'Amoreaux North Park in Scarborough.",
+    distance: "~13 km one way",
     mapsUrl:
       "https://www.google.com/maps/dir/90+Ethennonnhawahstihnen%27+Ln,+North+York,+ON+M2K+1H8/A+Y+Jackson+Secondary+School,+50+Francine+Dr,+North+York,+ON+M2H+2G6/L%27Amoreaux+North+Park,+1900+McNicoll+Ave,+Scarborough,+ON+M1V+5N4/data=!4m2!4m1!3e1",
     embedUrl:
@@ -190,6 +192,7 @@ export const routeList: RouteInfo[] = [
     type: "Road cycling",
     summary:
       "A westbound ride across north Toronto to G Ross Lord Park. From the park it can keep going north — all the way up to Canada's Wonderland.",
+    distance: "~12 km one way",
     mapsUrl:
       "https://www.google.com/maps/dir/43.7684018,-79.3754208/43.7722195,-79.3644217/43.7745713,-79.4540724/data=!4m2!4m1!3e1",
     embedUrl:
@@ -201,6 +204,7 @@ export const routeList: RouteInfo[] = [
     type: "Road cycling",
     summary:
       "A longer road ride heading northwest out of York Mills and up through Vaughan, finishing all the way out at Canada's Wonderland.",
+    distance: "~29 km one way",
     mapsUrl:
       "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/43.7722195,-79.3644217/43.7745713,-79.4540724/43.7775853,-79.4651839/43.7671909,-79.4895874/Canada%27s+Wonderland,+Vaughan,+ON+L6A+1S6/data=!4m2!4m1!3e1",
     embedUrl:
@@ -212,6 +216,7 @@ export const routeList: RouteInfo[] = [
     type: "Road cycling",
     summary:
       "A southeast road ride from York Mills down to the lakeshore, finishing out on the Scarborough Bluffs at Bluffer's Park.",
+    distance: "~19 km one way",
     mapsUrl:
       "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/43.714336,-79.3434444/43.7082672,-79.2417257/Scarborough+Bluffs,+1+Brimley+Rd+S,+Scarborough,+ON/data=!4m2!4m1!3e1",
     embedUrl:

@@ -94,7 +94,10 @@ const RoutesPage = () => {
                 >
                   <CardContent className="flex h-full flex-col p-6">
                     <div className="flex items-center justify-between gap-2">
-                      <Badge variant="secondary">{route.type}</Badge>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <Badge variant="secondary">{route.type}</Badge>
+                        <Badge variant="secondary">{route.distance}</Badge>
+                      </div>
                       <span
                         className={cn(
                           "text-xs font-semibold uppercase tracking-[0.14em]",

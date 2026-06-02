@@ -31,6 +31,8 @@ export type RouteInfo = {
   title: string;
   type: "Road cycling" | "Gravel" | "Trail";
   summary: string;
+  /** Approximate one-way road distance. */
+  distance: string;
   /** Google Maps directions link (opens full route). */
   mapsUrl: string;
   /** Embeddable Google Maps directions src (iframe). */
