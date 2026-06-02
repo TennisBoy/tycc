@@ -144,6 +144,20 @@ export const rideEvents: RideEvent[] = [
       "An early-morning partner ride with Bike Depot Bayview — a faster 70 km at 25–30 kph for intermediate and advanced road riders. RSVP via Bike Depot's Instagram bio.",
     gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
   },
+  {
+    id: "2026-06-05-scarborough-bluffs",
+    title: "Group Ride — Scarborough Bluffs",
+    date: "2026-06-05",
+    time: "4:00 PM – 6:30 PM",
+    rideType: "Group ride",
+    difficulty: "All levels",
+    area: "Scarborough",
+    meetup: "808 York Mills Road (outside Longo's)",
+    distance: "~40 km",
+    preview:
+      "An afternoon road ride from York Mills southeast down to the Scarborough Bluffs, finishing at Bluffer's Park on the lake — about 40 km at a steady 20–25 kph.",
+    gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
+  },
 ];
 
 // Real routes shared by the club (Google Maps cycling directions).
