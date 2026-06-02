@@ -60,11 +60,11 @@ const HomePage = () => {
             </div>
             {nextRide ? (
               <Link
-                className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white/95 px-4 py-2 text-sm text-foreground shadow-lg transition-transform hover:-translate-y-0.5"
+                className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm text-accent-foreground shadow-lg transition-transform hover:-translate-y-0.5"
                 to="/calendar"
               >
                 <span className="font-semibold text-accent-foreground">◆ Next ride</span>
-                <span className="text-muted-foreground">
+                <span className="text-accent-foreground/80">
                   {formatRideDate(nextRide.date)} · {nextRide.time} · {nextRide.title}
                 </span>
               </Link>
