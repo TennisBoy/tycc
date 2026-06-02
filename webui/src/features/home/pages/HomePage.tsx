@@ -142,7 +142,7 @@ const HomePage = () => {
               <img
                 alt="TYCC riders out on a group ride"
                 className="h-full min-h-[20rem] w-full object-cover"
-                src="/images/community.jpg"
+                src="/images/about-us.webp"
               />
             </div>
           </div>
