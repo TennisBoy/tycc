@@ -21,13 +21,13 @@ export const story: string[] = [
   "Our passion for biking emerged in the summer of 2024. What started as casual interest — a feed full of cycling content and the Tour de France — quickly grew into something bigger.",
   "The idea for TYCC was born when Nathan met Brandon, a Western University student who'd started a cycling club at his own high school, at an internship conference. That night Nathan messaged Roger, Gavin, and Cooper, and the Toronto Youth Cycling Club was born.",
   "We noticed there were almost no cycling clubs built around youth riders, so we made our own — a community first, on Discord and out on the road. The club took off fast: nearly 50 Discord members and 50 Instagram followers on day one.",
-  "Today we've grown to around a thousand followers and a tight Discord of true riders, and we're shifting our focus from popularity toward partnerships and charity — working to become a non-profit that gives back through cycling.",
+  "Today we've grown to around 1,500 followers and a tight Discord of true riders, and we're shifting our focus from popularity toward partnerships and charity — working to become a non-profit that gives back through cycling.",
 ];
 
 export const stats: Stat[] = [
-  { value: "1.2M", label: "views on Instagram" },
-  { value: "~1,000", label: "Instagram followers" },
-  { value: "~90", label: "riders on Discord" },
+  { value: "8M+", label: "views on Instagram" },
+  { value: "~1,500", label: "Instagram followers" },
+  { value: "~110", label: "riders on Discord" },
   { value: "13–25", label: "the youth we ride with" },
 ];
 

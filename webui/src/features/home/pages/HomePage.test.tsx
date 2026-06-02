@@ -24,8 +24,8 @@ describe("HomePage", () => {
   it("shows real social-proof stats instead of invented copy", () => {
     render(<HomePage />, { wrapper: TestProviders });
 
-    expect(screen.getByText("1.2M")).toBeInTheDocument();
-    expect(screen.getByText("~90")).toBeInTheDocument();
+    expect(screen.getByText("8M+")).toBeInTheDocument();
+    expect(screen.getByText("~110")).toBeInTheDocument();
   });
 
   it("drops the old placeholder review form", () => {
