@@ -176,10 +176,10 @@ const HomePage = () => {
               <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Mostly road. Always together.</h2>
               <p className="mt-5 text-lg leading-8 text-muted-foreground">
                 We ride across Toronto and the GTA — mostly road rides through the city and the Don
-                Valley, with the occasional longer adventure like our 92&nbsp;km Ajax ride.
+                Valley, with the occasional longer adventure.
               </p>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-5 sm:grid-cols-3">
               <RideFeature icon={Compass} title="Group road rides" text="City and Don Valley loops at a friendly pace." />
               <RideFeature icon={Sparkles} title="All levels welcome" text="New riders and returning riders, side by side." />
               <RideFeature icon={MapPinned} title="Longer adventures" text="Routes beyond the city when the season calls for it." />
@@ -300,12 +300,12 @@ const RideFeature = ({
   title: string;
   text: string;
 }) => (
-  <div className="rounded-[1.25rem] border border-border bg-card p-5">
-    <div className="flex size-10 items-center justify-center rounded-xl bg-accent/15 text-accent-foreground">
-      <Icon className="size-5" />
+  <div className="rounded-[1.5rem] border border-border bg-card p-7">
+    <div className="flex size-14 items-center justify-center rounded-2xl bg-accent/15 text-accent-foreground">
+      <Icon className="size-7" />
     </div>
-    <h3 className="mt-4 text-lg font-bold">{title}</h3>
-    <p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p>
+    <h3 className="mt-5 text-xl font-bold">{title}</h3>
+    <p className="mt-3 text-base leading-7 text-muted-foreground">{text}</p>
   </div>
 );
 
