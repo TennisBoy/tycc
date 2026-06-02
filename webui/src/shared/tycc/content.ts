@@ -205,8 +205,22 @@ export const routeList: RouteInfo[] = [
   },
 ];
 
-// Real ride photos land here from the club's Drive "website media" folder.
-export const gallery: GalleryItem[] = [];
+// Real ride photos from the club's Drive "website media" folder.
+export const gallery: GalleryItem[] = [
+  { id: "g1", src: "/images/gallery-01.webp", alt: "Two TYCC riders heading up a tree-lined path together" },
+  { id: "g2", src: "/images/gallery-02.webp", alt: "A cyclist riding through vivid autumn foliage" },
+  { id: "g3", src: "/images/gallery-03.webp", alt: "A pair of road bikes resting side by side at a park stop" },
+  { id: "g4", src: "/images/gallery-04.webp", alt: "The TYCC crew gathered in their club shirts before a ride" },
+  { id: "g5", src: "/images/gallery-05.webp", alt: "Two riders with their road bikes under a wooden pavilion" },
+  { id: "g6", src: "/images/gallery-06.webp", alt: "Bikes and riders gathered outside a shop before rolling out" },
+  { id: "g7", src: "/images/gallery-07.webp", alt: "A rider with their bike on the Toronto waterfront" },
+  { id: "g8", src: "/images/gallery-08.webp", alt: "A young TYCC rider taking a break on the grass" },
+  { id: "g9", src: "/images/gallery-09.webp", alt: "A road bike leaning by a lakeside park in autumn" },
+  { id: "g10", src: "/images/gallery-10.webp", alt: "Holding up a Windfields newsletter featuring the team" },
+  { id: "g11", src: "/images/gallery-11.webp", alt: "A bike resting along the Lake Ontario boardwalk" },
+  { id: "g12", src: "/images/gallery-12.webp", alt: "A rider with their bike at a venue entrance" },
+  { id: "g13", src: "/images/gallery-13.webp", alt: "A helmeted TYCC rider out on a trail bridge" },
+];
 
 export const connectLinks = [
   {
