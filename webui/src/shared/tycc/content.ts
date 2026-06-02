@@ -34,7 +34,7 @@ export const stats: Stat[] = [
 export const execs: Exec[] = [
   {
     id: "gavin",
-    name: "Gavin",
+    name: "Gavin Tam",
     role: "Co-founder",
     school: "York Mills Collegiate Institute",
     photo: "/images/exec-gavin.jpg",
@@ -50,7 +50,7 @@ export const execs: Exec[] = [
   },
   {
     id: "nathan",
-    name: "Nathan",
+    name: "Nathan Ye",
     role: "Co-founder",
     school: "Victoria Park Secondary School",
     photo: "/images/exec-nathan.jpg",
@@ -58,7 +58,7 @@ export const execs: Exec[] = [
   },
   {
     id: "cooper",
-    name: "Cooper",
+    name: "Cooper Sacks",
     role: "Exec",
     school: "Northern Secondary School",
     photo: "/images/exec-cooper.jpg",
@@ -66,7 +66,7 @@ export const execs: Exec[] = [
   },
   {
     id: "william",
-    name: "William",
+    name: "William Yin",
     role: "Developer & Exec",
     // Photo and bio to be added later.
   },
