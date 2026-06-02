@@ -54,7 +54,7 @@ export const execs: Exec[] = [
     role: "Co-founder",
     school: "Victoria Park Secondary School",
     photo: "/images/exec-nathan.jpg",
-    bio: "Hi! My name is Nathan, one of the co-presidents of Toronto Youth Cycling Club! I'm 17 years old, and I've been a part of the North York community for as long as I can remember. I currently attend Victoria Park Secondary School near York Mills and Parkwoods. Some passions or hobbies of mine include playing hockey, swimming, playing piano, and of course, biking (particularly longer distances).",
+    bio: "Hi! My name is Nathan, a co-founder of the Toronto Youth Cycling Club! I'm 17 years old, with the large majority of my residence taking place in the North York community. I will be attending the University of Western Ontario in September, pursuing a bachelor's degree in Medical Sciences. During my spare time, some passions of mine include playing hockey, swimming, playing piano, and, of course, cycling. I'm looking forward to exploring new areas of the province through cycling in the near future!",
   },
   {
     id: "cooper",
