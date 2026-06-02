@@ -27,7 +27,7 @@ const HomePage = () => {
       {/* HERO — left-aligned text on a road-ride photo */}
       <section className="relative isolate">
         <div className="absolute inset-0 -z-10">
-          <img alt="" className="size-full object-cover" src="/images/hero.webp" />
+          <img alt="" className="size-full object-cover object-[35%_center]" src="/images/hero.webp" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#11201c]/85 via-[#11201c]/55 to-[#11201c]/15" />
         </div>
         <Container size="xl">
