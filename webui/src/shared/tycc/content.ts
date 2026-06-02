@@ -211,7 +211,6 @@ export const gallery: GalleryItem[] = [
   { id: "g2", src: "/images/gallery-02.webp", alt: "A cyclist riding through vivid autumn foliage" },
   { id: "g3", src: "/images/gallery-03.webp", alt: "A pair of road bikes resting side by side at a park stop" },
   { id: "g4", src: "/images/gallery-04.webp", alt: "The TYCC crew gathered in their club shirts before a ride" },
-  { id: "g5", src: "/images/gallery-05.webp", alt: "Two riders with their road bikes under a wooden pavilion" },
   { id: "g6", src: "/images/gallery-06.webp", alt: "Bikes and riders gathered outside a shop before rolling out" },
   { id: "g7", src: "/images/gallery-07.webp", alt: "A rider with their bike on the Toronto waterfront" },
   { id: "g8", src: "/images/gallery-08.webp", alt: "A young TYCC rider taking a break on the grass" },
