@@ -28,7 +28,15 @@ const GalleryPage = () => {
               onClick={() => setActive(item)}
               type="button"
             >
-              <img alt={item.alt} className="w-full object-cover" loading="lazy" src={item.src} />
+              <img
+                alt={item.alt}
+                className="w-full object-cover"
+                decoding="async"
+                height={item.height}
+                loading="lazy"
+                src={item.src}
+                width={item.width}
+              />
             </button>
           ))}
         </div>
@@ -42,7 +50,10 @@ const GalleryPage = () => {
               <img
                 alt={active.alt}
                 className="max-h-[85vh] w-full object-contain"
+                decoding="async"
+                height={active.height}
                 src={active.src}
+                width={active.width}
               />
             </>
           ) : null}

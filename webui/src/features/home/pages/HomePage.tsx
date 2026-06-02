@@ -27,7 +27,15 @@ const HomePage = () => {
       {/* HERO — left-aligned text on a road-ride photo */}
       <section className="relative isolate">
         <div className="absolute inset-0 -z-10">
-          <img alt="" className="size-full object-cover object-center" src="/images/hero.webp" />
+          <img
+            alt=""
+            className="size-full object-cover object-center"
+            decoding="async"
+            fetchPriority="high"
+            height={1200}
+            src="/images/hero.webp"
+            width={1600}
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-[#11201c]/85 via-[#11201c]/55 to-[#11201c]/15" />
         </div>
         <Container size="xl">
@@ -142,6 +150,8 @@ const HomePage = () => {
               <img
                 alt="TYCC riders out on a group ride"
                 className="h-full min-h-[20rem] w-full object-cover"
+                decoding="async"
+                loading="lazy"
                 src="/images/about-us.webp"
               />
             </div>
@@ -219,6 +229,8 @@ const HomePage = () => {
                   <img
                     alt={exec.name}
                     className="h-56 w-full object-cover object-top"
+                    decoding="async"
+                    loading="lazy"
                     src={exec.photo}
                   />
                 ) : (

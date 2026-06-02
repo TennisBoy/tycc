@@ -43,4 +43,7 @@ export type GalleryItem = {
   id: string;
   src: string;
   alt: string;
+  /** Intrinsic pixel dimensions, used to reserve space and avoid layout shift. */
+  width: number;
+  height: number;
 };
