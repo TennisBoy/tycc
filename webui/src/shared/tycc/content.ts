@@ -155,9 +155,9 @@ export const routeList: RouteInfo[] = [
     summary:
       "A road ride from York Mills down toward the waterfront, finishing out on the Leslie Street Spit at Tommy Thompson Park.",
     mapsUrl:
-      "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/43.6131642,-79.3433578/data=!4m2!4m1!3e1",
+      "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/43.6930395,-79.3592464/Tommy+Thompson+Park,+1+Leslie+St,+Toronto,+ON+M4M+3M2/data=!4m2!4m1!3e1",
     embedUrl:
-      "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=43.6131642,-79.3433578&dirflg=b&output=embed",
+      "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=43.6930395,-79.3592464+to:Tommy+Thompson+Park,+1+Leslie+St,+Toronto,+ON+M4M+3M2&dirflg=b&output=embed",
   },
   {
     id: "north-york-lamoreaux",
@@ -166,9 +166,9 @@ export const routeList: RouteInfo[] = [
     summary:
       "An east-bound road ride from the Bessarion area of North York across to L'Amoreaux North Park in Scarborough.",
     mapsUrl:
-      "https://www.google.com/maps/dir/90+Ethennonnhawahstihnen%27+Ln,+North+York,+ON+M2K+1H8/L%27Amoreaux+North+Park,+1900+McNicoll+Ave,+Scarborough,+ON+M1V+5N4/data=!4m2!4m1!3e1",
+      "https://www.google.com/maps/dir/90+Ethennonnhawahstihnen%27+Ln,+North+York,+ON+M2K+1H8/A+Y+Jackson+Secondary+School,+50+Francine+Dr,+North+York,+ON+M2H+2G6/L%27Amoreaux+North+Park,+1900+McNicoll+Ave,+Scarborough,+ON+M1V+5N4/data=!4m2!4m1!3e1",
     embedUrl:
-      "https://maps.google.com/maps?saddr=90+Ethennonnhawahstihnen%27+Ln,+North+York,+ON+M2K+1H8&daddr=L%27Amoreaux+North+Park,+1900+McNicoll+Ave,+Scarborough,+ON+M1V+5N4&dirflg=b&output=embed",
+      "https://maps.google.com/maps?saddr=90+Ethennonnhawahstihnen%27+Ln,+North+York,+ON+M2K+1H8&daddr=A+Y+Jackson+Secondary+School,+50+Francine+Dr,+North+York,+ON+M2H+2G6+to:L%27Amoreaux+North+Park,+1900+McNicoll+Ave,+Scarborough,+ON+M1V+5N4&dirflg=b&output=embed",
   },
   {
     id: "north-york-g-ross-lord",
