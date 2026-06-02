@@ -149,8 +149,8 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
               Calendar of rides
             </h2>
             <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-7 sm:text-lg">
-              Built like Ontario Cycling&apos;s month view, but simplified for young riders: scan
-              the month, filter fast, and open the ride details you need.
+              A clean month view made for young riders: scan the month, filter fast, and open the
+              ride details you need.
             </p>
           </div>
 
@@ -407,7 +407,41 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
           </TabsContent>
 
           <TabsContent value="day">
-            <SelectedRideCard event={selectedEvent} />
+            {visibleEvents.length === 0 ? (
+              <EmptyCalendarState />
+            ) : (
+              <div className="grid gap-5">
+                <div className="flex flex-wrap gap-2">
+                  {visibleEvents.map((event) => {
+                    const isActive = selectedEvent?.id === event.id;
+                    return (
+                      <button
+                        className={cn(
+                          "flex flex-col items-start rounded-2xl border px-4 py-2 text-left transition-colors",
+                          isActive
+                            ? "border-primary bg-primary text-primary-foreground"
+                            : "border-border bg-white text-foreground hover:bg-muted",
+                        )}
+                        key={event.id}
+                        onClick={() => setSelectedEventId(event.id)}
+                        type="button"
+                      >
+                        <span className="text-sm font-bold">{formatCalendarDate(event.date)}</span>
+                        <span
+                          className={cn(
+                            "text-xs",
+                            isActive ? "text-white/75" : "text-muted-foreground",
+                          )}
+                        >
+                          {event.time}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+                <SelectedRideCard event={selectedEvent} />
+              </div>
+            )}
           </TabsContent>
         </Tabs>
       </div>
