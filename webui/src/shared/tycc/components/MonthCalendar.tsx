@@ -149,8 +149,8 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
               Calendar of rides
             </h2>
             <p className="text-muted-foreground mt-4 max-w-2xl text-base leading-7 sm:text-lg">
-              A clean month view made for young riders: scan the month, filter fast, and open the
-              ride details you need.
+              A clean ride calendar made for young riders — browse by month, list, or day, filter
+              fast, and open the ride details you need.
             </p>
           </div>
 
