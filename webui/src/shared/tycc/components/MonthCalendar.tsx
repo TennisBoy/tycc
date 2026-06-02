@@ -24,8 +24,19 @@ const MONTHS: MonthOption[] = [
   { label: "June 2026", value: "2026-06" },
 ];
 
-// Default the calendar to May 2026 (the current month of the season).
-const DEFAULT_MONTH_INDEX = MONTHS.findIndex((month) => month.value === "2026-05");
+// Default the calendar to the month of the next upcoming ride (falling back to
+// the current month), clamped to the months we have in range.
+const getInitialMonthIndex = (events: RideEvent[]) => {
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+  const upcoming = [...events]
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .find((event) => event.date >= today);
+  const targetMonth = (upcoming?.date ?? today).slice(0, 7);
+  const idx = MONTHS.findIndex((month) => month.value === targetMonth);
+  if (idx !== -1) return idx;
+  return targetMonth < MONTHS[0].value ? 0 : MONTHS.length - 1;
+};
 
 const WEEKDAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] as const;
 
@@ -76,7 +87,7 @@ const buildCalendarCells = (monthValue: string, events: RideEvent[]) => {
 
 const MonthCalendar = ({ events }: MonthCalendarProps) => {
   const [view, setView] = useState<CalendarView>("month");
-  const [selectedMonthIndex, setSelectedMonthIndex] = useState(DEFAULT_MONTH_INDEX);
+  const [selectedMonthIndex, setSelectedMonthIndex] = useState(() => getInitialMonthIndex(events));
   const [selectedRideType, setSelectedRideType] = useState("All rides");
   const [selectedDifficulty, setSelectedDifficulty] = useState("All difficulties");
   const [selectedArea, setSelectedArea] = useState("All areas");
@@ -211,7 +222,9 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
 
             <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
               <Filter className="size-4 text-primary" />
-              <span>{visibleEvents.length} rides in view</span>
+              <span>
+                {visibleEvents.length} {visibleEvents.length === 1 ? "ride" : "rides"} in view
+              </span>
             </div>
           </div>
 

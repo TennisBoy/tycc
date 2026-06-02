@@ -1,9 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { TestProviders } from "@/test/utils/providers";
 import HomePage from "./HomePage";
 
 describe("HomePage", () => {
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   it("renders the hero with primary calls to action", () => {
     render(<HomePage />, { wrapper: TestProviders });
 
@@ -12,7 +16,11 @@ describe("HomePage", () => {
     expect(screen.getAllByRole("link", { name: /Discord/ }).length).toBeGreaterThan(0);
   });
 
-  it("keeps the month calendar and hides the next-ride block when nothing is scheduled", () => {
+  it("keeps the month calendar and hides the next-ride block when no rides are upcoming", () => {
+    // Pin the clock past every scheduled ride so getNextRide() returns null.
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    vi.setSystemTime(new Date("2030-01-01T12:00:00"));
+
     render(<HomePage />, { wrapper: TestProviders });
 
     expect(screen.getByRole("heading", { name: "Calendar of rides" })).toBeInTheDocument();

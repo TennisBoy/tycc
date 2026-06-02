@@ -28,7 +28,7 @@ export const stats: Stat[] = [
   { value: "8M+", label: "views on Instagram" },
   { value: "~1,500", label: "Instagram followers" },
   { value: "~110", label: "riders on Discord" },
-  { value: "13–25", label: "the youth we ride with" },
+  { value: "13–25", label: "the ages we ride with" },
 ];
 
 export const execs: Exec[] = [

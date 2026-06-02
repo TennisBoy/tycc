@@ -31,7 +31,7 @@ const HomePage = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-[#11201c]/85 via-[#11201c]/55 to-[#11201c]/15" />
         </div>
         <Container size="xl">
-          <div className="flex min-h-[33rem] max-w-2xl flex-col justify-center py-20 text-white sm:min-h-[38rem]">
+          <div className="flex min-h-[40rem] max-w-2xl flex-col justify-center py-24 text-white sm:min-h-[46rem]">
             <h1 className="text-5xl font-bold leading-[0.95] sm:text-7xl lg:text-8xl">
               Ride <span className="text-accent">with us.</span>
             </h1>
