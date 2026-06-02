@@ -143,7 +143,7 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="text-primary text-sm font-semibold uppercase tracking-[0.28em]">
-              Month view first
+              2026 season
             </p>
             <h2 className="mt-3 text-4xl font-bold sm:text-5xl" id="calendar-heading">
               Calendar of rides
