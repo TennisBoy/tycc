@@ -86,11 +86,8 @@ const buildCalendarCells = (monthValue: string, events: RideEvent[]) => {
 };
 
 const MonthCalendar = ({ events }: MonthCalendarProps) => {
-  // On phones the month grid is cramped, so open in the List (agenda) view;
-  // desktop keeps the month-first grid.
-  const [view, setView] = useState<CalendarView>(() =>
-    typeof window !== "undefined" && window.innerWidth < 640 ? "list" : "month",
-  );
+  // Always open on the month-first grid, on every viewport.
+  const [view, setView] = useState<CalendarView>("month");
   const [selectedMonthIndex, setSelectedMonthIndex] = useState(() => getInitialMonthIndex(events));
   const [selectedRideType, setSelectedRideType] = useState("All rides");
   const [selectedDifficulty, setSelectedDifficulty] = useState("All difficulties");

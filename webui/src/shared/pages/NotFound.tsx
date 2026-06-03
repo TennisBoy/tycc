@@ -1,30 +1,38 @@
 import { Link } from "react-router";
+import { ArrowRight, Compass } from "lucide-react";
 
 const NotFound = () => {
   return (
-    <div className="bg-background flex min-h-screen flex-col items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-muted-foreground text-9xl font-bold">404</h1>
-        <h2 className="text-foreground mt-4 text-2xl font-semibold">Page Not Found</h2>
-        <p className="text-muted-foreground mt-2 mb-6 max-w-md">
-          Sorry, the page you are looking for doesn&apos;t exist or has been moved.
-        </p>
-        <div className="flex gap-4">
-          <Link
-            to="/"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg px-6 py-3 font-medium transition-colors"
-          >
-            Go Home
-          </Link>
-          <button
-            onClick={() => window.history.back()}
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-lg px-6 py-3 font-medium transition-colors"
-          >
-            Go Back
-          </button>
-        </div>
+    <main className="bg-background flex min-h-screen flex-col items-center justify-center px-6 py-20 text-center">
+      <div className="bg-accent/15 text-accent-foreground flex size-14 items-center justify-center rounded-2xl">
+        <Compass className="size-7" />
       </div>
-    </div>
+      <p className="text-primary mt-6 text-sm font-semibold uppercase tracking-[0.24em]">
+        Off the route
+      </p>
+      <h1 className="mt-3 text-7xl font-bold leading-none sm:text-8xl">
+        4<span className="text-accent">0</span>4
+      </h1>
+      <h2 className="mt-5 text-3xl font-bold sm:text-4xl">This trail doesn&apos;t exist.</h2>
+      <p className="text-muted-foreground mt-4 max-w-md text-lg leading-8">
+        Looks like you&apos;ve ridden off the map. Let&apos;s get you back on a route.
+      </p>
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <Link
+          to="/"
+          className="bg-accent text-accent-foreground hover:bg-accent/90 inline-flex h-12 items-center gap-2 rounded-full px-6 text-base font-medium transition-colors"
+        >
+          Back home
+          <ArrowRight className="size-4" />
+        </Link>
+        <Link
+          to="/routes"
+          className="border-border text-foreground hover:bg-muted inline-flex h-12 items-center rounded-full border bg-white px-6 text-base font-medium transition-colors"
+        >
+          Browse routes
+        </Link>
+      </div>
+    </main>
   );
 };
 
