@@ -1,6 +1,6 @@
 # Active Blockers
 
-Updated: 2026-05-31
+Updated: 2026-06-03
 
 Known blockers, work in progress, and unresolved items. Clear entries when resolved.
 
@@ -12,6 +12,15 @@ Known blockers, work in progress, and unresolved items. Clear entries when resol
   still pending.
 - Discord→calendar **bot approach undecided** (`/ride` command vs AI-reads-posts); exec
   writeup shared, awaiting their pick.
+- **Google Analytics MCP — parked, blocked on GA access.** The `analytics-mcp` package
+  (Google's `googleanalytics/google-analytics-mcp`, v0.6.0) is already installed locally via
+  pipx at `C:\Users\yinxi\.local\bin\analytics-mcp.exe`. NOT yet registered in Claude (no
+  broken config left behind). To finish: (1) GA4 property owner must grant read access — add
+  the user to the property, or add a service-account email as **Viewer**; (2) need a Google
+  Cloud **project ID** + a **credentials JSON** (service-account key, or `gcloud` ADC) with the
+  Analytics **Admin API** + **Data API** enabled; (3) then run:
+  `claude mcp add analytics-mcp -s local -e GOOGLE_APPLICATION_CREDENTIALS="<path-to-json>" -e GOOGLE_PROJECT_ID="<project-id>" -- "C:\Users\yinxi\.local\bin\analytics-mcp.exe"`.
+  Blocker: user does not currently own/control the project's Google Analytics.
 
 ## Watch List
 
