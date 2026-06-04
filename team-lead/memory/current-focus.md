@@ -1,25 +1,30 @@
 # Current Focus
 
-Updated: 2026-05-31
+Updated: 2026-06-04
 
 ## Active Work
 
-- TYCC public site full redesign is built and committed on `main` (not pushed). Under exec review.
+- Site is **live and being actively refined** on tycctoronto.com (direct-to-production, auto-deploy
+  on push to `main`). Just shipped a launch-readiness pass: real content, real gallery photos,
+  route distances, SEO/share cards, perf/a11y, on-brand 404.
 
 ## Recent Completions
 
-- Rebuilt Home, About, Routes, and a new Gallery on a white-dominant, amber-forward theme.
-- Real logo, real exec photos/bios, real founding story + social-proof stats (placeholders for
-  the numbers pending exec update).
-- Card-driven Google Maps route embeds (3 real routes); mobile nav; copyright footer; blue
-  Discord + amber Instagram header buttons.
-- Upcoming-only ride logic; calendar kept; staticwebapp.config.json deploy fix.
+- Real stats, exec full names, refreshed Nathan bio.
+- Routes: added Scarborough Bluffs + Niagara Falls; fixed Tommy Thompson/L'Amoreaux waypoints;
+  one-way distances on all routes (BRouter); "Road cycling" label.
+- Gallery rebuilt from the club Google Drive "WEBSITE MEDIA" folder (HEIC→WebP, compressed).
+- New hero (pavilion shot); orange next-ride tag; About-us photo.
+- Calendar: June 5 ride; opens on next ride's month; improved Day view; copy fixes.
+- SEO batch (meta/OG/Twitter/og-image/robots/sitemap/JSON-LD) + on-brand 404.
+- Installed Google Analytics MCP (`analytics-mcp`) — wiring parked pending GA access.
+- Drafted an Instagram launch announcement caption.
 
 ## Up Next
 
-- Get the execs' updated stat numbers and swap them in.
-- Swap stock hero/gallery photos + add gallery video when the club's media arrives; add
-  William's photo/bio.
-- Decide the Discord→calendar bot approach (`/ride` command vs read-posts) and build it.
-- Hide route alternative lines via a Google My Maps embed once the club builds the My Maps.
-- Push `main` to deploy to Azure when execs are happy.
+- Finish the **GA MCP** once GA access + a Cloud service-account JSON exist (`claude mcp add`).
+- **Reconcile exec titles** (Co-founder/Exec vs "co-president" in bios); optionally align bios to
+  full names; add **William's photo/bio**.
+- Confirm **apex vs www** for canonical/OG URLs.
+- Discord→calendar bot approach still undecided.
+- Once the launch post drives traffic, use GA to guide further refinement.

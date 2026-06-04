@@ -1,10 +1,30 @@
 # Session Context
 
-Updated: 2026-05-31
+Updated: 2026-06-04
 
 Last session state. Auto-updated by `team-lead/playbooks/complete-the-work.md`.
 
-## Latest Session (2026-05-31, add Wonderland route)
+## Latest Session (2026-06-02 → 06-04, content + media import + SEO + refinement)
+
+Big multi-day production session, auto-deploying every change. Highlights:
+- **Real stats** (8M+ views, ~1,500 IG, ~110 Discord); exec full names; Nathan bio refreshed.
+- **Routes**: +Scarborough Bluffs, +Niagara Falls (~163 km); Tommy Thompson & L'Amoreaux
+  waypoints fixed; "Road" → "Road cycling"; **one-way distances on all routes via BRouter**.
+- **Gallery**: imported all 13 real photos from the club Google **Drive "WEBSITE MEDIA"** folder
+  (HEIC→WebP, 54 MB→~5 MB, intrinsic dims for CLS); cleared the stock placeholders.
+- **Hero** = the pavilion group shot (`hero.webp`); LCP `fetchPriority`; orange "Next ride" tag;
+  About-us photo from `/raw`.
+- **Calendar**: June 5 Scarborough Bluffs ride; opens on the next ride's month; improved Day view
+  (day-picker + detail); dropped "Ontario Cycling"; eyebrow "2026 season". (A mobile→List default
+  was **reverted by the user**; calendar now always opens Month.)
+- **SEO**: description, canonical, OG/Twitter cards + generated `og-image.jpg`, `robots.txt`,
+  `sitemap.xml`, JSON-LD; SWA fallback exclude updated. On-brand **404**.
+- **Scheduled** a remote agent to set Nathan's school → Western on 2026-09-01.
+- Installed the **Google Analytics MCP** (`analytics-mcp` via pipx) — **parked** pending GA
+  access/credentials (see active-blockers). Drafted an Instagram launch caption.
+- New/updated knowledge: `media-and-route-pipelines.md`, `visual-verification-windows.md`.
+
+## Previous Session (2026-05-31, add Wonderland route)
 
 Added a fourth club route to `routeList` in `webui/src/shared/tycc/content.ts`:
 "York Mills → Canada's Wonderland" (id `york-mills-canadas-wonderland`, type Road),

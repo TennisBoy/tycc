@@ -6,10 +6,9 @@ Known blockers, work in progress, and unresolved items. Clear entries when resol
 
 ## Current
 
-- Waiting on execs for **real stat numbers** (current figures are placeholders).
-- **Real photos/video received** (in `/raw/everything I am given from the execs/`) — needs
-  extracting/optimizing before replacing the stock hero + gallery images. William's photo/bio
-  still pending.
+- **William's photo + bio** still pending (placeholder "W" card). Other execs done.
+- Gallery video deferred (storage); photos-only for now. (Real stat numbers + real gallery/hero
+  photos are now DONE — gallery built from the Drive "WEBSITE MEDIA" folder.)
 - Discord→calendar **bot approach undecided** (`/ride` command vs AI-reads-posts); exec
   writeup shared, awaiting their pick.
 - **Google Analytics MCP — parked, blocked on GA access.** The `analytics-mcp` package

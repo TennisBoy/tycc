@@ -25,8 +25,16 @@ Agent-optimized quick-recall facts for this workspace. Each entry is a condensed
 - **Dev server**: `cd webui && npm start` → http://localhost:8001 (NOT 3000).
 - **Real assets**: logo + exec photos in `webui/public/`; stock hero/gallery images are
   placeholders to be replaced.
-- **Visual checks on Windows**: Playwright MCP's chrome channel won't install; screenshot via
-  the npx-cached playwright build. PIL is available for image edits. See
-  `knowledge/visual-verification-windows.md`.
+- **Visual checks on Windows**: Playwright MCP's chrome channel won't install. Preferred:
+  `playwright-core` in a temp dir under git-ignored `raw/`, `executablePath` → the `ms-playwright`
+  bundled Chromium. See `knowledge/visual-verification-windows.md`.
 - **Deploy**: push to `main` auto-deploys to Azure SWA; `staticwebapp.config.json` lives in
-  `webui/public/` (not `dist/`).
+  `webui/public/` (not `dist/`); its `navigationFallback.exclude` must list static asset
+  extensions (incl. txt/xml/webp) so crawlers get real files.
+- **Gallery**: real club photos imported from the Google **Drive "WEBSITE MEDIA"** folder;
+  pipeline (HEIC→WebP, BRouter route distances, SEO/og-image, GA MCP) in
+  `knowledge/media-and-route-pipelines.md`.
+- **Google Analytics MCP**: `analytics-mcp` installed at
+  `C:\Users\yinxi\.local\bin\analytics-mcp.exe` (pipx); registration parked pending GA creds.
+- **File-loss gotcha**: files sometimes vanish from the repo (OneDrive/AV) — restore via
+  `git checkout <ref> -- <path>`.

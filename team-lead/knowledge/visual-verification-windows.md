@@ -10,7 +10,25 @@ Environment gotchas for screenshotting the running app and processing images on 
 - `npx playwright install chromium` works (downloads a headless shell) but the MCP still
   demands the chrome channel.
 
-## Workaround: drive Playwright directly from the npx cache
+## Cleaner workaround (preferred, 2026-06): playwright-core + bundled chromium
+
+- `npx playwright install chromium` downloads a Chromium build to
+  `~/AppData/Local/ms-playwright/chromium-1223/chrome-win64/chrome.exe` (version dir varies).
+- In a throwaway dir under the git-ignored `raw/` folder: `npm init -y && npm install playwright-core`.
+- Write a `.mjs` script that launches it with an explicit path (use forward slashes; heredocs
+  mangle backslashes — write the file with the Write tool, not `cat <<EOF`):
+  ```js
+  import { chromium } from "playwright-core";
+  const b = await chromium.launch({ executablePath: "C:/Users/yinxi/AppData/Local/ms-playwright/chromium-1223/chrome-win64/chrome.exe" });
+  ```
+- Start the app first: `cd webui && npm start` (run_in_background), wait ~8s, then screenshot
+  `http://localhost:8001/...`. `fullPage:true` for whole pages; set viewport 1440×900 (desktop)
+  / 390×844 (mobile). Read the PNG back to inspect. Click tabs via `getByRole("tab",{name})`.
+- Keeping the temp project under `raw/` means it's gitignored — no eslint/commit cleanup needed
+  (unlike stray files in `webui/`). Stop the dev server after: PowerShell
+  `Get-NetTCPConnection -LocalPort 8001 -State Listen | %{ Stop-Process -Id $_.OwningProcess -Force }`.
+
+## Workaround (older): drive Playwright directly from the npx cache
 
 - A usable `playwright` with a matching browser build sits in the npx cache. Find it:
   `~/AppData/Local/npm-cache/_npx/<hash>/node_modules/playwright` (the build that matched the

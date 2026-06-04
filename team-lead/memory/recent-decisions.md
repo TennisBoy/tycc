@@ -1,8 +1,22 @@
 # Recent Decisions
 
-Updated: 2026-05-31
+Updated: 2026-06-04
 
 Decisions made in recent sessions. Remove entries older than ~2 sprints.
+
+## 2026-06-02/04 (content, media, SEO, refinement)
+
+- **Auto-deploy every change** for the session; `settings.json` `defaultMode: bypassPermissions`
+  enabled the no-prompt flow.
+- Route cards show **one-way** distances (routes are point-to-point); computed with **BRouter**,
+  not estimated. June 5 ride corrected to ~19 km one way (the flyer's ~40 km is round trip).
+- Gallery uses **real club photos** from the Drive "WEBSITE MEDIA" folder, converted to WebP and
+  compressed; stock placeholders dropped. No video for now (storage).
+- SEO canonical/OG use the **apex** `https://tycctoronto.com` (confirm apex vs `www`).
+- **Google Analytics**: take ownership of the **existing** property (no delete, keep data); wire
+  the MCP via a service-account **Viewer**, not by recreating the property.
+- Calendar **always opens Month view** on every viewport (user reverted a mobile→List default).
+- Exec-title reconciliation (Co-founder/Exec vs "co-president" bios) deferred — needs exec input.
 
 ## 2026-05-30/31 (redesign)
 
