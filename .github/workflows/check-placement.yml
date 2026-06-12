@@ -27,6 +27,7 @@ jobs:
 
           # Sanctioned subdirectories under team-lead/
           ALLOWED_SUBDIRS=(
+            "team-lead/status/"
             "team-lead/memory/"
             "team-lead/knowledge/"
             "team-lead/.gstack/"
