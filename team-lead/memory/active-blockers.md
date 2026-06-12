@@ -11,12 +11,13 @@ Known blockers, work in progress, and unresolved items. Clear entries when resol
   photos are now DONE — gallery built from the Drive "WEBSITE MEDIA" folder.)
 - Discord→calendar **bot approach undecided** (`/ride` command vs AI-reads-posts); exec
   writeup shared, awaiting their pick.
-- **Deploy still pending:** the 2026-06-11 SEO + `explain-code` work is committed on branch
-  `codex/add-contact-phone-number`, NOT merged to `main` (so NOT deployed). Merging also ships the
-  unrelated "add contact phone number" commit — do it supervised.
 
 ## Resolved this session (2026-06-12)
 
+- ✅ **Deployed.** Merged `codex/add-contact-phone-number` → `main` (fast-forward to `afe8dc5`)
+  and pushed; Azure SWA auto-deploys. Shipped the per-route SEO, the `explain-code` skill, the
+  "add contact phone number" commit, and the session memory. Pre-deploy gate green (type-check,
+  lint, 27 tests, build).
 - ✅ **Google Analytics MCP — LIVE.** `get_account_summaries` returns TYCC (`396328696` /
   property `539644755`). The service-account ("robot") route was **abandoned** — the GA add-user
   form kept rejecting the SA email and never cleared. Switched to **ADC user-login as the human
