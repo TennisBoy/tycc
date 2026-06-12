@@ -5,6 +5,8 @@ export const site = {
   short: "TYCC",
   domain: "tycctoronto.com",
   email: "torontoyouthcyclingclub@gmail.com",
+  phone: "647 914 3949",
+  phoneHref: "+16479143949",
   instagram: "https://www.instagram.com/tycc.to/",
   discord: "https://discord.gg/7ZRRF4VdvS",
   strava: "https://www.strava.com/clubs/1292217",
@@ -271,5 +273,10 @@ export const connectLinks = [
     title: "Email",
     description: "Questions, partnerships, or parent outreach — reach the club directly.",
     href: `mailto:${site.email}`,
+  },
+  {
+    title: "Call",
+    description: "Questions, partnerships, or parent outreach — call the club directly.",
+    href: `tel:${site.phoneHref}`,
   },
 ] as const;

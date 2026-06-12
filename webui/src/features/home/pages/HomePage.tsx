@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { ArrowRight, Compass, Instagram, Mail, MapPinned, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowRight, Compass, Instagram, Mail, MapPinned, MessageCircle, Phone, Sparkles } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,7 +15,7 @@ import {
 } from "@/shared/tycc/content";
 import { getNextRide } from "@/shared/tycc/rides";
 
-const connectIcons = [Instagram, MessageCircle, Compass, Mail] as const;
+const connectIcons = [Instagram, MessageCircle, Compass, Mail, Phone] as const;
 
 const HomePage = () => {
   // Only surface the soonest upcoming ride; past rides drop off the homepage
@@ -256,7 +256,7 @@ const HomePage = () => {
         <Container size="xl">
           <SectionLabel>Connect</SectionLabel>
           <h2 className="mt-3 text-4xl font-bold sm:text-5xl">Ride with us — pick a channel.</h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
             {connectLinks.map((link, index) => {
               const Icon = connectIcons[index] ?? Compass;
               const isDiscord = link.title === "Discord";
@@ -285,13 +285,22 @@ const HomePage = () => {
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Direct contact</p>
               <p className="mt-2 text-2xl font-bold">{site.email}</p>
+              <p className="mt-1 text-xl font-semibold">{site.phone}</p>
             </div>
-            <Button asChild className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90">
-              <a href={`mailto:${site.email}`}>
-                <Mail />
-                Email TYCC
-              </a>
-            </Button>
+            <div className="flex flex-wrap gap-3">
+              <Button asChild className="rounded-full bg-accent text-accent-foreground hover:bg-accent/90">
+                <a href={`tel:${site.phoneHref}`}>
+                  <Phone />
+                  Call TYCC
+                </a>
+              </Button>
+              <Button asChild className="rounded-full" variant="outline">
+                <a href={`mailto:${site.email}`}>
+                  <Mail />
+                  Email TYCC
+                </a>
+              </Button>
+            </div>
           </div>
         </Container>
       </section>

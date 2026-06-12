@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router";
-import { Instagram, Menu, X } from "lucide-react";
+import { Instagram, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { site } from "@/shared/tycc/content";
@@ -122,6 +122,10 @@ const PublicLayout = () => {
             <div className="flex flex-wrap items-center gap-4">
               <a className="hover:text-foreground" href={`mailto:${site.email}`}>
                 {site.email}
+              </a>
+              <a className="inline-flex items-center gap-1.5 hover:text-foreground" href={`tel:${site.phoneHref}`}>
+                <Phone className="size-4" />
+                {site.phone}
               </a>
               <a
                 aria-label="Instagram"
