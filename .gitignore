@@ -1,5 +1,8 @@
 # Root-level ignores for the TYCC workspace
 
+# Claude Code personal/local settings (machine-specific; e.g. auto-commit hook)
+.claude/settings.local.json
+
 # Frontend build and dependencies
 webui/node_modules/
 webui/dist/
