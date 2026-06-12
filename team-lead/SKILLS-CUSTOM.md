@@ -43,9 +43,10 @@ This table is the source of truth for which custom skills exist, why they were c
 
 | Skill Name | Status | Created Date | Created By | Origin | Purpose | Notes |
 |------------|--------|--------------|------------|--------|---------|-------|
-| setup-skills | ✅ Active | 2026-04-05 | Gary Yin | manual | Checks required skills from SKILLS-MANAGEMENT.md and offers to install any missing ones with the correct `-a universal` flag | Invoke with "Setup skills" |
-| complete-the-work | ✅ Active | 2026-04-05 | Gary Yin | ai-assisted | End-of-session ritual: extract memory, write session summary, update playbooks, commit, and push | Invoke with "Complete the work" |
-| search-memory | ✅ Active | 2026-04-05 | Gary Yin | ai-assisted | Grep-based search across memory/, playbooks/, and docs/sessions/ for a topic or keyword | Invoke with "search workspace memory for X" |
+| setup-skills | ✅ Active | 2026-04-05 | William Yin | manual | Checks required skills from SKILLS-MANAGEMENT.md and offers to install any missing ones with the correct `-a universal` flag | Invoke with "Setup skills" |
+| complete-the-work | ✅ Active | 2026-04-05 | William Yin | ai-assisted | End-of-session ritual: extract memory, write session summary, update playbooks, commit, and push | Invoke with "Complete the work" |
+| search-memory | ✅ Active | 2026-04-05 | William Yin | ai-assisted | Grep-based search across memory/, playbooks/, and docs/sessions/ for a topic or keyword | Invoke with "search workspace memory for X" |
+| explain-code | 🔧 Draft | 2026-06-06 | William Yin | ai-assisted | Produces a verified explanation of a file/feature/area — data flow, contracts, invariants, guardrail gaps — to move code from vibe-coded to accountable engineering | Invoke with "explain X" or "how does X work" |
 
 **Column definitions:**
 
@@ -115,3 +116,4 @@ Format: `| YYYY-MM-DD | Action | Details |`
 | Date       | Change         | Details                                                                             |
 |------------|----------------|-------------------------------------------------------------------------------------|
 | 2026-04-05 | Initial setup  | Seeded with setup-skills, complete-the-work, and search-memory |
+| 2026-06-06 | Add skill      | Added explain-code: verified code explanations (flow, contracts, invariants, guardrail gaps) to drive vibe-coded → agentic engineering |

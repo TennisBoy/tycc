@@ -42,6 +42,7 @@ When the user's request matches an available skill, read the corresponding SKILL
 |---------|-----------|
 | "Complete the work", "complete the work", "wrap up the session", "end of session" | `team-lead/skills/complete-the-work/SKILL.md` |
 | "Search workspace memory for X", "find notes about X", "search memory for X" | `team-lead/skills/search-memory/SKILL.md` |
+| "Explain X", "how does X work", "walk me through X", "what does X do", "document X" | `team-lead/skills/explain-code/SKILL.md` |
 | "Setup skills", "setup skills", "install skills", "check skills", "verify skills" | `team-lead/skills/setup-skills/SKILL.md` |
 
 ## Placement Rules
