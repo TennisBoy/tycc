@@ -1,6 +1,6 @@
 # Active Blockers
 
-Updated: 2026-06-03
+Updated: 2026-06-11
 
 Known blockers, work in progress, and unresolved items. Clear entries when resolved.
 
@@ -11,15 +11,19 @@ Known blockers, work in progress, and unresolved items. Clear entries when resol
   photos are now DONE — gallery built from the Drive "WEBSITE MEDIA" folder.)
 - Discord→calendar **bot approach undecided** (`/ride` command vs AI-reads-posts); exec
   writeup shared, awaiting their pick.
-- **Google Analytics MCP — parked, blocked on GA access.** The `analytics-mcp` package
-  (Google's `googleanalytics/google-analytics-mcp`, v0.6.0) is already installed locally via
-  pipx at `C:\Users\yinxi\.local\bin\analytics-mcp.exe`. NOT yet registered in Claude (no
-  broken config left behind). To finish: (1) GA4 property owner must grant read access — add
-  the user to the property, or add a service-account email as **Viewer**; (2) need a Google
-  Cloud **project ID** + a **credentials JSON** (service-account key, or `gcloud` ADC) with the
-  Analytics **Admin API** + **Data API** enabled; (3) then run:
-  `claude mcp add analytics-mcp -s local -e GOOGLE_APPLICATION_CREDENTIALS="<path-to-json>" -e GOOGLE_PROJECT_ID="<project-id>" -- "C:\Users\yinxi\.local\bin\analytics-mcp.exe"`.
-  Blocker: user does not currently own/control the project's Google Analytics.
+- **Google Analytics MCP — ONE step from done (2026-06-11).** Everything technical is built and
+  verified: gcloud installed; user logged in (`william.xhyin@gmail.com`, **Administrator** on GA
+  account **396328696**); project `tycc-ga-mcp` created; Analytics **Data + Admin APIs** enabled;
+  service account `ga-mcp@tycc-ga-mcp.iam.gserviceaccount.com` created with key at
+  `C:\Users\yinxi\keys\ga-mcp-key.json` (off-repo); MCP registered as `google-analytics` (local
+  scope, in `~/.claude.json`). Key verified against the Admin API — authenticates fine, just has
+  no GA access yet. **Only remaining step:** add the SA email as a **Viewer** in GA (Admin →
+  Account access management → +). That form kept failing with *"This email doesn't match a Google
+  Account"* (>15 min) — retry in an **Incognito** window signed in as only the GA-admin account,
+  typing (not pasting) the email. Then restart Claude / `/mcp` and verify with a live metric.
+  Full procedure + gotchas: `knowledge/google-analytics-mcp-setup.md`. Plan B if the grant keeps
+  failing: own-OAuth-client + user login (skips the GA form). Decision: stick with the service
+  account (robot) method.
 
 ## Watch List
 

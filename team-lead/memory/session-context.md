@@ -1,10 +1,29 @@
 # Session Context
 
-Updated: 2026-06-04
+Updated: 2026-06-11
 
 Last session state. Auto-updated by `team-lead/playbooks/complete-the-work.md`.
 
-## Latest Session (2026-06-02 → 06-04, content + media import + SEO + refinement)
+## Latest Session (2026-06-11, SEO refine + explain-code skill + GA MCP wiring)
+
+Three goals, all advanced; work committed on branch `codex/add-contact-phone-number` (NOT deployed
+— `main` only auto-deploys). See `docs/sessions/2026-06-11-session-summary.md`.
+
+- **SEO refine (done):** per-route title/description/canonical/OG/Twitter via a new
+  `useSeo` hook that mutates the existing `index.html` head tags in place (avoids React 19
+  hoisting duplicates). `src/shared/seo/{useSeo,routeMeta}.ts`, wired once in `PublicLayout` via
+  `useLocation`; 404 now `noindex`; home description trimmed 171→157; 6 tests. Type-check + lint +
+  27 tests + build all green. Pattern: `knowledge/seo-per-route-meta.md`.
+- **`explain-code` skill (done):** new workspace skill at `team-lead/skills/explain-code/SKILL.md`
+  (registered in `SKILLS-CUSTOM.md` + `AGENTS.md` routing). Produces *verified* code explanations
+  (flow, contracts, invariants, guardrail gaps, verify commands) to drive vibe→engineering.
+  Dogfooded on the new SEO module.
+- **GA MCP (one step from done):** installed gcloud, user logged in, created project `tycc-ga-mcp`,
+  enabled Analytics Data+Admin APIs, made service account + key (off-repo), registered the MCP.
+  Key verified against the API. Only the GA-UI Viewer grant remains (the form kept rejecting the
+  SA email). Full procedure + gotchas: `knowledge/google-analytics-mcp-setup.md`.
+
+## Earlier Session (2026-06-02 → 06-04, content + media import + SEO + refinement)
 
 Big multi-day production session, auto-deploying every change. Highlights:
 - **Real stats** (8M+ views, ~1,500 IG, ~110 Discord); exec full names; Nathan bio refreshed.

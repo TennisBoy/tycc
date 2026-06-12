@@ -34,7 +34,17 @@ Agent-optimized quick-recall facts for this workspace. Each entry is a condensed
 - **Gallery**: real club photos imported from the Google **Drive "WEBSITE MEDIA"** folder;
   pipeline (HEIC→WebP, BRouter route distances, SEO/og-image, GA MCP) in
   `knowledge/media-and-route-pipelines.md`.
-- **Google Analytics MCP**: `analytics-mcp` installed at
-  `C:\Users\yinxi\.local\bin\analytics-mcp.exe` (pipx); registration parked pending GA creds.
+- **Google Analytics MCP**: fully wired 2026-06-11 — gcloud installed, project `tycc-ga-mcp`,
+  service account `ga-mcp@tycc-ga-mcp.iam.gserviceaccount.com` (key at `C:\Users\yinxi\keys\ga-mcp-key.json`,
+  off-repo), MCP `google-analytics` registered (local scope, `~/.claude.json`). **Only the GA
+  Viewer grant remains.** Procedure + gotchas: `knowledge/google-analytics-mcp-setup.md`.
+  GA account id **396328696**, measurement id `G-QFH9YQQJJH`.
+- **SEO**: per-route `<head>` tags via `useSeo` hook (`webui/src/shared/seo/`), wired in
+  `PublicLayout`. Mutate existing tags in place — do NOT use React 19 hoisting (duplicates the
+  static `index.html` tags). See `knowledge/seo-per-route-meta.md`.
+- **gcloud** on this machine: `C:\Users\yinxi\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin\`
+  (on persistent user PATH; a fresh terminal sees it, an already-open shell does not).
+- **Custom workspace skills**: `explain-code` ("explain X" → verified code explanation) joins
+  setup-skills / complete-the-work / search-memory. Registry: `team-lead/SKILLS-CUSTOM.md`.
 - **File-loss gotcha**: files sometimes vanish from the repo (OneDrive/AV) — restore via
   `git checkout <ref> -- <path>`.

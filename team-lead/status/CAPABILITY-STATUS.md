@@ -20,8 +20,9 @@
 | Public site — 404 | Verified | On-brand not-found page (cycling voice + site styling) |
 | Brand/theme | Verified | Real logo (transparent), white-dominant amber-forward palette |
 | Mobile navigation | Verified | Hamburger menu added (was missing) |
-| SEO / share cards | Verified | Meta description, canonical, OG + Twitter cards, og-image.jpg, robots.txt, sitemap.xml, JSON-LD; SWA fallback exclude updated |
+| SEO / share cards | Verified | Site-wide: meta, canonical, OG + Twitter, og-image.jpg, robots.txt, sitemap.xml, JSON-LD. **Per-route** title/description/canonical via `useSeo` hook + 404 noindex (2026-06-11, committed on branch, not yet deployed) |
 | Azure SWA deploy | Verified | Live on tycctoronto.com; auto-deploys on push to main; config sourced from webui/public/ |
-| Google Analytics MCP | In progress | `analytics-mcp` installed via pipx; NOT registered — pending GA access + Cloud service-account creds |
+| Google Analytics MCP | One step from live | gcloud + project `tycc-ga-mcp` + APIs + service account + key + MCP registration all done & key verified (2026-06-11); only the GA Viewer grant remains. See `knowledge/google-analytics-mcp-setup.md` |
+| explain-code skill | Verified | Workspace skill: verified code explanations (flow/contracts/guardrail-gaps) for vibe→engineering; registered in SKILLS-CUSTOM.md + AGENTS.md |
 | Discord→calendar bot | Proposed | `/ride` slash command recommended; not built; awaiting exec decision |
 | Backend / OIDC auth | Deferred | Frontend-only by design |

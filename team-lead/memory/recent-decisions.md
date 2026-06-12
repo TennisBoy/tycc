@@ -1,8 +1,26 @@
 # Recent Decisions
 
-Updated: 2026-06-04
+Updated: 2026-06-11
 
 Decisions made in recent sessions. Remove entries older than ~2 sprints.
+
+## 2026-06-11 (SEO refine, explain-code skill, GA MCP wiring)
+
+- **GA MCP auth = service account, not user login.** User ADC login is blocked by Google for the
+  Analytics sensitive scope; a service-account key sidesteps that wall. User chose to stick with
+  the "robot" method to learn it. Plan B (own OAuth client + user login) kept in reserve.
+- **GA Cloud project = `tycc-ga-mcp`** (no billing; Analytics read APIs are free). SA key stored
+  **off-repo** at `C:\Users\yinxi\keys\`; MCP registered at **local** scope (`~/.claude.json`),
+  not a committed `.mcp.json`, because the key path is machine-specific.
+- **Per-route SEO via in-place head-tag mutation**, not React 19 tag hoisting (hoisting would
+  duplicate the static `index.html` tags). Driven from `PublicLayout` via `useLocation`. 404 gets
+  `noindex`. See `knowledge/seo-per-route-meta.md`.
+- **`explain-code` skill** added under the project's own `team-lead/skills/` convention (registered
+  in `SKILLS-CUSTOM.md` + `AGENTS.md` routing), not the Claude-plugin skill format — to match the
+  existing workspace skill system. Purpose: verified code explanations to drive vibe→engineering.
+- **This work committed on branch `codex/add-contact-phone-number`, NOT merged to `main`.** So it
+  is committed but **not deployed** (only `main` auto-deploys). Merging to main would also ship the
+  unrelated "add contact phone number" commit — left as a deliberate, supervised step.
 
 ## 2026-06-02/04 (content, media, SEO, refinement)
 
