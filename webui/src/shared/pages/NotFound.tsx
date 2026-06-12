@@ -1,7 +1,15 @@
 import { Link } from "react-router";
 import { ArrowRight, Compass } from "lucide-react";
+import { useSeo } from "@/shared/seo/useSeo";
 
 const NotFound = () => {
+  useSeo({
+    path: "/404",
+    title: "Page not found — Toronto Youth Cycling Club",
+    description: "This page doesn't exist. Head back home or browse our cycling routes.",
+    noindex: true,
+  });
+
   return (
     <main className="bg-background flex min-h-screen flex-col items-center justify-center px-6 py-20 text-center">
       <div className="bg-accent/15 text-accent-foreground flex size-14 items-center justify-center rounded-2xl">

@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Link, NavLink, Outlet } from "react-router";
+import { Link, NavLink, Outlet, useLocation } from "react-router";
 import { Instagram, Menu, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { site } from "@/shared/tycc/content";
+import { getRouteMeta } from "@/shared/seo/routeMeta";
+import { useSeo } from "@/shared/seo/useSeo";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -15,6 +17,9 @@ const NAV = [
 
 const PublicLayout = () => {
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  useSeo(getRouteMeta(pathname));
 
   return (
     <>
