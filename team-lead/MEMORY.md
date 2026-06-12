@@ -34,11 +34,15 @@ Agent-optimized quick-recall facts for this workspace. Each entry is a condensed
 - **Gallery**: real club photos imported from the Google **Drive "WEBSITE MEDIA"** folder;
   pipeline (HEIC→WebP, BRouter route distances, SEO/og-image, GA MCP) in
   `knowledge/media-and-route-pipelines.md`.
-- **Google Analytics MCP**: fully wired 2026-06-11 — gcloud installed, project `tycc-ga-mcp`,
-  service account `ga-mcp@tycc-ga-mcp.iam.gserviceaccount.com` (key at `C:\Users\yinxi\keys\ga-mcp-key.json`,
-  off-repo), MCP `google-analytics` registered (local scope, `~/.claude.json`). **Only the GA
-  Viewer grant remains.** Procedure + gotchas: `knowledge/google-analytics-mcp-setup.md`.
-  GA account id **396328696**, measurement id `G-QFH9YQQJJH`.
+- **Google Analytics MCP**: **LIVE 2026-06-12** — authenticates as the user
+  (`william.xhyin@gmail.com`, already a GA Administrator) via ADC user-login, NOT a service
+  account. MCP `google-analytics` in `~/.claude.json` with `env: {}` (no
+  `GOOGLE_APPLICATION_CREDENTIALS` → auto-uses the ADC file from `gcloud auth
+  application-default login --client-id-file=...`). The robot/service-account route was abandoned
+  (GA "add user" form kept rejecting the SA); SA + key deleted. Final unlock was registering the
+  `analytics.readonly` scope under the consent screen's **Data Access**. Procedure + gotchas:
+  `knowledge/google-analytics-mcp-setup.md`. GA account id **396328696**, property **539644755**,
+  measurement id `G-QFH9YQQJJH`.
 - **SEO**: per-route `<head>` tags via `useSeo` hook (`webui/src/shared/seo/`), wired in
   `PublicLayout`. Mutate existing tags in place — do NOT use React 19 hoisting (duplicates the
   static `index.html` tags). See `knowledge/seo-per-route-meta.md`.

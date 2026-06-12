@@ -1,14 +1,34 @@
 # Recent Decisions
 
-Updated: 2026-06-11
+Updated: 2026-06-12
 
 Decisions made in recent sessions. Remove entries older than ~2 sprints.
 
+## 2026-06-12 (GA MCP go-live, journal kit)
+
+- **GA MCP auth = ADC user-login, NOT a service account (reverses the 2026-06-11 call).** The
+  robot route dead-ended: GA's add-user form kept rejecting the SA email. Since the human is
+  already a GA Administrator, logging in as them inherits that access and removes the blocked
+  grant step entirely. Implemented with the user's **own** OAuth client (the shared gcloud client
+  is blocked for the Analytics sensitive scope) + `analytics.readonly` registered under the
+  consent screen's **Data Access**. Service account + key **deleted**. Rule of thumb recorded:
+  when a human with the needed access is in the loop, prefer user-login over a service account.
+- **Created a standalone `project-journal-kit`** (new sibling repo at
+  `C:\Users\yinxi\source\repos\project-journal-kit`, first commit `a6f6f74`) — a portable,
+  dependency-free 5-file journaling template (BATON/STATE/KNOWLEDGE/decisions/RITUAL) distilling
+  the good parts of `team-lead/` with no generator or external links. For reuse across future
+  projects; not wired into tycc.
+- **Confirmed tycc has no live code connection to ystack** — only a path string in
+  `PROVENANCE.md` plus three opt-in scripts that read it. No submodule/symlink/remote/dependency;
+  deleting ystack would not affect tycc.
+
 ## 2026-06-11 (SEO refine, explain-code skill, GA MCP wiring)
 
-- **GA MCP auth = service account, not user login.** User ADC login is blocked by Google for the
-  Analytics sensitive scope; a service-account key sidesteps that wall. User chose to stick with
-  the "robot" method to learn it. Plan B (own OAuth client + user login) kept in reserve.
+- **GA MCP auth = service account, not user login.** ~~User chose the "robot" method.~~
+  **SUPERSEDED 2026-06-12** — reversed to ADC user-login (see above) after the GA add-user form
+  kept rejecting the SA. Original rationale: user ADC login with the *shared* gcloud client is
+  blocked for the Analytics sensitive scope; an *own* OAuth client gets past that, which is what
+  ultimately worked.
 - **GA Cloud project = `tycc-ga-mcp`** (no billing; Analytics read APIs are free). SA key stored
   **off-repo** at `C:\Users\yinxi\keys\`; MCP registered at **local** scope (`~/.claude.json`),
   not a committed `.mcp.json`, because the key path is machine-specific.

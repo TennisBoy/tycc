@@ -1,10 +1,38 @@
 # Session Context
 
-Updated: 2026-06-11
+Updated: 2026-06-12
 
 Last session state. Auto-updated by `team-lead/playbooks/complete-the-work.md`.
 
-## Latest Session (2026-06-11, SEO refine + explain-code skill + GA MCP wiring)
+## Latest Session (2026-06-12, GA MCP go-live + portable journal kit)
+
+Picked up the parked GA MCP and got it **working end-to-end**, then generalized the lesson into a
+reusable journaling kit.
+
+- **GA MCP LIVE:** abandoned the service-account ("robot") route — GA's add-user form kept
+  rejecting the SA email and never cleared. Switched to **ADC user-login as the human admin**
+  (`william.xhyin@gmail.com`, already a GA Administrator): created the user's **own** OAuth client
+  (Desktop app), registered the `analytics.readonly` scope under the consent screen's **Data
+  Access** (the final unlock), ran `gcloud auth application-default login --client-id-file=...`,
+  and set the MCP `env` to `{}` so it auto-discovers the ADC file. Verified live:
+  `get_account_summaries` returns TYCC account **396328696** / property **539644755** ("TYCC
+  Toronto Website"). Deleted the SA key file; SA itself can be deleted in the Console.
+- **Rewrote `knowledge/google-analytics-mcp-setup.md`** to lead with the working user-login method
+  and demote the robot route to a "post-mortem / don't retry" footnote. Updated `MEMORY.md` +
+  `CAPABILITY-STATUS.md` (GA → Verified/LIVE).
+- **Created `project-journal-kit`** — a standalone sibling repo (`C:\Users\yinxi\source\repos\
+  project-journal-kit`, first commit `a6f6f74`): a portable, dependency-free 5-file journaling
+  template (BATON/STATE/KNOWLEDGE/decisions/RITUAL + README) distilling the good parts of
+  `team-lead/` with no generator/scripts/links. For reuse across future projects.
+- **Clarified ystack coupling:** confirmed tycc has **no live connection** to the ystack
+  generator — only a path string in `PROVENANCE.md` + three opt-in sync scripts. No
+  submodule/symlink/remote/dependency.
+- **Security notes:** the user's OAuth *Desktop-app* client secret surfaced in chat — low
+  sensitivity (unusable without the consent screen + test-user list); offered rotation steps,
+  user opted to leave it. Credentials (OAuth client JSON, ADC file, the old SA key) all live
+  off-repo under `C:\Users\yinxi\keys\` and are never committed.
+
+## Earlier Session (2026-06-11, SEO refine + explain-code skill + GA MCP wiring)
 
 Three goals, all advanced; work committed on branch `codex/add-contact-phone-number` (NOT deployed
 — `main` only auto-deploys). See `docs/sessions/2026-06-11-session-summary.md`.

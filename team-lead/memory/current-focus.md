@@ -1,6 +1,6 @@
 # Current Focus
 
-Updated: 2026-06-11
+Updated: 2026-06-12
 
 ## Active Work
 
@@ -8,12 +8,16 @@ Updated: 2026-06-11
   (SEO per-route meta, `explain-code` skill) is **committed on branch
   `codex/add-contact-phone-number` but NOT yet deployed** — merging to `main` is the pending
   deploy step (also ships the "add contact phone number" commit; do it supervised).
-- **GA MCP is one GA-UI grant from working** — see active-blockers + `knowledge/google-analytics-mcp-setup.md`.
+- **GA MCP is LIVE** (2026-06-12) — `get_account_summaries` returns TYCC (`396328696` / property
+  `539644755`). Authenticates as the human admin via ADC user-login. Ready to pull real reports.
 
 ## Recent Completions
 
+- **2026-06-12:** GA MCP went **live** via ADC user-login (robot route abandoned + deleted);
+  rewrote `knowledge/google-analytics-mcp-setup.md` to the working method; created the standalone
+  `project-journal-kit`.
 - **2026-06-11:** Per-route SEO meta (`src/shared/seo/`, wired in `PublicLayout`, 404 `noindex`,
-  6 tests); `explain-code` workspace skill; GA MCP fully wired except the GA Viewer grant.
+  6 tests); `explain-code` workspace skill; GA MCP wiring (completed 06-12).
 - Real stats, exec full names, refreshed Nathan bio.
 - Routes: added Scarborough Bluffs + Niagara Falls; fixed Tommy Thompson/L'Amoreaux waypoints;
   one-way distances on all routes (BRouter); "Road cycling" label.
@@ -26,10 +30,12 @@ Updated: 2026-06-11
 
 ## Up Next
 
-- **Finish GA MCP:** add SA `ga-mcp@tycc-ga-mcp.iam.gserviceaccount.com` as a GA **Viewer**
-  (Incognito, single account, type the email), then restart Claude / `/mcp` and verify a live metric.
 - **Deploy the 2026-06-11 work:** merge `codex/add-contact-phone-number` → `main` (supervised;
   also ships the contact-phone commit), or cherry-pick the SEO/skill commit.
+- **Pull a first GA report** (e.g. last-30-day visitors + pageviews from property `539644755`)
+  to exercise the now-live connector and start guiding refinement with real traffic.
+- (Optional) delete the now-unused service account `ga-mcp@tycc-ga-mcp.iam.gserviceaccount.com`
+  in the Cloud Console (its key is already gone).
 - **Reconcile exec titles** (Co-founder/Exec vs "co-president" in bios); add **William's photo/bio**.
 - Confirm **apex vs www** for canonical/OG URLs.
 - Discord→calendar bot approach still undecided.
