@@ -26,13 +26,23 @@ describe("ride scheduling", () => {
     expect(getUpcomingRides(events, now).map((event) => event.id)).toEqual(["soon", "late"]);
   });
 
-  it("drops a ride once its start time has passed (same day)", () => {
-    const morning = ride("morning", "2026-05-10", "9:00 AM"); // already started today
-    const afternoon = ride("afternoon", "2026-05-10", "3:00 PM"); // still upcoming
-    expect(getNextRide([morning, afternoon], now)?.id).toBe("afternoon");
+  it("keeps a ride featured all of its date, even after it has started or ended", () => {
+    // The BMO ride ran 1:30-4:30 PM; at 7:25 PM the same day it should still show.
+    const today = ride("today", "2026-05-10", "1:30 PM – 4:30 PM");
+    const evening = new Date(2026, 4, 10, 19, 25, 0);
+    expect(getNextRide([today], evening)?.id).toBe("today");
   });
 
-  it("returns null when every ride is in the past", () => {
+  it("orders multiple same-day rides by start time", () => {
+    const morning = ride("morning", "2026-05-10", "9:00 AM");
+    const afternoon = ride("afternoon", "2026-05-10", "3:00 PM");
+    expect(getUpcomingRides([afternoon, morning], now).map((event) => event.id)).toEqual([
+      "morning",
+      "afternoon",
+    ]);
+  });
+
+  it("returns null only once the ride's date is fully over", () => {
     expect(getNextRide([ride("old", "2026-05-01", "9:00 AM")], now)).toBeNull();
   });
 });
