@@ -34,6 +34,7 @@ ALLOWED_SUBDIRS=(
   "team-lead/status/"
   "team-lead/memory/"
   "team-lead/knowledge/"
+  "team-lead/.gstack/"
   "team-lead/docs/sessions/"
   "team-lead/docs/specs/"
   "team-lead/docs/plans/"
