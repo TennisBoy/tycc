@@ -55,12 +55,29 @@ durably so it never costs that much time again.
   restart MCP / unset `GOOGLE_APPLICATION_CREDENTIALS`) + the robot-route post-mortem.
 - `project-journal-kit/` — reusable journaling template embodying: split durable vs time-bound,
   log dead ends with WHY, baton-pass for instant resume, one end-of-session ritual.
+- `knowledge/verifying-a-deploy.md` — plain-language guide to confirming a deploy end-to-end:
+  `gh` CLI for the GitHub Actions side, `curl`+`grep` against the live site, the content-hash
+  fingerprint linking them, the browser-render limitation, and the CI placement bug + fix.
+
+## Continued (same session): deploy, verify, CI fix, auto-commit
+
+- **Deployed:** merged branch → `main` (fast-forward `afe8dc5`, green gate), pushed; Azure SWA
+  auto-deployed. Also pulled the **first GA report** (63 users / 703 views / 121 sessions, 30d).
+- **Verified the deploy end-to-end** (user's first project, so we did it properly): `gh run list`
+  confirmed Azure CI/CD success; `curl`+`grep` of the live JS bundle confirmed all five per-route
+  SEO descriptions are served. (A first grep false-alarmed by searching runtime-built *titles*;
+  searching the literal *descriptions* confirmed it — verification catches your own mistakes too.)
+- **Fixed a CI bug found while verifying:** the "Check team-lead Placement" job kept going red
+  because `.github/workflows/check-placement.yml` lacked `team-lead/status/` (the pre-commit hook
+  had it) — a two-allowlist drift. Added it; proven via local repro.
+- **Auto-commit:** user asked to auto-commit everything. Set up "Both" (proactive descriptive
+  commits + a local-only, skip-`main` Stop hook), tested both behaviors, then **removed the hook**
+  at the user's request. Standing behavior kept: I commit as I work with good messages, never
+  auto-push (since `main` auto-deploys). `.claude/settings.local.json` gitignored.
 
 ## Next session priorities
 
-- **Deploy the 2026-06-11 work:** merge `codex/add-contact-phone-number` → `main` (supervised;
-  also ships the "add contact phone number" commit).
-- **Pull a first GA report** (last-30-day visitors + pageviews from property `539644755`) to
-  exercise the live connector.
+- **Pull GA breakdowns** (top pages, sources, devices) from property `539644755` once the launch
+  post drives traffic.
 - Reconcile exec titles; add William's photo/bio; confirm apex vs www canonical.
 - (Optional) delete the now-unused service account in the Cloud Console.

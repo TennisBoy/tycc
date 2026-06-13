@@ -21,6 +21,17 @@ Decisions made in recent sessions. Remove entries older than ~2 sprints.
 - **Confirmed tycc has no live code connection to ystack** — only a path string in
   `PROVENANCE.md` plus three opt-in scripts that read it. No submodule/symlink/remote/dependency;
   deleting ystack would not affect tycc.
+- **Deployed the 2026-06-11 work** (merged branch → `main`, fast-forward, pushed) after a green
+  gate. Verified end-to-end: Azure CI/CD success + the per-route SEO descriptions present in the
+  live JS bundle.
+- **Fixed a CI placement allowlist drift bug.** `.github/workflows/check-placement.yml` was missing
+  `team-lead/status/` (the pre-commit hook had it), so every commit touching `CAPABILITY-STATUS.md`
+  passed locally but failed CI. Added it to re-sync the two gates (per AGENTS.md). Captured the
+  whole verification method in `knowledge/verifying-a-deploy.md`.
+- **Auto-commit preference (tycc only):** I commit proactively with descriptive messages without
+  asking each time, but **never auto-push** (pushing `main` auto-deploys to production, so it stays
+  a deliberate step). A Stop-hook auto-committer was built, tested, then **removed at the user's
+  request** — too noisy. The "I commit as I work" behavior stays.
 
 ## 2026-06-11 (SEO refine, explain-code skill, GA MCP wiring)
 

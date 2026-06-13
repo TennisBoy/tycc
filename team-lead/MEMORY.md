@@ -52,3 +52,13 @@ Agent-optimized quick-recall facts for this workspace. Each entry is a condensed
   setup-skills / complete-the-work / search-memory. Registry: `team-lead/SKILLS-CUSTOM.md`.
 - **File-loss gotcha**: files sometimes vanish from the repo (OneDrive/AV) — restore via
   `git checkout <ref> -- <path>`.
+- **Verifying a deploy**: `gh run list --branch main` for the Azure CI/CD status; `curl` the live
+  page + JS bundle and `grep` for known strings to confirm the new code is served (SPA: SEO tags
+  are JS-built, so grep *descriptions* not runtime-built *titles*). Browser-render check needs
+  Playwright (Chromium not installed here). Full how-to: `knowledge/verifying-a-deploy.md`.
+- **Commit/deploy convention**: pushing `main` auto-deploys to production, so **never auto-push**.
+  Work on a branch, commit proactively with descriptive messages, then merge→`main` + push as a
+  deliberate, gate-green step. (An auto-commit Stop hook was tried and removed — too noisy.)
+- **CI placement allowlist** lives in TWO files that must stay in sync: `.github/workflows/
+  check-placement.yml` and `team-lead/scripts/install-hooks.sh`. `team-lead/status/` is sanctioned;
+  both lists must include every sanctioned subdir or CI/local gates disagree (ystack: `dual-allowlist-sync`).

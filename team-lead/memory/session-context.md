@@ -31,6 +31,14 @@ reusable journaling kit.
   sensitivity (unusable without the consent screen + test-user list); offered rotation steps,
   user opted to leave it. Credentials (OAuth client JSON, ADC file, the old SA key) all live
   off-repo under `C:\Users\yinxi\keys\` and are never committed.
+- **Deployed + verified (after the first wrap):** merged branch → `main` (`afe8dc5`, green gate),
+  pulled the first GA report (63 users / 703 views / 121 sessions, last 30d), then **verified the
+  deploy end-to-end** — `gh` for the GitHub Actions side, `curl`+`grep` against the live JS bundle
+  (all five per-route SEO descriptions present). Wrote `knowledge/verifying-a-deploy.md` (plain-
+  language how-to) and **fixed a CI placement bug** (allowlist missing `team-lead/status/` →
+  `CAPABILITY-STATUS.md` commits failed CI; re-synced). Built + tested an end-of-turn auto-commit
+  Stop hook, then **removed it at the user's request**; kept the standing "I commit as I work with
+  descriptive messages, never auto-push" behavior. Final `main` = `942cb2c`.
 
 ## Earlier Session (2026-06-11, SEO refine + explain-code skill + GA MCP wiring)
 
