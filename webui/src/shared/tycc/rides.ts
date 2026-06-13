@@ -1,13 +1,20 @@
 import type { RideEvent } from "./types";
 
 /**
- * Parse a ride's date + time (e.g. "2026-05-10" + "9:00 AM") into a Date.
- * Falls back to end-of-day if the time can't be parsed, so a ride still counts
- * as upcoming for the whole of its date.
+ * Parse a ride's date + time into a Date at the ride's START time.
+ *
+ * `time` may be a single time ("9:00 AM"), a range ("2:45 PM – 4:00 PM"), or a
+ * time with a trailing note ("7:00 AM roll out"); we read the leading time token
+ * and ignore the rest. Falls back to end-of-day if no time can be parsed, so a
+ * ride still counts as upcoming for the whole of its date.
+ *
+ * The Date is intentionally built in LOCAL time: the club is single-timezone
+ * (Toronto), and local construction sidesteps the UTC date-shift off-by-one.
+ * Don't "fix" this to UTC.
  */
 export const getRideStart = (event: RideEvent): Date => {
   const [year, month, day] = event.date.split("-").map(Number);
-  const match = event.time.trim().match(/^(\d{1,2}):(\d{2})\s*(am|pm)?$/i);
+  const match = event.time.trim().match(/^(\d{1,2}):(\d{2})\s*(am|pm)?/i);
 
   let hours = 23;
   let minutes = 59;
