@@ -10,27 +10,20 @@ interface Props {
 interface State {
   hasError: boolean;
   error?: Error;
-  errorId: number;
 }
 
 class ErrorBoundary extends Component<Props, State> {
   public state: State = {
     hasError: false,
     error: undefined,
-    errorId: 0,
   };
 
   public static getDerivedStateFromError(error: Error): State {
-    return { hasError: true, error, errorId: Date.now() };
+    return { hasError: true, error };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error(`Error Boundary Caught Error:
-      Message: ${error.message}
-      Stack: ${error.stack}
-      Component Stack: ${errorInfo.componentStack}`);
-
-    // Log the error to an external service
+    console.error("ErrorBoundary caught an error", error, errorInfo.componentStack);
   }
 
   public render() {
@@ -41,8 +34,9 @@ class ErrorBoundary extends Component<Props, State> {
             <Icons.XCircle className="text-destructive h-16 w-16" />
             <h2 className="text-foreground text-2xl font-semibold">Something went wrong</h2>
             <p className="text-muted-foreground">
-              {this.state.error?.message ||
-                "An unexpected error occurred. Please try refreshing the page."}
+              {import.meta.env.DEV && this.state.error?.message
+                ? this.state.error.message
+                : "An unexpected error occurred. Please try refreshing the page."}
             </p>
             <Button variant="default" onClick={() => window.location.reload()} className="mt-4">
               Refresh Page
