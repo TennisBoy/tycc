@@ -39,7 +39,7 @@ export const execs: Exec[] = [
     name: "Gavin Tam",
     role: "Co-founder",
     school: "York Mills Collegiate Institute",
-    photo: "/images/exec-gavin.jpg",
+    photo: "/images/exec-gavin.webp",
     bio: "Hello, my name is Gavin and I'm one of the co-presidents of Toronto Youth Cycling Club. As of 2026 I am 18 years old and attend York Mills Collegiate Institute. I'm very passionate about physical activities/sports such as basketball, football, hockey and biking, and I also love hanging out with friends. I got into biking over the summer of 2024, after watching a Tour de France documentary, and have been enjoying the sport ever since.",
   },
   {
@@ -47,7 +47,7 @@ export const execs: Exec[] = [
     name: "Roger Kim",
     role: "Co-founder",
     school: "York Mills Collegiate Institute",
-    photo: "/images/exec-roger.jpg",
+    photo: "/images/exec-roger.webp",
     bio: "My name is Roger Kim, co-president of the Toronto Youth Cycling Club. I am currently 17 years old, attending York Mills Collegiate Institute. As of now, I have committed to Engineering + Ivey at the University of Western Ontario. In my free time, I enjoy playing hockey, eating out, and of course, biking! I started biking around Grade 10, and fell in love with the sport ever since.",
   },
   {
@@ -55,7 +55,7 @@ export const execs: Exec[] = [
     name: "Nathan Ye",
     role: "Co-founder",
     school: "Victoria Park Secondary School",
-    photo: "/images/exec-nathan.jpg",
+    photo: "/images/exec-nathan.webp",
     bio: "Hi! My name is Nathan, a co-founder of the Toronto Youth Cycling Club! I'm 17 years old, with the large majority of my residence taking place in the North York community. I will be attending the University of Western Ontario in September, pursuing a bachelor's degree in Medical Sciences. During my spare time, some passions of mine include playing hockey, swimming, playing piano, and, of course, cycling. I'm looking forward to exploring new areas of the province through cycling in the near future!",
   },
   {
@@ -63,7 +63,7 @@ export const execs: Exec[] = [
     name: "Cooper Sacks",
     role: "Exec",
     school: "Northern Secondary School",
-    photo: "/images/exec-cooper.jpg",
+    photo: "/images/exec-cooper.webp",
     bio: "Hi, my name is Cooper, I am also one of the co-presidents of the Toronto Youth Cycling Club. I am 16 years old and I attend Northern Secondary School. I have a passion for soccer and play competitively for Power FC U17. Some hobbies of mine include playing sports, engaging in calisthenics, and biking long distances.",
   },
   {

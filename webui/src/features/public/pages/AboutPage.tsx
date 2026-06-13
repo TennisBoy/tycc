@@ -76,7 +76,11 @@ const AboutPage = () => {
                     <img
                       alt={exec.name}
                       className="size-32 shrink-0 rounded-[1.5rem] object-cover object-top sm:size-40"
+                      decoding="async"
+                      height={945}
+                      loading="lazy"
                       src={exec.photo}
+                      width={712}
                     />
                   ) : (
                     <div
@@ -158,7 +162,11 @@ const AboutPage = () => {
                   <img
                     alt={active.name}
                     className="size-20 rounded-2xl object-cover object-top"
+                    decoding="async"
+                    height={945}
+                    loading="lazy"
                     src={active.photo}
+                    width={712}
                   />
                 ) : (
                   <div

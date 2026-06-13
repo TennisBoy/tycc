@@ -230,8 +230,10 @@ const HomePage = () => {
                     alt={exec.name}
                     className="h-56 w-full object-cover object-top"
                     decoding="async"
+                    height={945}
                     loading="lazy"
                     src={exec.photo}
+                    width={712}
                   />
                 ) : (
                   <div
