@@ -21,18 +21,19 @@ npm run build    # vite build → webui/dist
 ```
 
 Stack: TanStack Query, react-router v7, Tailwind v4 + shadcn/ui (Radix), OIDC auth
-(`react-oidc-context`), zod, react-hook-form. Path alias `@` → `webui/src`.
+(`react-oidc-context`). Path alias `@` → `webui/src`.
 
 ### App Architecture
 - Pages are feature-based: `src/features/<feature>/pages/*.tsx`.
-- The route table is the single source of truth: `src/routes/index.ts` (currently Home,
-  About, Calendar, Routes under `PublicLayout`). Add a page by registering it there.
+- The route table is the single source of truth: `src/routes/index.ts` (Home, About,
+  Calendar, Routes, Gallery — all under `PublicLayout`; see the file for the current
+  list). Add a page by registering it there.
 - Entry: `src/index.tsx` → `AppRouter.tsx` → `App.tsx`. Providers in `src/app/AppProviders.tsx`.
 
 ### Deployment
 Auto-deploys to **Azure Static Web Apps** on push to `main`
 (`.github/workflows/azure-static-web-apps-*.yml`): `app_location: ./webui`, output `dist`,
-no API. SPA navigation fallback is handled by `staticwebapp.config.json`.
+no API. SPA navigation fallback is handled by `webui/public/staticwebapp.config.json`.
 
 ## Skill Routing
 
@@ -59,8 +60,7 @@ Both gates run on the same allowlist. If you add a new sanctioned path under `te
 - Keep CI and pre-commit placement enforcement in sync. Adding a new sanctioned location to only one allowlist will block local commits or create CI drift. (ystack learning: `dual-allowlist-sync`)
 - End every meaningful session with `complete-the-work` so baton-pass context, session summaries, and durable learnings keep compounding across agent sessions. (ystack learning: `harness-compounding-loop`)
 - Preserve the generated `webui/` scaffold wiring unless you are intentionally changing the architecture: TanStack Query lives in `src/app/AppProviders.tsx`, tests should create a fresh `QueryClient` per run, and cross-feature sharing should flow through `src/shared/`.
-- When customizing the copied frontend scaffold, watch the known pitfalls: `src/api/clients/baseClient.ts` should clear OIDC data from `sessionStorage`, and the copied data-table utilities depend on `src/types/common.ts`.
-- The root `Makefile` is stale scaffold: its `build`/`test`/`run`/`clean`/`codegen` targets `cd webapi` (a .NET backend) that does **not** exist in this repo, and `codegen` points at a non-running `localhost:5000`. Use the `webui` npm scripts above; ignore or fix the Makefile before relying on it.
+- The unused fullstack scaffold (data-table cluster, API client layer, ~24 spare shadcn/ui components, a dozen unused npm dependencies, codegen scripts, root Makefile) was removed in June 2026. The live site is a small static content site; `src/components/ui/` now holds only the components in use. Don't re-add scaffold speculatively.
 
 ## Session Workflow
 
