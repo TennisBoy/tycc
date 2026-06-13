@@ -160,6 +160,20 @@ export const rideEvents: RideEvent[] = [
       "An afternoon road ride from York Mills southeast down to the Scarborough Bluffs, finishing at Bluffer's Park on the lake — about 19 km one way at a steady 20–25 kph.",
     gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
   },
+  {
+    id: "2026-06-13-bmo-field",
+    title: "Group Ride — BMO Field",
+    date: "2026-06-13",
+    time: "1:30 PM – 4:30 PM",
+    rideType: "Group ride",
+    difficulty: "All levels",
+    area: "Waterfront",
+    meetup: "808 York Mills Road (outside Longo's)",
+    distance: "~20 km one way",
+    preview:
+      "A road ride from York Mills down to Exhibition Place, finishing at BMO Field by the lake — about 20 km one way at a steady 20–25 kph.",
+    gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
+  },
 ];
 
 // Real routes shared by the club (Google Maps cycling directions).
