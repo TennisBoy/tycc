@@ -76,21 +76,11 @@ const RoutesPage = () => {
               const isActive = route.id === active?.id;
               return (
                 <Card
-                  aria-pressed={isActive}
                   className={cn(
-                    "cursor-pointer rounded-[1.5rem] border-border bg-card transition-colors hover:border-accent/60",
+                    "relative rounded-[1.5rem] border-border bg-card transition-colors hover:border-accent/60",
                     isActive && "border-accent ring-1 ring-accent",
                   )}
                   key={route.id}
-                  onClick={() => selectRoute(route.id)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      selectRoute(route.id);
-                    }
-                  }}
                 >
                   <CardContent className="flex h-full flex-col p-6">
                     <div className="flex items-center justify-between gap-2">
@@ -110,9 +100,8 @@ const RoutesPage = () => {
                     <h3 className="mt-4 text-2xl font-bold">{route.title}</h3>
                     <p className="mt-3 flex-1 text-base leading-7 text-muted-foreground">{route.summary}</p>
                     <a
-                      className="mt-5 inline-flex w-fit items-center gap-1 text-sm font-semibold text-primary hover:underline"
+                      className="relative z-10 mt-5 inline-flex w-fit items-center gap-1 text-sm font-semibold text-primary hover:underline"
                       href={route.mapsUrl}
-                      onClick={(event) => event.stopPropagation()}
                       rel="noreferrer"
                       target="_blank"
                     >
@@ -120,6 +109,16 @@ const RoutesPage = () => {
                       <ExternalLink className="size-4" />
                     </a>
                   </CardContent>
+                  {/* Full-card control to load the route on the map. Sits behind the
+                      Google Maps link (lifted with z-10) so both stay independently
+                      clickable without nesting interactive elements. */}
+                  <button
+                    aria-label={`Show ${route.title} on the map`}
+                    aria-pressed={isActive}
+                    className="absolute inset-0 cursor-pointer rounded-[1.5rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent"
+                    onClick={() => selectRoute(route.id)}
+                    type="button"
+                  />
                 </Card>
               );
             })}

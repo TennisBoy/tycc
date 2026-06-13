@@ -23,6 +23,12 @@ const PublicLayout = () => {
 
   return (
     <>
+      <a
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground focus:shadow-lg"
+        href="#main-content"
+      >
+        Skip to main content
+      </a>
       <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-md">
         <Container size="xl">
           <div className="flex min-h-18 items-center justify-between gap-4 py-3">
@@ -118,7 +124,9 @@ const PublicLayout = () => {
         </Container>
       </header>
 
-      <Outlet />
+      <div className="outline-none" id="main-content" tabIndex={-1}>
+        <Outlet />
+      </div>
 
       <footer className="border-t border-border/70 bg-background py-8">
         <Container size="xl">
