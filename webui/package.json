@@ -11,9 +11,7 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "type-check": "tsc --noEmit",
-    "codegen": "npm run codegen:products",
-    "codegen:products": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 openapi-typescript http://localhost:5000/swagger/products/swagger.json -o src/types/generated/products.ts"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
@@ -44,7 +42,6 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.4",
-    "cross-env": "^10.1.0",
     "eslint": "^9.39.2",
     "eslint-import-resolver-typescript": "^4.4.4",
     "eslint-plugin-boundaries": "^5.4.0",
@@ -54,7 +51,6 @@
     "globals": "^17.4.0",
     "jsdom": "^28.1.0",
     "msw": "^2.12.10",
-    "openapi-typescript": "^7.13.0",
     "prettier": "3.8.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "^5.9.3",
