@@ -34,10 +34,5 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./src/test/setup.ts",
     globals: true,
-    env: {
-      VITE_API_BASE_URL: "http://localhost:5000",
-      VITE_CLIENT_ID: "WebApp",
-      VITE_AUTHORITY: "https://localhost:6001",
-    },
   },
 });

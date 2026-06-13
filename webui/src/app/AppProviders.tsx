@@ -1,6 +1,4 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { AuthProvider } from "react-oidc-context";
-import oidcConfig, { onSigninCallback } from "@/oidcConfig";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,13 +14,7 @@ interface AppProvidersProps {
 }
 
 const AppProviders = ({ children }: AppProvidersProps) => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider {...oidcConfig} onSigninCallback={onSigninCallback}>
-        {children}
-      </AuthProvider>
-    </QueryClientProvider>
-  );
+  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 };
 
 export default AppProviders;

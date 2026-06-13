@@ -10,7 +10,6 @@ import GalleryPage from "@/features/public/pages/GalleryPage";
 export const routes: AppLayoutRoute[] = [
   {
     layout: PublicLayout,
-    isPublic: true,
     routes: [
       {
         id: "home",

@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Routes as ReactRoutes } from "react-router";
-import ProtectedRoute from "./ProtectedRoute";
 import NotFound from "@/shared/pages/NotFound";
 import type { AppLayoutRoute, AppRoute } from "./route";
 
@@ -17,19 +16,17 @@ const generateFlattenRoutes = (routes: AppRoute[]): AppRoute[] => {
 };
 
 export const renderRoutes = (mainRoutes: AppLayoutRoute[]) => {
-  const Routes = ({ isAuthorized }: { isAuthorized: boolean }) => {
-    const layouts = mainRoutes.map(({ layout: Layout, isPublic, routes }, index) => {
+  const Routes = () => {
+    const layouts = mainRoutes.map(({ layout: Layout, routes }, index) => {
       const subRoutes = generateFlattenRoutes(routes);
       return (
         <Route key={index} element={<Layout />}>
-          <Route element={<ProtectedRoute isPublic={isPublic} isAuthorized={isAuthorized} />}>
-            {subRoutes.map(({ component: Component, path, id, name }) => {
-              const routeKey = id ?? path ?? name;
-              return Component && path && routeKey ? (
-                <Route key={routeKey} element={<Component />} path={path} />
-              ) : null;
-            })}
-          </Route>
+          {subRoutes.map(({ component: Component, path, id, name }) => {
+            const routeKey = id ?? path ?? name;
+            return Component && path && routeKey ? (
+              <Route key={routeKey} element={<Component />} path={path} />
+            ) : null;
+          })}
         </Route>
       );
     });

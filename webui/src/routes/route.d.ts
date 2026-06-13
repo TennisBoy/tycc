@@ -9,6 +9,5 @@ export interface AppRoute {
 
 export interface AppLayoutRoute {
   layout: React.ComponentType<unknown>;
-  isPublic?: boolean;
   routes: AppRoute[];
 }
