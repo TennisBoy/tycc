@@ -1,4 +1,4 @@
-import { startTransition, useState } from "react";
+import { startTransition, useMemo, useState } from "react";
 import { CalendarDays, ChevronLeft, ChevronRight, Filter } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,19 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import type { RideEvent } from "../types";
+import {
+  ALL_AREAS,
+  ALL_DIFFICULTIES,
+  ALL_RIDE_TYPES,
+  ANY_DAY,
+  buildCalendarCells,
+  formatDayName,
+  formatMonthLabel,
+  getInitialMonthIndex,
+  getRideMonths,
+  matchesFilters,
+  type RideFilters,
+} from "../calendar";
 
 type MonthCalendarProps = {
   events: RideEvent[];
@@ -13,104 +26,59 @@ type MonthCalendarProps = {
 
 type CalendarView = "list" | "month" | "day";
 
-type MonthOption = {
-  label: string;
-  value: string;
-};
-
-const MONTHS: MonthOption[] = [
-  { label: "April 2026", value: "2026-04" },
-  { label: "May 2026", value: "2026-05" },
-  { label: "June 2026", value: "2026-06" },
-];
-
-// Default the calendar to the month of the next upcoming ride (falling back to
-// the current month), clamped to the months we have in range.
-const getInitialMonthIndex = (events: RideEvent[]) => {
-  const now = new Date();
-  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
-  const upcoming = [...events]
-    .sort((a, b) => a.date.localeCompare(b.date))
-    .find((event) => event.date >= today);
-  const targetMonth = (upcoming?.date ?? today).slice(0, 7);
-  const idx = MONTHS.findIndex((month) => month.value === targetMonth);
-  if (idx !== -1) return idx;
-  return targetMonth < MONTHS[0].value ? 0 : MONTHS.length - 1;
-};
-
 const WEEKDAY_LABELS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] as const;
-
-const formatMonthLabel = (monthValue: string) => {
-  const [year, month] = monthValue.split("-").map(Number);
-  return new Intl.DateTimeFormat("en-CA", { month: "long", year: "numeric" }).format(
-    new Date(year, month - 1, 1),
-  );
-};
-
-const formatDayName = (date: string) =>
-  new Intl.DateTimeFormat("en-CA", { weekday: "long" }).format(new Date(`${date}T12:00:00`));
 
 const formatCalendarDate = (date: string) =>
   new Intl.DateTimeFormat("en-CA", { month: "short", day: "numeric" }).format(
     new Date(`${date}T12:00:00`),
   );
 
-const buildCalendarCells = (monthValue: string, events: RideEvent[]) => {
-  const [year, month] = monthValue.split("-").map(Number);
-  const firstDay = new Date(year, month - 1, 1);
-  const daysInMonth = new Date(year, month, 0).getDate();
-  const mondayStartOffset = (firstDay.getDay() + 6) % 7;
-
-  return Array.from({ length: 42 }, (_, index) => {
-    const dayNumber = index - mondayStartOffset + 1;
-    const isCurrentMonth = dayNumber >= 1 && dayNumber <= daysInMonth;
-
-    if (!isCurrentMonth) {
-      return {
-        id: `empty-${monthValue}-${index}`,
-        dayNumber: null,
-        fullDate: null,
-        events: [] as RideEvent[],
-      };
-    }
-
-    const fullDate = `${monthValue}-${String(dayNumber).padStart(2, "0")}`;
-
-    return {
-      id: fullDate,
-      dayNumber,
-      fullDate,
-      events: events.filter((event) => event.date === fullDate),
-    };
-  });
-};
-
 const MonthCalendar = ({ events }: MonthCalendarProps) => {
+  // Months are derived from the ride data, so a ride scheduled in any month
+  // shows up instead of being silently dropped by a hardcoded window.
+  const months = useMemo(() => getRideMonths(events), [events]);
+
   // Always open on the month-first grid, on every viewport.
   const [view, setView] = useState<CalendarView>("month");
-  const [selectedMonthIndex, setSelectedMonthIndex] = useState(() => getInitialMonthIndex(events));
-  const [selectedRideType, setSelectedRideType] = useState("All rides");
-  const [selectedDifficulty, setSelectedDifficulty] = useState("All difficulties");
-  const [selectedArea, setSelectedArea] = useState("All areas");
-  const [selectedDay, setSelectedDay] = useState("Any day");
+  const [selectedMonthIndex, setSelectedMonthIndex] = useState(() =>
+    getInitialMonthIndex(events, months),
+  );
+  const [selectedRideType, setSelectedRideType] = useState(ALL_RIDE_TYPES);
+  const [selectedDifficulty, setSelectedDifficulty] = useState(ALL_DIFFICULTIES);
+  const [selectedArea, setSelectedArea] = useState(ALL_AREAS);
+  const [selectedDay, setSelectedDay] = useState(ANY_DAY);
   const [selectedEventId, setSelectedEventId] = useState("");
 
-  const selectedMonth = MONTHS[selectedMonthIndex];
+  if (months.length === 0) {
+    return (
+      <section aria-labelledby="calendar-heading" className="pt-14 sm:pt-20" id="calendar">
+        <h2 className="sr-only" id="calendar-heading">
+          Calendar of rides
+        </h2>
+        <EmptyCalendarState />
+      </section>
+    );
+  }
+
+  const selectedMonth = months[selectedMonthIndex];
   const monthEvents = events.filter((event) => event.date.startsWith(selectedMonth.value));
 
-  const rideTypes = ["All rides", ...new Set(monthEvents.map((event) => event.rideType))];
-  const difficulties = ["All difficulties", ...new Set(monthEvents.map((event) => event.difficulty))];
-  const areas = ["All areas", ...new Set(monthEvents.map((event) => event.area))];
-  const days = ["Any day", ...new Set(monthEvents.map((event) => formatDayName(event.date)))];
+  const rideTypes = [ALL_RIDE_TYPES, ...new Set(monthEvents.map((event) => event.rideType))];
+  const difficulties = [
+    ALL_DIFFICULTIES,
+    ...new Set(monthEvents.map((event) => event.difficulty)),
+  ];
+  const areas = [ALL_AREAS, ...new Set(monthEvents.map((event) => event.area))];
+  const days = [ANY_DAY, ...new Set(monthEvents.map((event) => formatDayName(event.date)))];
 
-  const visibleEvents = monthEvents.filter((event) => {
-    if (selectedRideType !== "All rides" && event.rideType !== selectedRideType) return false;
-    if (selectedDifficulty !== "All difficulties" && event.difficulty !== selectedDifficulty)
-      return false;
-    if (selectedArea !== "All areas" && event.area !== selectedArea) return false;
-    if (selectedDay !== "Any day" && formatDayName(event.date) !== selectedDay) return false;
-    return true;
-  });
+  const currentFilters: RideFilters = {
+    rideType: selectedRideType,
+    difficulty: selectedDifficulty,
+    area: selectedArea,
+    day: selectedDay,
+  };
+
+  const visibleEvents = monthEvents.filter((event) => matchesFilters(event, currentFilters));
 
   const selectedEvent =
     visibleEvents.find((event) => event.id === selectedEventId) ?? visibleEvents[0] ?? null;
@@ -130,6 +98,14 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
         selectFirstVisibleEvent(nextEvents);
       }
     });
+  };
+
+  const resetFilters = () => {
+    setSelectedRideType(ALL_RIDE_TYPES);
+    setSelectedDifficulty(ALL_DIFFICULTIES);
+    setSelectedArea(ALL_AREAS);
+    setSelectedDay(ANY_DAY);
+    setSelectedEventId("");
   };
 
   const cells = buildCalendarCells(selectedMonth.value, visibleEvents);
@@ -181,11 +157,7 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
                   if (selectedMonthIndex === 0) return;
                   startTransition(() => {
                     setSelectedMonthIndex((current) => current - 1);
-                    setSelectedRideType("All rides");
-                    setSelectedDifficulty("All difficulties");
-                    setSelectedArea("All areas");
-                    setSelectedDay("Any day");
-                    setSelectedEventId("");
+                    resetFilters();
                   });
                 }}
                 size="icon"
@@ -202,16 +174,12 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
               <Button
                 aria-label="Next month"
                 className="rounded-full"
-                disabled={selectedMonthIndex === MONTHS.length - 1}
+                disabled={selectedMonthIndex === months.length - 1}
                 onClick={() => {
-                  if (selectedMonthIndex === MONTHS.length - 1) return;
+                  if (selectedMonthIndex === months.length - 1) return;
                   startTransition(() => {
                     setSelectedMonthIndex((current) => current + 1);
-                    setSelectedRideType("All rides");
-                    setSelectedDifficulty("All difficulties");
-                    setSelectedArea("All areas");
-                    setSelectedDay("Any day");
-                    setSelectedEventId("");
+                    resetFilters();
                   });
                 }}
                 size="icon"
@@ -233,18 +201,9 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
             <FilterGroup
               label="Ride type"
               onSelect={(value) => {
-                const nextEvents = monthEvents.filter((event) => {
-                  if (value !== "All rides" && event.rideType !== value) return false;
-                  if (
-                    selectedDifficulty !== "All difficulties" &&
-                    event.difficulty !== selectedDifficulty
-                  )
-                    return false;
-                  if (selectedArea !== "All areas" && event.area !== selectedArea) return false;
-                  if (selectedDay !== "Any day" && formatDayName(event.date) !== selectedDay)
-                    return false;
-                  return true;
-                });
+                const nextEvents = monthEvents.filter((event) =>
+                  matchesFilters(event, { ...currentFilters, rideType: value }),
+                );
                 updateFilter(setSelectedRideType, value, nextEvents);
               }}
               options={rideTypes}
@@ -253,15 +212,9 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
             <FilterGroup
               label="Difficulty"
               onSelect={(value) => {
-                const nextEvents = monthEvents.filter((event) => {
-                  if (selectedRideType !== "All rides" && event.rideType !== selectedRideType)
-                    return false;
-                  if (value !== "All difficulties" && event.difficulty !== value) return false;
-                  if (selectedArea !== "All areas" && event.area !== selectedArea) return false;
-                  if (selectedDay !== "Any day" && formatDayName(event.date) !== selectedDay)
-                    return false;
-                  return true;
-                });
+                const nextEvents = monthEvents.filter((event) =>
+                  matchesFilters(event, { ...currentFilters, difficulty: value }),
+                );
                 updateFilter(setSelectedDifficulty, value, nextEvents);
               }}
               options={difficulties}
@@ -270,19 +223,9 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
             <FilterGroup
               label="Area"
               onSelect={(value) => {
-                const nextEvents = monthEvents.filter((event) => {
-                  if (selectedRideType !== "All rides" && event.rideType !== selectedRideType)
-                    return false;
-                  if (
-                    selectedDifficulty !== "All difficulties" &&
-                    event.difficulty !== selectedDifficulty
-                  )
-                    return false;
-                  if (value !== "All areas" && event.area !== value) return false;
-                  if (selectedDay !== "Any day" && formatDayName(event.date) !== selectedDay)
-                    return false;
-                  return true;
-                });
+                const nextEvents = monthEvents.filter((event) =>
+                  matchesFilters(event, { ...currentFilters, area: value }),
+                );
                 updateFilter(setSelectedArea, value, nextEvents);
               }}
               options={areas}
@@ -291,18 +234,9 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
             <FilterGroup
               label="Day"
               onSelect={(value) => {
-                const nextEvents = monthEvents.filter((event) => {
-                  if (selectedRideType !== "All rides" && event.rideType !== selectedRideType)
-                    return false;
-                  if (
-                    selectedDifficulty !== "All difficulties" &&
-                    event.difficulty !== selectedDifficulty
-                  )
-                    return false;
-                  if (selectedArea !== "All areas" && event.area !== selectedArea) return false;
-                  if (value !== "Any day" && formatDayName(event.date) !== value) return false;
-                  return true;
-                });
+                const nextEvents = monthEvents.filter((event) =>
+                  matchesFilters(event, { ...currentFilters, day: value }),
+                );
                 updateFilter(setSelectedDay, value, nextEvents);
               }}
               options={days}
@@ -329,6 +263,7 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
 
                     return (
                       <button
+                        aria-pressed={Boolean(cell.fullDate) && isSelected}
                         className={cn(
                           "min-h-28 border-b border-r border-border/70 p-2 text-left transition-colors last:border-r-0 sm:min-h-32",
                           cell.fullDate ? "bg-white hover:bg-muted/50" : "bg-muted/35",
@@ -413,6 +348,7 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
                     const isActive = selectedEvent?.id === event.id;
                     return (
                       <button
+                        aria-pressed={isActive}
                         className={cn(
                           "flex flex-col items-start rounded-2xl border px-4 py-2 text-left transition-colors",
                           isActive
@@ -461,6 +397,7 @@ const FilterGroup = ({ label, options, selected, onSelect }: FilterGroupProps) =
     <div className="flex flex-wrap gap-2">
       {options.map((option) => (
         <button
+          aria-pressed={selected === option}
           className={cn(
             "rounded-full border px-3 py-2 text-sm font-medium transition-colors",
             selected === option
