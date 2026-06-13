@@ -30,21 +30,34 @@ export const getRideStart = (event: RideEvent): Date => {
 };
 
 /**
- * The local end of a ride's date. A ride stays "upcoming" for the whole of its
- * date: it shouldn't drop off the homepage the moment it starts (or ends), only
- * once the day itself is over.
+ * The local end time of a ride: the end of its time range when one is given
+ * ("2:45 PM – 4:00 PM" → 4:00 PM), otherwise the end of the ride's day for
+ * open-ended times ("7:00 AM roll out"). A ride counts as upcoming until this
+ * moment — so it shows before and during the ride, then rolls off once it ends.
  */
-const getRideDayEnd = (event: RideEvent): Date => {
+const getRideEnd = (event: RideEvent): Date => {
   const [year, month, day] = event.date.split("-").map(Number);
-  return new Date(year, (month ?? 1) - 1, day ?? 1, 23, 59, 59, 999);
+  const monthIndex = (month ?? 1) - 1;
+  const times = [...event.time.matchAll(/(\d{1,2}):(\d{2})\s*(am|pm)?/gi)];
+  const end = times.length >= 2 ? times[times.length - 1] : null;
+  if (!end) {
+    return new Date(year, monthIndex, day ?? 1, 23, 59, 59, 999);
+  }
+
+  let hours = Number(end[1]);
+  const minutes = Number(end[2]);
+  const meridiem = end[3]?.toLowerCase();
+  if (meridiem === "pm" && hours < 12) hours += 12;
+  if (meridiem === "am" && hours === 12) hours = 0;
+  return new Date(year, monthIndex, day ?? 1, hours, minutes, 0, 0);
 };
 
-/** Rides happening today or later, soonest start first. */
+/** Rides that haven't ended yet, soonest start first. */
 export const getUpcomingRides = (events: RideEvent[], now: Date = new Date()): RideEvent[] =>
   events
-    .filter((event) => getRideDayEnd(event).getTime() >= now.getTime())
+    .filter((event) => getRideEnd(event).getTime() >= now.getTime())
     .sort((a, b) => getRideStart(a).getTime() - getRideStart(b).getTime());
 
-/** The soonest upcoming ride, or null once every ride's date has passed. */
+/** The soonest ride that hasn't ended yet, or null once every ride is over. */
 export const getNextRide = (events: RideEvent[], now: Date = new Date()): RideEvent | null =>
   getUpcomingRides(events, now)[0] ?? null;

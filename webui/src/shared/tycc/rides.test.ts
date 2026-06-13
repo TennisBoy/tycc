@@ -26,11 +26,22 @@ describe("ride scheduling", () => {
     expect(getUpcomingRides(events, now).map((event) => event.id)).toEqual(["soon", "late"]);
   });
 
-  it("keeps a ride featured all of its date, even after it has started or ended", () => {
-    // The BMO ride ran 1:30-4:30 PM; at 7:25 PM the same day it should still show.
+  it("keeps a ride while it is in progress (started but not yet ended)", () => {
     const today = ride("today", "2026-05-10", "1:30 PM – 4:30 PM");
-    const evening = new Date(2026, 4, 10, 19, 25, 0);
-    expect(getNextRide([today], evening)?.id).toBe("today");
+    const midRide = new Date(2026, 4, 10, 14, 0, 0); // 2:00 PM
+    expect(getNextRide([today], midRide)?.id).toBe("today");
+  });
+
+  it("drops a ride once its end time has passed", () => {
+    const today = ride("today", "2026-05-10", "1:30 PM – 4:30 PM");
+    const afterRide = new Date(2026, 4, 10, 17, 0, 0); // 5:00 PM, ended at 4:30
+    expect(getNextRide([today], afterRide)).toBeNull();
+  });
+
+  it("keeps an open-ended ride (no end time) for the rest of its day", () => {
+    const rollout = ride("rollout", "2026-05-10", "7:00 AM roll out");
+    const evening = new Date(2026, 4, 10, 19, 0, 0);
+    expect(getNextRide([rollout], evening)?.id).toBe("rollout");
   });
 
   it("orders multiple same-day rides by start time", () => {
