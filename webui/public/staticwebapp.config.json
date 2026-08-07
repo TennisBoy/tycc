@@ -1,7 +1,17 @@
 {
-  "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": ["/images/*.{png,jpg,gif}", "/css/*", "/js/*", "*.{css,js,json,ico,png,jpg,jpeg,svg,webp,txt,xml}"]
+  "routes": [
+    { "route": "/", "rewrite": "/index.html" },
+    { "route": "/about", "rewrite": "/index.html" },
+    { "route": "/about/", "rewrite": "/index.html" },
+    { "route": "/calendar", "rewrite": "/index.html" },
+    { "route": "/calendar/", "rewrite": "/index.html" },
+    { "route": "/routes", "rewrite": "/index.html" },
+    { "route": "/routes/", "rewrite": "/index.html" },
+    { "route": "/gallery", "rewrite": "/index.html" },
+    { "route": "/gallery/", "rewrite": "/index.html" }
+  ],
+  "responseOverrides": {
+    "404": { "rewrite": "/index.html", "statusCode": 404 }
   },
   "globalHeaders": {
     "X-Content-Type-Options": "nosniff",
