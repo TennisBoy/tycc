@@ -38,19 +38,33 @@ export const formatMonthLabel = (monthValue: string): string => {
 export const formatDayName = (date: string): string =>
   new Intl.DateTimeFormat("en-CA", { weekday: "long" }).format(new Date(`${date}T12:00:00`));
 
-/**
- * The distinct months that actually have rides, chronological, each with a
- * display label. Derived from the ride data so the calendar never silently
- * drops a ride scheduled outside a hardcoded window.
- */
-export const getRideMonths = (events: RideEvent[]): MonthOption[] =>
-  [...new Set(events.map((event) => event.date.slice(0, 7)))]
-    .sort()
-    .map((value) => ({ value, label: formatMonthLabel(value) }));
+/** "YYYY-MM" for a local date. */
+const toMonthValue = (date: Date): string =>
+  `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
 
 /**
- * Index (into `months`) of the month to open on: the month of the next upcoming
- * ride, falling back to the current month, clamped into the available range.
+ * The months the calendar can page through, chronological, each with a display
+ * label: every month that actually has a ride — so a ride scheduled outside a
+ * hardcoded window is never silently dropped — plus the current month, so the
+ * calendar can always open on today even during a gap in the schedule (an
+ * off-season visitor lands on an empty grid for this month rather than on some
+ * stale month from last spring).
+ *
+ * Empty when there are no rides at all: with nothing to page to, the calendar
+ * renders its empty state instead of a lone blank month.
+ */
+export const getRideMonths = (events: RideEvent[], now: Date = new Date()): MonthOption[] => {
+  if (events.length === 0) return [];
+  const months = new Set(events.map((event) => event.date.slice(0, 7)));
+  months.add(toMonthValue(now));
+  return [...months].sort().map((value) => ({ value, label: formatMonthLabel(value) }));
+};
+
+/**
+ * Index (into `months`) of the month to open on: the current month, which
+ * `getRideMonths` guarantees is present whenever there is ride data. The
+ * remaining branches only matter for a `months` list built some other way —
+ * fall back to the month of the next upcoming ride, then clamp into range.
  * Returns 0 when there are no months.
  */
 export const getInitialMonthIndex = (
@@ -59,9 +73,11 @@ export const getInitialMonthIndex = (
   now: Date = new Date(),
 ): number => {
   if (months.length === 0) return 0;
-  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(
-    now.getDate(),
-  ).padStart(2, "0")}`;
+  const currentMonth = toMonthValue(now);
+  const currentIdx = months.findIndex((month) => month.value === currentMonth);
+  if (currentIdx !== -1) return currentIdx;
+
+  const today = `${currentMonth}-${String(now.getDate()).padStart(2, "0")}`;
   const upcoming = [...events]
     .sort((a, b) => a.date.localeCompare(b.date))
     .find((event) => event.date >= today);

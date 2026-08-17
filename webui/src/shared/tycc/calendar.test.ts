@@ -26,26 +26,35 @@ const ride = (overrides: Partial<RideEvent> & Pick<RideEvent, "id" | "date">): R
 });
 
 describe("getRideMonths", () => {
+  const events = [
+    ride({ id: "b", date: "2026-06-13" }),
+    ride({ id: "a", date: "2026-04-26" }),
+    ride({ id: "a2", date: "2026-04-02" }),
+    ride({ id: "c", date: "2027-01-10" }),
+  ];
+
   it("returns distinct months, chronological, with labels", () => {
-    const months = getRideMonths([
-      ride({ id: "b", date: "2026-06-13" }),
-      ride({ id: "a", date: "2026-04-26" }),
-      ride({ id: "a2", date: "2026-04-02" }),
-      ride({ id: "c", date: "2027-01-10" }),
-    ]);
+    const months = getRideMonths(events, new Date(2026, 5, 1)); // June, already in the data
     expect(months.map((m) => m.value)).toEqual(["2026-04", "2026-06", "2027-01"]);
     expect(months[0].label).toBe("April 2026");
     expect(months[2].label).toBe("January 2027");
   });
 
+  it("includes the current month even when it has no rides", () => {
+    const months = getRideMonths(events, new Date(2026, 8, 4)); // September, a gap in the schedule
+    expect(months.map((m) => m.value)).toEqual(["2026-04", "2026-06", "2026-09", "2027-01"]);
+  });
+
   it("returns an empty list when there are no rides", () => {
-    expect(getRideMonths([])).toEqual([]);
+    expect(getRideMonths([], new Date(2026, 5, 1))).toEqual([]);
   });
 
   it("covers every month present in the real ride data", () => {
-    const months = getRideMonths(rideEvents);
+    const months = getRideMonths(rideEvents, new Date(2026, 5, 1));
     const monthsInData = new Set(rideEvents.map((e) => e.date.slice(0, 7)));
-    expect(new Set(months.map((m) => m.value))).toEqual(monthsInData);
+    for (const month of monthsInData) {
+      expect(months.map((m) => m.value)).toContain(month);
+    }
   });
 });
 
@@ -81,17 +90,26 @@ describe("buildCalendarCells", () => {
 });
 
 describe("getInitialMonthIndex", () => {
-  const months = getRideMonths(rideEvents); // 2026-04, 2026-05, 2026-06
+  // Pinned to a date inside the season so `months` is the ride months alone.
+  const months = getRideMonths(rideEvents, new Date(2026, 5, 1));
 
-  it("selects the month of the next upcoming ride", () => {
-    expect(getInitialMonthIndex(rideEvents, months, new Date(2026, 4, 15))).toBe(1); // mid-May
+  it("opens on the current month", () => {
+    const may = months.findIndex((m) => m.value === "2026-05");
+    expect(getInitialMonthIndex(rideEvents, months, new Date(2026, 4, 15))).toBe(may);
   });
 
-  it("clamps to the first month when today is before the season", () => {
+  it("opens on a current month that has no rides of its own", () => {
+    const withGap = getRideMonths(rideEvents, new Date(2026, 9, 8)); // October
+    const october = withGap.findIndex((m) => m.value === "2026-10");
+    expect(october).toBeGreaterThan(-1);
+    expect(getInitialMonthIndex(rideEvents, withGap, new Date(2026, 9, 8))).toBe(october);
+  });
+
+  it("falls back to the next upcoming ride when the current month is missing", () => {
     expect(getInitialMonthIndex(rideEvents, months, new Date(2026, 0, 1))).toBe(0);
   });
 
-  it("clamps to the last month when today is after the season", () => {
+  it("clamps to the last month when today is after every listed month", () => {
     expect(getInitialMonthIndex(rideEvents, months, new Date(2026, 11, 1))).toBe(months.length - 1);
   });
 

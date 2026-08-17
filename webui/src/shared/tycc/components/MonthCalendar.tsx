@@ -80,6 +80,16 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
 
   const visibleEvents = monthEvents.filter((event) => matchesFilters(event, currentFilters));
 
+  // The calendar opens on the current month even when nothing is scheduled in
+  // it, so an empty view isn't always the filters' fault — say which it is.
+  const emptyState: EmptyCalendarStateProps =
+    monthEvents.length === 0
+      ? {
+          title: `No rides scheduled in ${formatMonthLabel(selectedMonth.value)}`,
+          description: "Use the arrows above to browse to another month of the season.",
+        }
+      : {};
+
   const selectedEvent =
     visibleEvents.find((event) => event.id === selectedEventId) ?? visibleEvents[0] ?? null;
 
@@ -301,14 +311,14 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
                 </div>
               </div>
 
-              <SelectedRideCard event={selectedEvent} />
+              <SelectedRideCard emptyState={emptyState} event={selectedEvent} />
             </div>
           </TabsContent>
 
           <TabsContent value="list">
             <div className="grid gap-4">
               {visibleEvents.length === 0 ? (
-                <EmptyCalendarState />
+                <EmptyCalendarState {...emptyState} />
               ) : (
                 visibleEvents.map((event) => (
                   <Card className="rounded-[1.5rem] border-border/80 bg-card/90" key={event.id}>
@@ -340,7 +350,7 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
 
           <TabsContent value="day">
             {visibleEvents.length === 0 ? (
-              <EmptyCalendarState />
+              <EmptyCalendarState {...emptyState} />
             ) : (
               <div className="grid gap-5">
                 <div className="flex flex-wrap gap-2">
@@ -372,7 +382,7 @@ const MonthCalendar = ({ events }: MonthCalendarProps) => {
                     );
                   })}
                 </div>
-                <SelectedRideCard event={selectedEvent} />
+                <SelectedRideCard emptyState={emptyState} event={selectedEvent} />
               </div>
             )}
           </TabsContent>
@@ -415,9 +425,15 @@ const FilterGroup = ({ label, options, selected, onSelect }: FilterGroupProps) =
   </div>
 );
 
-const SelectedRideCard = ({ event }: { event: RideEvent | null }) => {
+const SelectedRideCard = ({
+  event,
+  emptyState,
+}: {
+  event: RideEvent | null;
+  emptyState?: EmptyCalendarStateProps;
+}) => {
   if (!event) {
-    return <EmptyCalendarState />;
+    return <EmptyCalendarState {...emptyState} />;
   }
 
   return (
@@ -455,16 +471,22 @@ const DetailRow = ({ label, value }: { label: string; value: string }) => (
   </div>
 );
 
-const EmptyCalendarState = () => (
+type EmptyCalendarStateProps = {
+  title?: string;
+  description?: string;
+};
+
+const EmptyCalendarState = ({
+  title = "No rides match these filters",
+  description = "Reset a filter to bring the month view back into focus.",
+}: EmptyCalendarStateProps) => (
   <Card className="rounded-[1.5rem] border-dashed border-border/80 bg-card/90">
     <CardContent className="grid gap-3 p-6 text-center">
       <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-muted text-primary">
         <CalendarDays className="size-5" />
       </div>
-      <h3 className="text-2xl font-bold">No rides match these filters</h3>
-      <p className="text-base leading-7 text-muted-foreground">
-        Reset a filter to bring the month view back into focus.
-      </p>
+      <h3 className="text-2xl font-bold">{title}</h3>
+      <p className="text-base leading-7 text-muted-foreground">{description}</p>
     </CardContent>
   </Card>
 );

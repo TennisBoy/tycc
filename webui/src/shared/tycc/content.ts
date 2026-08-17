@@ -174,6 +174,34 @@ export const rideEvents: RideEvent[] = [
       "A road ride from York Mills down to Exhibition Place, finishing at BMO Field by the lake — about 20 km one way at a steady 20–25 kph.",
     gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
   },
+  {
+    id: "2026-07-23-tommy-thompson",
+    title: "Group Ride — Tommy Thompson Park",
+    date: "2026-07-23",
+    time: "2:30 PM – 3:30 PM",
+    rideType: "Group ride",
+    difficulty: "Intermediate",
+    area: "Waterfront",
+    meetup: "808 York Mills Road (outside Longo's)",
+    distance: "~30 km",
+    preview:
+      "A quick midsummer run on the downtown route — York Mills to the waterfront and out on the Leslie Street Spit at Tommy Thompson Park, about 30 km at a brisk 25–30 kph.",
+    gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
+  },
+  {
+    id: "2026-08-23-richmond-green",
+    title: "Group Ride — Richmond Green Park",
+    date: "2026-08-23",
+    time: "1:00 PM – 4:00 PM",
+    rideType: "Group ride",
+    difficulty: "All levels",
+    area: "Richmond Hill",
+    meetup: "808 York Mills Road (outside Longo's)",
+    distance: "~40 km",
+    preview:
+      "A northbound ride out of York Mills up through Thornhill into Richmond Hill, finishing at Richmond Green Park — about 40 km round trip at a steady 20–25 kph.",
+    gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
+  },
 ];
 
 // Real routes shared by the club (Google Maps cycling directions).
@@ -237,6 +265,18 @@ export const routeList: RouteInfo[] = [
       "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/43.714336,-79.3434444/43.7082672,-79.2417257/Scarborough+Bluffs,+1+Brimley+Rd+S,+Scarborough,+ON/data=!4m2!4m1!3e1",
     embedUrl:
       "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=43.714336,-79.3434444+to:43.7082672,-79.2417257+to:Scarborough+Bluffs,+1+Brimley+Rd+S,+Scarborough,+ON&dirflg=b&output=embed",
+  },
+  {
+    id: "york-mills-richmond-green",
+    title: "York Mills → Richmond Green Park",
+    type: "Road cycling",
+    summary:
+      "A northbound road ride out of York Mills up through Thornhill and into Richmond Hill, pausing for lunch at The Big Casserole on Major Mackenzie before finishing at Richmond Green Park.",
+    distance: "~20 km one way",
+    mapsUrl:
+      "https://www.google.com/maps/dir/808+York+Mills+Rd,+North+York,+ON+M3B+1X8/43.8808826,-79.3941339/Richmond+Green+Park,+1200+Elgin+Mills+Rd+E,+Richmond+Hill,+ON+L4S+1M5/data=!4m2!4m1!3e1",
+    embedUrl:
+      "https://maps.google.com/maps?saddr=808+York+Mills+Rd,+North+York,+ON+M3B+1X8&daddr=43.8808826,-79.3941339+to:Richmond+Green+Park,+1200+Elgin+Mills+Rd+E,+Richmond+Hill,+ON+L4S+1M5&dirflg=b&output=embed",
   },
   {
     id: "york-mills-niagara-falls",
