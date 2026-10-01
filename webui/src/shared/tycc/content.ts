@@ -67,6 +67,13 @@ export const execs: Exec[] = [
     bio: "Hi, my name is Cooper, I am also one of the co-presidents of the Toronto Youth Cycling Club. I am 16 years old and I attend Northern Secondary School. I have a passion for soccer and play competitively for Power FC U17. Some hobbies of mine include playing sports, engaging in calisthenics, and biking long distances.",
   },
   {
+    id: "ali",
+    name: "Ali Mehdi Ladhiwala",
+    role: "Events Manager",
+    photo: "/images/exec-ali.webp",
+    bio: "Ali helps plan the club's events and helps manage the club's finances.",
+  },
+  {
     id: "william",
     name: "William Yin",
     role: "Developer & Exec",
