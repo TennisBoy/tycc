@@ -196,6 +196,20 @@ export const rideEvents: RideEvent[] = [
       "A northbound ride out of York Mills up through Thornhill into Richmond Hill, finishing at Richmond Green Park — about 40 km round trip at a steady 20–25 kph.",
     gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
   },
+  {
+    id: "2026-09-20-richmond-green",
+    title: "Group Ride — Richmond Green Park",
+    date: "2026-09-20",
+    time: "1:00 PM – 3:00 PM",
+    rideType: "Group ride",
+    difficulty: "All levels",
+    area: "Richmond Hill",
+    meetup: "808 York Mills Road (outside Longo's)",
+    distance: "~40 km",
+    preview:
+      "A September return to Richmond Hill — north out of York Mills through Thornhill to Richmond Green Park, about 40 km round trip at a steady 20–25 kph.",
+    gear: "Helmet, water bottle (drink mix optional) + snacks, and an emergency repair kit (tubes, tools) at your discretion.",
+  },
 ];
 
 // Real routes shared by the club (Google Maps cycling directions).
