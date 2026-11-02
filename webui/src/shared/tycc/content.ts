@@ -59,25 +59,12 @@ export const execs: Exec[] = [
     bio: "Hi! My name is Nathan, a co-founder of the Toronto Youth Cycling Club! I'm 18 years old, with the large majority of my residence taking place in the North York community. I attend Western University, pursuing a bachelor's degree in Medical Sciences. During my spare time, some passions of mine include playing hockey, swimming, playing piano, and, of course, cycling. I'm looking forward to exploring new areas of the province through cycling in the near future!",
   },
   {
-    id: "cooper",
-    name: "Cooper Sacks",
-    role: "Exec",
-    school: "Queen's University",
-    photo: "/images/exec-cooper.webp",
-    bio: "Hi, my name is Cooper, I am also one of the co-presidents of the Toronto Youth Cycling Club. I am 18 years old and I attend Queen's University. I have a passion for soccer and play competitively for Power FC U17. Some hobbies of mine include playing sports, engaging in calisthenics, and biking long distances.",
-  },
-  {
-    id: "ali",
-    name: "Ali Mehdi Ladhiwala",
-    role: "Events Manager",
-    photo: "/images/exec-ali.webp",
-    bio: "Ali helps plan the club's events and helps manage the club's finances.",
-  },
-  {
     id: "william",
     name: "William Yin",
     role: "Developer & Exec",
-    // Photo and bio to be added later.
+    school: "Victoria Park Collegiate Institute",
+    photo: "/images/exec-william.webp",
+    bio: "Hi, I'm William. I'm in Grade 12 at Victoria Park Collegiate Institute. Outside of cycling, I play competitive tennis, run cross-country and track, and spend a lot of my time building software. I got into cycling when I wanted to explore the city and found a shared vision with TYCC in creating a community.",
   },
 ];
 
