@@ -35,6 +35,14 @@ export const stats: Stat[] = [
 
 export const execs: Exec[] = [
   {
+    id: "william",
+    name: "William Yin",
+    role: "Director",
+    school: "Victoria Park Collegiate Institute",
+    photo: "/images/exec-william.webp",
+    bio: "Hi, I'm William. I'm in Grade 12 at Victoria Park Collegiate Institute. Outside of cycling, I play competitive tennis, run cross-country and track, and spend a lot of my time building software. I got into cycling when I wanted to explore the city and found a shared vision with TYCC in creating a community.",
+  },
+  {
     id: "gavin",
     name: "Gavin Tam",
     role: "Co-founder",
@@ -57,14 +65,6 @@ export const execs: Exec[] = [
     school: "Western University",
     photo: "/images/exec-nathan.webp",
     bio: "Hi! My name is Nathan, a co-founder of the Toronto Youth Cycling Club! I'm 18 years old, with the large majority of my residence taking place in the North York community. I attend Western University, pursuing a bachelor's degree in Medical Sciences. During my spare time, some passions of mine include playing hockey, swimming, playing piano, and, of course, cycling. I'm looking forward to exploring new areas of the province through cycling in the near future!",
-  },
-  {
-    id: "william",
-    name: "William Yin",
-    role: "Director and Developer",
-    school: "Victoria Park Collegiate Institute",
-    photo: "/images/exec-william.webp",
-    bio: "Hi, I'm William. I'm in Grade 12 at Victoria Park Collegiate Institute. Outside of cycling, I play competitive tennis, run cross-country and track, and spend a lot of my time building software. I got into cycling when I wanted to explore the city and found a shared vision with TYCC in creating a community.",
   },
 ];
 
