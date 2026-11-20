@@ -1,18 +1,22 @@
 # Active Blockers
 
-Updated: 2026-06-12
+Updated: 2026-11-19
 
 Known blockers, work in progress, and unresolved items. Clear entries when resolved.
 
 ## Current
 
-- **William's photo + bio** still pending (placeholder "W" card). Other execs done.
 - Gallery video deferred (storage); photos-only for now. (Real stat numbers + real gallery/hero
   photos are now DONE — gallery built from the Drive "WEBSITE MEDIA" folder.)
 - Discord→calendar **bot approach undecided** (`/ride` command vs AI-reads-posts); exec
   writeup shared, awaiting their pick.
 
-## Resolved this session (2026-06-12)
+## Resolved 2026-11-19
+
+- William's photo, bio and title are live. Cooper/Ali removed.
+- SEO real-404 + git-derived sitemap re-landed and live (PR #3).
+
+## Resolved 2026-06-12
 
 - ✅ **Deployed.** Merged `codex/add-contact-phone-number` → `main` (fast-forward to `afe8dc5`)
   and pushed; Azure SWA auto-deploys. Shipped the per-route SEO, the `explain-code` skill, the

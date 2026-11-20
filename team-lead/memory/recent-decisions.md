@@ -1,8 +1,17 @@
 # Recent Decisions
 
-Updated: 2026-06-12
+Updated: 2026-11-19
 
 Decisions made in recent sessions. Remove entries older than ~2 sprints.
+
+## 2026-11-02 to 2026-11-19 (About page, rides, SEO)
+
+- **Exec roster:** Cooper Sacks and Ali Mehdi Ladhiwala removed from the About page at the user's
+  request; William Yin is "Director and Developer". The founding story still names Cooper
+  (history, left as-is).
+- **Ship every change through a PR**, squash-merge only after the Azure preview build passes, then
+  verify the live site. Merged branches get deleted (user's choice).
+- **Re-landed the SEO 404/sitemap work** (PR #3) after staging verification.
 
 ## 2026-06-12 (GA MCP go-live, journal kit)
 
