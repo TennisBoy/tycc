@@ -8,8 +8,8 @@ Last session state. Auto-updated by `team-lead/playbooks/complete-the-work.md`.
 
 - **About page:** confirmed co-founder schools (Western) were updated (PR #5). Removed Cooper and
   Ali (entries + photos); added William's headshot (`exec-william.webp`, from shoot photo 329,
-  cropped to 712x945), school (Victoria Park CI) and bio (PR #6). Title changed to "Director and
-  Developer" (PR #8).
+  cropped to 712x945), school (Victoria Park CI) and bio (PR #6). Title changed to "Director" and
+  moved to the top of the exec list (PR #8, PR #10).
 - **Rides:** added the missed Sept 20, 2026 Richmond Green Park ride (PR #7). The Discord post's
   route link pointed to Tommy Thompson; went with Richmond Green from the rest of the post.
 - **SEO (PR #3) merged:** rebased onto `main`, regenerated sitemap, verified on staging, then

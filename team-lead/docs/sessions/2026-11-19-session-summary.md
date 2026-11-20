@@ -13,7 +13,7 @@ added, and the parked SEO PR finished.
 - Removed Cooper and Ali; added William's headshot, school and bio (PR #6).
 - Added the Sept 20 Richmond Green Park ride (PR #7).
 - Rebased the SEO branch, regenerated the sitemap, verified staging, merged (PR #3), verified production.
-- Changed William's title to "Director and Developer" (PR #8), verified live.
+- Changed William's title to "Director" and moved him to the top of the exec list (PR #8, PR #10), verified live.
 - Renamed `update-exec-schools` to `update-about-us`; deleted merged branches.
 
 ## Key decisions

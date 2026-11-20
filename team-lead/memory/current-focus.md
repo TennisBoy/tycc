@@ -11,7 +11,7 @@ Updated: 2026-11-19
 
 ## Recent Completions
 
-- **2026-11-19:** William's title -> "Director and Developer" (PR #8).
+- **2026-11-19:** William is "Director" and listed first (PR #8, PR #10).
 - **2026-11-02:** Removed Cooper/Ali, added William's photo/bio (PR #6); Sept 20 ride (PR #7);
   SEO real-404 + sitemap re-landed (PR #3). All verified on tycctoronto.com.
 
