@@ -14,7 +14,7 @@ Durable patterns established during the 2026-05 full redesign of the TYCC public
 ## Exec / team model supports missing assets
 
 - `Exec` type (`shared/tycc/types.ts`) has `photo?`, `bio?`, `school?` all optional, and
-  `role: string` (free text, e.g. "Co-founder", "Exec", "Developer & Exec").
+  `role: string` (free text, e.g. "Co-founder", "Exec", "Director"). Array order = display order on About and Home..
 - Renderers (AboutPage, HomePage teaser) fall back to a lettered avatar when `photo` is
   absent, show "Bio coming soon" (non-clickable card) when `bio` is absent, and hide the
   school line when absent. So a member can be added before their photo/bio exists.

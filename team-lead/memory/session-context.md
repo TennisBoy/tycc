@@ -1,10 +1,25 @@
 # Session Context
 
-Updated: 2026-06-12
+Updated: 2026-11-19
 
 Last session state. Auto-updated by `team-lead/playbooks/complete-the-work.md`.
 
-## Latest Session (2026-06-12, GA MCP go-live + portable journal kit)
+## Latest Session (2026-11-02 to 2026-11-19, About page, Sept 20 ride, SEO re-land)
+
+- **About page:** confirmed co-founder schools (Western) were updated (PR #5). Removed Cooper and
+  Ali (entries + photos); added William's headshot (`exec-william.webp`, from shoot photo 329,
+  cropped to 712x945), school (Victoria Park CI) and bio (PR #6). Title changed to "Director" and
+  moved to the top of the exec list (PR #8, PR #10).
+- **Rides:** added the missed Sept 20, 2026 Richmond Green Park ride (PR #7). The Discord post's
+  route link pointed to Tommy Thompson; went with Richmond Green from the rest of the post.
+- **SEO (PR #3) merged:** rebased onto `main`, regenerated sitemap, verified on staging, then
+  production: deploy green, `/about/` serves app, unknown paths return real 404, sitemap live.
+- **Branches:** renamed `update-exec-schools` -> `update-about-us`; deleted all merged branches at
+  the time. Four merged branches are still on GitHub (`add-sept-20-ride`,
+  `seo-real-404-sitemap-lastmod`, `update-about-us`, `update-about-us-title`).
+- Lessons in `knowledge/release-workflow-gotchas.md`.
+
+## Previous Session (2026-06-12, GA MCP go-live + portable journal kit)
 
 Picked up the parked GA MCP and got it **working end-to-end**, then generalized the lesson into a
 reusable journaling kit.

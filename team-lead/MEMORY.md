@@ -62,3 +62,6 @@ Agent-optimized quick-recall facts for this workspace. Each entry is a condensed
 - **CI placement allowlist** lives in TWO files that must stay in sync: `.github/workflows/
   check-placement.yml` and `team-lead/scripts/install-hooks.sh`. `team-lead/status/` is sanctioned;
   both lists must include every sanctioned subdir or CI/local gates disagree (ystack: `dual-allowlist-sync`).
+- **Release gotchas** (squash-merged branch reuse -> rebase `--onto`; regenerate `sitemap.xml`
+  *after* committing content; SWA rejects duplicate routes; merge after PR preview passes):
+  `knowledge/release-workflow-gotchas.md`.

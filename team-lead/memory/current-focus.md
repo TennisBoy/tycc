@@ -1,6 +1,6 @@
 # Current Focus
 
-Updated: 2026-06-12
+Updated: 2026-11-19
 
 ## Active Work
 
@@ -10,6 +10,10 @@ Updated: 2026-06-12
   pageviews / 121 sessions** on property `539644755`. Ready for deeper reporting.
 
 ## Recent Completions
+
+- **2026-11-19:** William is "Director" and listed first (PR #8, PR #10).
+- **2026-11-02:** Removed Cooper/Ali, added William's photo/bio (PR #6); Sept 20 ride (PR #7);
+  SEO real-404 + sitemap re-landed (PR #3). All verified on tycctoronto.com.
 
 - **2026-06-12:** Deployed the 2026-06-11 work to `main` (gate green); GA MCP went **live** via
   ADC user-login (robot route abandoned + deleted) and pulled a first 30-day report; rewrote
@@ -34,7 +38,7 @@ Updated: 2026-06-12
   traffic, and let it guide refinement.
 - Verify the **Azure deploy** of `afe8dc5` went green (GitHub Actions) and spot-check live SEO
   tags per route.
-- **Reconcile exec titles** (Co-founder/Exec vs "co-president" in bios); add **William's photo/bio**.
+- **Reconcile exec titles** (Co-founder vs "co-president" in Gavin's bio).
 - Confirm **apex vs www** for canonical/OG URLs.
 - Discord→calendar bot approach still undecided.
 - Once the launch post drives traffic, use GA to guide further refinement.
